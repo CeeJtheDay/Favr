@@ -1,0 +1,58 @@
+<form>
+    <input type="text" id="street" name="street" placeholder="street">
+    <br>
+    <input type="text" id="city" name="city" placeholder="city">
+    <br>
+    <input type="text" id="state" name="state" placeholder="state">
+    <br>
+    <input type="text" id="ZIP" name="ZIP" placeholder="ZIP">
+    <br>
+</form>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy_fsa23_HL03eeIZhtAcxDd8RCmVnogo">
+</script>
+<script>
+    var place;
+    var autocomplete = new google.maps.places.Autocomplete(street);
+
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        place = autocomplete.getPlace();
+        var address = {};
+        for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+            switch (addressType) {
+                case "street_number":
+                    address.street_number = place.address_components[i].short_name;
+                    break;
+                case "route":
+                    address.street = place.address_components[i].short_name;
+                    break;
+                case "locality":
+                    address.city = place.address_components[i].long_name;
+                    break;
+                case "administrative_area_level_1":
+                    address.state = place.address_components[i].short_name;
+                    break;
+            }
+        }
+        $("#ZIP").val("").change();
+        $("#street").val(address.street_number + " " + address.street).change();
+        $("#city").val(address.city).change();
+        $("#state").val(address.state).change();
+    });
+
+    var ss = jQuery.LiveAddress({
+        key: '8140491234758226',
+        waitForStreet: true,
+        debug: false,
+        target: "US",
+        autocomplete: 0,
+        addresses: [{
+            address1: "#street",
+            locality: "#city",
+            administrative_area: "#state",
+            postal_code: "#ZIP",
+            country: "#country"
+        }]
+    });
+</script>

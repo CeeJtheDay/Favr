@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BotttomNavigation';
@@ -30,3 +31,4 @@ export default function LabelBottomNavigation() {
         </BottomNavigation>
     );
 }
+
