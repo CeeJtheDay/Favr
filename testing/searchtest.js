@@ -23,6 +23,6 @@ var options = {
     ]
   };
   var fuse = new Fuse(users, options);
-  var result = fuse.search("burrito");
-  console.log(result[0].wants, result[1].services)
+  var result = fuse.search("burri");
+  console.log(result[0].firstName, result[1])
   
