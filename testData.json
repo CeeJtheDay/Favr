@@ -1,0 +1,33 @@
+[
+    {
+        "profile": {
+            "firstName": "John",
+            "lastName": "Smith",
+            "password": "password",
+            "location": "Seattle"
+        },
+        "wants": ["ride to work", "computer help"],
+        "services": ["spanish help"]
+    },
+    {
+        "profile": {
+            "firstName": "Norman",
+            "lastName": "Lei",
+            "password": "password",
+            "location": "Seattle"
+        },
+        "wants": ["Burrito", "computer help"],
+       " services": ["Javascript tutoring"]
+    },
+    {
+        "profile": {
+            "firstName": "Scott",
+            "lastName": "Taylor",
+            "password": "password",
+            "location": "Seattle"
+        },
+        "wants": ["skis", "javascript tutor", "spanish tutor"],
+        "services": ["burrito making"]
+    }
+
+]
