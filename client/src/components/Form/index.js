@@ -4,7 +4,7 @@ import "./style.css";
 const Form = () => {
     return (
         <div>
-            Form componenet!!
+            Form component!!
         </div>
     )
 }

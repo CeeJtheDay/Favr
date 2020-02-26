@@ -4,7 +4,7 @@ import "./style.css";
 const Chat = () => {
     return (
         <div>
-            Chat componenet!!
+            Chat component!!
         </div>
     )
 }

@@ -4,7 +4,7 @@ import "./style.css";
 const Search = () => {
     return (
         <div>
-            Search componenet!!
+            Search component!!
         </div>
     )
 }

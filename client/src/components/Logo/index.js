@@ -4,7 +4,7 @@ import "./style.css";
 const Logo = () => {
     return (
         <div>
-            Logo componenet!!
+            Logo component!!
         </div>
     )
 }

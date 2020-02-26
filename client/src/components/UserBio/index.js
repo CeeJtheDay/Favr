@@ -4,7 +4,7 @@ import "./style.css";
 const UserBio = () => {
     return (
         <div>
-            UserBio componenet!!
+            UserBio component!!
         </div>
     )
 }

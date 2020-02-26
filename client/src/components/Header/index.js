@@ -4,7 +4,7 @@ import "./style.css";
 const Header = () => {
     return (
         <div>
-            Header componenet!!
+            Header component!!
         </div>
     )
 }

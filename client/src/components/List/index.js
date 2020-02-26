@@ -4,7 +4,7 @@ import "./style.css";
 const List = () => {
     return (
         <div>
-            List componenet!!
+            List component!!
         </div>
     )
 }
