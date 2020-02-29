@@ -46,7 +46,7 @@ const ChatWindow = ({ chatRoom, currUser }) => {
                 }
                 var message = 
                     `<div class='message'> 
-                    <span class='user bold'> ${userName} </span>
+                    <span class='user bold'> ${userName}</span>
                     <span class='sysMsg'>${time}</span>
                     <br>
                     <span class='msg'>${msg.msg}</span>
