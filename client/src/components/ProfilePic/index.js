@@ -1,11 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-
-const Profileimage = {
-    // if user.profilepic exists, then image = this.profile image
-    // else, Profileimage = "../img/defaultPic"
-}
+import Profileimage from '../../images/bill-gates.jpg'
 
 const useStyles = makeStyles(theme => ({
   root: {

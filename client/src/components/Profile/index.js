@@ -3,10 +3,11 @@ import ProfileHeader from "../ProfileHeader/index"
 
 
 export default function Profile() {
-    const classes = useStyles();
   
     return (
+      <Profile>
       <ProfileHeader/>
       <ProfileLists/>
+      </Profile>
     );
   }
