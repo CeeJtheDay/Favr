@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import Menu from "../src/components/Menu"
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
-// import Profile from "./pages/Profile";
+import Profile from "./pages/scottProfile";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
 import { withRouter } from 'react-router-dom';
@@ -60,7 +60,7 @@ const MainRouter = withRouter(({ history }) => {
           {/* <Route exact path="/" component={Home} /> */}
           <Route path="/user" component={() => <Home currUser={currUser} setCurrUser={setCurrUser} />} />
           <Route path="/barter" component={() => <Chat currUser={currUser} setCurrUser={setCurrUser} />} />
-          {/* <Route path="/profile" component={() => <Profile currUser={currUser} setCurrUser={setCurrUser} />} /> */}
+          <Route path="/profile" component={() => <Profile currUser={currUser} setCurrUser={setCurrUser} />} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/signin" component={Signin} />
         </Switch>

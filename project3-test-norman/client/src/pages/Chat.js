@@ -27,6 +27,12 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
     const handleName = (currList) => {
         let tempChatList = [];
         currList.map(async (chat, i) => {
+            await ran(currList, chat, tempChatList);
+        })
+    }
+
+    function ran(currList, chat, tempChatList) {
+        return new Promise(resolve => {
             console.log(chat);
             let selfId = chat.user1 === currUser.id ? chat.user1 : chat.user2;
             let otherId = chat.user2 === currUser.id ? chat.user1 : chat.user2;
@@ -35,13 +41,13 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
                 self: { id: selfId, name: currUser.name },
                 other: { id: otherId }
             };
-            await axios.get(`../api/users/${otherId}`)
+            axios.get(`../api/users/${otherId}`)
                 .then(data1 => {
                     console.log(data1.data);
                     tempChatObj.other.name = data1.data.name;
                     tempChatList.push(tempChatObj);
                     console.log(tempChatList);
-                    if (i === currList.length - 1) {
+                    if (tempChatList.length === currList.length) {
                         console.log(tempChatList);
                         setState({ ...state, chatList: tempChatList });
                     }

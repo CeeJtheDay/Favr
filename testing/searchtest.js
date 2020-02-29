@@ -9,9 +9,9 @@ const users = require("./testData")
 
 var options = {
   shouldSort: true,
-  tokenize: true,
-  matchAllTokens: true,
-  findAllMatches: true,
+  tokenize: false,
+  matchAllTokens: false,
+  findAllMatches: false,
   threshold: 0,
   location: 0,
   distance: 100,
@@ -23,6 +23,6 @@ var options = {
     ]
   };
   var fuse = new Fuse(users, options);
-  var result = fuse.search("burri");
-  console.log(result[0].firstName, result[1])
+  var result = fuse.search("Burrito");
+  console.log(result)
   

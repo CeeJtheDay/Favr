@@ -5,71 +5,81 @@ import socketIOClient from "socket.io-client";
 
 
 const ChatWindow = ({ chatRoom, currUser }) => {
-    function loadSocket(socket) {
-        //var socket = io();
+    const socket = socketIOClient();
+    function loadSocket() {
+        let acknowledged = [];
         // join
         socket.on('connect', function () {
-            console.log(chatRoom.id);
             socket.emit('join', currUser.id, chatRoom.id, currUser.name);
+        })
+        socket.once('history', function (history) {
+            console.log(history);
+            for (var i = 0; i < history.length; i++) {
+                var message = '' +
+                    '<div class="message">' +
+                    '  <span class="user">' + history[i].userName + ': </span>' +
+                    '  <span class="msg">' + history[i].message + '</span>' +
+                    '</div>' +
+                    '<div class="sysMsg">' + history[i].time + '</div>';
+                $('#msglog').append(message);
+                $('#msglog').scrollTop($('#msglog')[0].scrollHeight);
+            }
+        })
+
+        // listen
+        socket.once('sys', function (sysMsg) {
+            var message = '<div class="sysMsg">' + sysMsg + '</div>';
+            $('#msglog').append(message);
+
         });
+
+        // send
+        socket.on('msg', function (userName, msg, time) {
+            if (!~acknowledged.indexOf(msg.event_id)) {
+
+                // add to array of acknowledged events
+                acknowledged.unshift(msg.event_id);
+
+                // prevent array from growing to large
+                if (acknowledged.length > 20) {
+                    acknowledged.length = 20;
+                }
+                var message = '' +
+                    '<div class="message">' +
+                    '  <span class="user bold">' + userName + ' </span>' + '<span class="sysMsg">' + time + '</span>' + '<br>' +
+                    '<span class="msg">' + msg.msg + '</span>' +
+                    '</div>';
+                $('#msglog').append(message);
+                $('#msglog').scrollTop($('#msglog')[0].scrollHeight);
+            }
+        });
+
+        // message
+
+        $(`#${chatRoom.id}${currUser.id}`).keydown(function (e) {
+            if (e.which === 13) {
+                e.preventDefault();
+                let msg = $(this).val();
+                $(this).val('');
+                socket.send(msg, chatRoom.id, currUser.id, currUser.name, currUser.name+chatRoom.id+currUser.id);
+            }
+        });
+
+
     }
 
     useEffect(() => {
         $('#msglog').empty();
-        //socket.emit("disconnect", chatRoom.id);
-        loadSocket(socket);
+        loadSocket();
 
     }, [chatRoom])
-    
-    const socket = socketIOClient("127.0.0.1:3001");
-    // send
-    socket.on('msg', function (userName, msg, time) {
-        var message = '' +
-            '<div class="message">' +
-            '  <span class="user bold">' + userName + ' </span>' + '<span class="sysMsg">' + time + '</span>' + '<br>' +
-            '<span class="msg">' + msg + '</span>' +
-            '</div>';
-        $('#msglog').append(message);
-        $('#msglog').scrollTop($('#msglog')[0].scrollHeight);
-    });
 
-    //load previous history
-
-    socket.on('history', function (history) {
-        console.log(history);
-        for (var i = 0; i < history.length; i++) {
-            var message = '' +
-                '<div class="message">' +
-                '  <span class="user">' + history[i].userName + ': </span>' +
-                '  <span class="msg">' + history[i].message + '</span>' +
-                '</div>' +
-                '<div class="sysMsg">' + history[i].time + '</div>';
-            $('#msglog').append(message);
-            $('#msglog').scrollTop($('#msglog')[0].scrollHeight);
-        }
-    })
-
-    // listen
-    socket.on('sys', function (sysMsg) {
-        var message = '<div class="sysMsg">' + sysMsg + '</div>';
-        $('#msglog').append(message);
-
-    });
-
-    // // message
-    // $(`#${chatRoom.id}${currUser.id}`).keydown(function (e) {
-    //     if (e.which === 13) {
-    //         e.preventDefault();
-    //         let msg = $(this).val();
-    //         socket.send(msg, chatRoom.id, currUser.id, currUser.name);
-    //     }
-    // });
 
     const handSend = e => {
         e.preventDefault();
         let msg = $(`#${chatRoom.id}${currUser.id}`).val().trim();
-        $(`#${chatRoom.id}${currUser.id}`).empty();
-        socket.send(msg, chatRoom.id, currUser.id, currUser.name);
+        $(`#${chatRoom.id}${currUser.id}`).val('');
+        socket.send(msg, chatRoom.id, currUser.id, currUser.name, currUser.name+chatRoom.id+currUser.id);
     }
 
 

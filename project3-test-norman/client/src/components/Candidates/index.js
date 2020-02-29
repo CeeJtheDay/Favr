@@ -31,12 +31,15 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
     };
 
     const handleConnect = (user1Id, user2Id) => {
+        console.log("create chat btw"+ user1Id +user2Id);
         API.findAll()
         .then(data=>{
             let currList = data.data.filter(chat => {
                 return ((chat.user1 === user1Id && chat.user2 === user2Id) || ((chat.user1 === user2Id && chat.user2 === user1Id)))
             });
-            if (!currList){
+            console.log(currList);
+            if (currList.length===0){
+                console.log("create chat here");
                 API.create({user1:user1Id,user2:user2Id})
                 .then(()=>{
                     history.push(`/barter/?id=${currUser.id}`);
