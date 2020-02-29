@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { createMuiTheme } from 'material-ui/styles'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
@@ -69,7 +69,7 @@ const NSList = ({ category, list, currUser, setCurrUser }) => {
             })
 
     }
-console.log("LIST", list);
+
     return (
         <div style={classes.root}>
             <Grid item xs={12} md={12}>
@@ -79,7 +79,7 @@ console.log("LIST", list);
                 <div style={classes.demo}>
                     <List>
                         {list.map((item, i) => (
-                            <ListItem key={i}>
+                            <ListItem>
                                 <ListItemText
                                     primary={item}
                                 />

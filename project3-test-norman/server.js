@@ -9,12 +9,6 @@ require("dotenv").config();
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
-app.use((req, res, next) => {
-  // console.log("logger");
-  console.log(req.originalUrl);
-  console.log(req.method);
-  return next();
-})
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -29,47 +23,34 @@ var server = require('http').Server(app);
 var socketIO = IO(server);
 var roomInfo = [];
 var history = {};
-
+var uni = 0;
 socketIO.on('connection', function (socket) {
-  console.log("herehere");
-  console.log(history);
 
   socket.on('join', function (devId, projectId, userName) {
     let userId = devId;
     let roomID = projectId;
-    console.log(roomID);
     if (!roomInfo.includes(roomID)) {
       roomInfo.push(roomID);
       history[roomID] = [];
     }
     //push out all the previous chat history belonged to this roomID
     socket.join(roomID);
-    socketIO.to(roomID).emit('history', history[roomID]);
+    socket.emit('history', history[roomID]);
     socketIO.to(roomID).emit('sys', userName + ' is online now!');
-    console.log(userId + ' join ' + roomID);
   });
 
-  socket.on('message', function (msg,roomID,userId,userNameG) {
+  socket.on('message', function (msg,roomID,userId,userNameG,flag) {
     let msgObj = {
       id: userId,
       userName: userNameG,
       message: msg,
       time: new Date()
     };
-    console.log("therethere");
-    console.log(msgObj);
-    console.log(roomID);
     history[roomID].push(msgObj);
-    socketIO.to(roomID).emit('msg', userNameG, msg, new Date());
-  });
+    let message ={msg:msg,event_id:flag+uni++};
+    console.log(message);
 
-  socket.on('disconnect', function (roomID) {
-    let temp = roomInfo.filter(room=>room!==roomID);
-    console.log(temp);
-    for (let i = 0; i<temp.length; i++){
-      socket.leave(temp[i]);
-      console.log(' leave ' );
-    }
+    socket.emit('msg', userNameG, message, new Date());
   });
 
 });

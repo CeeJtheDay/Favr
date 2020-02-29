@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 
 const ChatList = ({ chatList, state, setState, currUser, setCurrUser }) => {
     const classes = useStyles();
-    console.log("CHATLIST", chatList);
+    console.log(chatList);
 
     return (
         <div className={classes.root}>
