@@ -34,19 +34,14 @@ const Profile = ({ currUser, setCurrUser }) => {
   }
 
   const [state, setState] = useState({
-    offers: [],
-    needs: []
+    orders: []
   });
 
   useEffect(() => {
     console.log(currUser);
-    let currOffers = currUser.offers;
-    console.log(currOffers);
-    let currNeeds = currUser.needs;
-    setState({ ...state, 
-      offers: currOffers,
-      needs: currNeeds
-     })
+    let currOrders = currUser.orders;
+    console.log(currOrders);
+    setState({ ...state, orders: currOrders })
   }, [])
 
 
@@ -68,31 +63,14 @@ const Profile = ({ currUser, setCurrUser }) => {
       </List>
       <Paper style={classes.root1} elevation={4}>
         <Typography type="title" style={classes.title1}>
-          Your Offers
+          Your Orders
         </Typography>
         <List dense>
-          {state.offers.map((offer, i) => {
+          {state.orders.map((order, i) => {
             return <span key={i}>
-              <a href={offer.link} target="_blank">
+              <a href={order.link} target="_blank">
                 <ListItem button>
-                  <ListItemText primary={<strong>{offer}</strong>} secondary={`quantity: ${offer.quantity} price: $${offer.price}`} />
-                </ListItem>
-              </a>
-              <Divider />
-            </span>
-          })}
-        </List>
-      </Paper>
-      <Paper style={classes.root1} elevation={4}>
-        <Typography type="title" style={classes.title1}>
-          Your Needs
-        </Typography>
-        <List dense>
-          {state.needs.map((need, i) => {
-            return <span key={i}>
-              <a href={need.link} target="_blank">
-                <ListItem button>
-                  <ListItemText primary={<strong>{need}</strong>} secondary={`quantity: ${need.quantity} price: $${need.price}`} />
+                  <ListItemText primary={<strong>{order.name}</strong>} secondary={`quantity: ${order.quantity} price: $${order.price}`} />
                 </ListItem>
               </a>
               <Divider />
@@ -101,7 +79,6 @@ const Profile = ({ currUser, setCurrUser }) => {
         </List>
       </Paper>
     </Paper>
-    
   )
 }
 

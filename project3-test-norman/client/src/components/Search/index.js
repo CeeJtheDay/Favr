@@ -9,9 +9,38 @@ import API from "../../utils/API-User";
 import { createMuiTheme } from 'material-ui/styles'
 import Candidates from "../Candidates";
 import axios from "axios";
+import Fuse from "fuse.js";
 
 
 const Search = ({ category, currUser, setCurrUser }) => {
+    let serviceOptions = {
+        shouldSort: true,
+        tokenize: false,
+        matchAllTokens: false,
+        findAllMatches: false,
+        threshold: 0,
+        location: 0,
+        distance: 100,
+        maxPatternLength: 32,
+        minMatchCharLength: 1,
+        keys: [
+            "offers"
+        ]
+    };
+    let needOptions = {
+        shouldSort: true,
+        tokenize: false,
+        matchAllTokens: false,
+        findAllMatches: false,
+        threshold: 0,
+        location: 0,
+        distance: 100,
+        maxPatternLength: 32,
+        minMatchCharLength: 1,
+        keys: [
+            "needs"
+        ]
+    };
     const theme = createMuiTheme();
     const classes = {
         card: {
@@ -64,36 +93,42 @@ const Search = ({ category, currUser, setCurrUser }) => {
             .then(data => {
                 console.log(data.data);
                 if (!state.search || state.search.trim().length === 0) {
-                    currResult = data.data.filter(user=>user._id!=currUser.id);
+                    currResult = data.data.filter(user => user._id != currUser.id);
                     setState({ ...state, results: currResult });
                 } else {
                     if (state.category === "need") {
-                        data.data.map(user => {
-                            console.log(user);
-                            if (user._id!==currUser.id) {
-                                if (user.offers.includes(state.search)) {
-                                    currResult.push(user);
-                                    console.log(currResult);
-                                }
-                            }
-                        });
-                        console.log(currResult);
-                        if (currResult.length===0) {
-                            currResult = data.data.filter(user=>user._id!=currUser.id);
+                        let fuse = new Fuse(data.data, serviceOptions);
+                        currResult = fuse.search(state.search);
+                        currResult = currResult.filter(user => user._id != currUser.id);
+                        // data.data.map(user => {
+                        //     console.log(user);
+                        //     if (user._id!==currUser.id) {
+                        //         if (user.offers.includes(state.search)) {
+                        //             currResult.push(user);
+                        //             console.log(currResult);
+                        //         }
+                        //     }
+                        // });
+                        // console.log(currResult);
+                        if (currResult.length === 0) {
+                            currResult = data.data.filter(user => user._id != currUser.id);
                             setState({ ...state, results: currResult });
                         } else {
                             setState({ ...state, results: currResult, searched: true });
                         }
                     } else {
-                        data.data.map(user => {
-                            if (user.id !== currUser.id) {
-                                if (user.needs.includes(state.search)) {
-                                    currResult.push(user);
-                                }
-                            }
-                        });
+                        let fuse = new Fuse(data.data, needOptions);
+                        currResult = fuse.search(state.search);
+                        currResult = currResult.filter(user => user._id != currUser.id);
+                        // data.data.map(user => {
+                        //     if (user.id !== currUser.id) {
+                        //         if (user.needs.includes(state.search)) {
+                        //             currResult.push(user);
+                        //         }
+                        //     }
+                        // });
                         if (currResult.length === 0) {
-                            currResult = data.data.filter(user=>user._id!=currUser.id);
+                            currResult = data.data.filter(user => user._id != currUser.id);
                             setState({ ...state, results: currResult });
                         } else {
                             setState({ ...state, results: currResult, searched: true });
