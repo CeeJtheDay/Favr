@@ -10,6 +10,8 @@ import NSList from '../components/NeedsNServices/index'
 import Grid from 'material-ui/Grid'
 import VirtualizedList from '../components/ProfileList/scottList'
 import ProfileHeader from '../components/ProfileHeader/index'
+import Popover from "../components/Popover/index"
+import { StylesProvider } from '@material-ui/core/styles';
 
 
 
@@ -33,7 +35,7 @@ const Profile = ({ currUser, setCurrUser }) => {
       backgroundColor: '#3f3f3f0d'
     }),
     title1: {
-      margin: `${theme.spacing.unit * 2}px 0 12px ${theme.spacing.unit}px` ,
+      margin: `${theme.spacing.unit * 2}px 0 12px ${theme.spacing.unit}px`,
       color: theme.palette.openTitle
     }
   }
@@ -51,31 +53,41 @@ const Profile = ({ currUser, setCurrUser }) => {
 
 
   return (
-    <Paper style={classes.root} elevation={4}>
+    <Grid container item xs={12} spacing={3}>
+    <Paper >
       <ProfileHeader></ProfileHeader>
       <Typography type="title" style={classes.title}>
         Profile
         </Typography>
-      
-      <Paper style={classes.root1} elevation={4}>
-        <Typography type="title" style={classes.title1}>
-          Needs
+
+      <Grid container item xs={12} spacing={3}>
+        <Paper style={classes.root1} elevation={4}>
+          <Typography type="title" style={classes.title1}>
+            Needs
+  
         </Typography>
-        <Grid container item xs={12} spacing={3}> 
+          <Grid container item xs={12} spacing={3}>
             <VirtualizedList></VirtualizedList>
-        </Grid>
-        
-      </Paper>
-      <Paper style={classes.root1} elevation={4}>
-        <Typography type="title" style={classes.title1}>
-          Services
+           
+          </Grid>
+          <Divider />
+          <Popover></Popover>
+
+        </Paper>
+        <Paper style={classes.root1} elevation={4}>
+          <Typography type="title" style={classes.title1}>
+            Services
         </Typography>
-        <Grid container item xs={12} spacing={3}> 
+          <Grid container item xs={12} spacing={3}>
             <VirtualizedList></VirtualizedList>
-        </Grid>
-        
+          </Grid>
+          <Divider/>
+          <Popover></Popover>
       </Paper>
+      </Grid>
     </Paper>
+
+    </Grid>
   )
 }
 
