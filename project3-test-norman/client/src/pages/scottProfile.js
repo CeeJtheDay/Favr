@@ -9,6 +9,7 @@ import { createMuiTheme } from 'material-ui/styles'
 import NSList from '../components/NeedsNServices/index'
 import Grid from 'material-ui/Grid'
 import VirtualizedList from '../components/ProfileList/scottList'
+import ProfileHeader from '../components/ProfileHeader/index'
 
 
 
@@ -51,13 +52,23 @@ const Profile = ({ currUser, setCurrUser }) => {
 
   return (
     <Paper style={classes.root} elevation={4}>
+      <ProfileHeader></ProfileHeader>
       <Typography type="title" style={classes.title}>
         Profile
         </Typography>
       
       <Paper style={classes.root1} elevation={4}>
         <Typography type="title" style={classes.title1}>
-          Needs and Services
+          Needs
+        </Typography>
+        <Grid container item xs={12} spacing={3}> 
+            <VirtualizedList></VirtualizedList>
+        </Grid>
+        
+      </Paper>
+      <Paper style={classes.root1} elevation={4}>
+        <Typography type="title" style={classes.title1}>
+          Services
         </Typography>
         <Grid container item xs={12} spacing={3}> 
             <VirtualizedList></VirtualizedList>
