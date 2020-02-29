@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import $ from "jquery";
-import Script from 'react-load-script';
+// import Script from 'react-load-script';
 import socketIOClient from "socket.io-client";
 
 
@@ -44,11 +44,13 @@ const ChatWindow = ({ chatRoom, currUser }) => {
                 if (acknowledged.length > 20) {
                     acknowledged.length = 20;
                 }
-                var message = '' +
-                    '<div class="message">' +
-                    '  <span class="user bold">' + userName + ' </span>' + '<span class="sysMsg">' + time + '</span>' + '<br>' +
-                    '<span class="msg">' + msg.msg + '</span>' +
-                    '</div>';
+                var message = 
+                    `<div class='message'> 
+                    <span class='user bold'> ${userName} </span>
+                    <span class='sysMsg'>${time}</span>
+                    <br>
+                    <span class='msg'>${msg.msg}</span>
+                    </div>`;
                 $('#msglog').append(message);
                 $('#msglog').scrollTop($('#msglog')[0].scrollHeight);
             }

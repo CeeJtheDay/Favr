@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Grid from 'material-ui/Grid'
 import Search from '../components/Search';
-import axios from "axios";
+// import axios from "axios";
 import { withRouter } from 'react-router-dom';
-import queryString from 'query-string'
+// import queryString from 'query-string'
 import NSList from "../components/NeedsNServices";
 
 const Home = withRouter(({ history, currUser, setCurrUser }) => {

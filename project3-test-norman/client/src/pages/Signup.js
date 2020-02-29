@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Card, { CardActions, CardContent } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import TextField from 'material-ui/TextField'
@@ -53,7 +53,7 @@ const Signup = () => {
     error: ''
   });
 
-  console.log(state);
+
   // useEffect(() => {
   //   const googleScript = document.createElement('script')
   //   googleScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCy_fsa23_HL03eeIZhtAcxDd8RCmVnogo&libraries=places`
@@ -64,7 +64,6 @@ const Signup = () => {
   // }, [state]);
 
   const handleChange = name => event => {
-    console.log(name);
     setState({ ...state, [name]: event.target.value })
   }
 
@@ -85,9 +84,6 @@ const Signup = () => {
       city: addressComp[1],
       state: addressComp[2]
     };
-    // $("#street").val(faddress.street);
-    // $("#city").val(faddress.city);
-    // $("#state").val(faddress.street);
     setState({ ...state, street: faddress.street, city: faddress.city, state: faddress.state });
   }
 
@@ -109,8 +105,8 @@ const Signup = () => {
         .then((data) => {
           setState({ ...state, error: '', open: true })
         })
-        .catch(error=>{
-          setState({ ...state, error: "please enter a valid email!"})
+        .catch(error => {
+          setState({ ...state, error: "please enter a valid email!" })
         })
     }
   }

@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import API from "../../utils/API-User";
+// import API from "../../utils/API-User";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import { STATES } from 'mongoose';
+// import Divider from '@material-ui/core/Divider';
+// import { STATES } from 'mongoose';
+import "./style.css";
 
 const useStyles = makeStyles(theme => ({
     root: {

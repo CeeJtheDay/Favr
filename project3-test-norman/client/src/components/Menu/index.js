@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
@@ -7,13 +7,13 @@ import HomeIcon from 'material-ui-icons/Home'
 import Button from 'material-ui/Button'
 import { Link, withRouter } from 'react-router-dom'
 import ChatIcon from '@material-ui/icons/WhatsApp';
-import Badge from 'material-ui/Badge'
-import queryString from 'query-string'
-import API from "../../utils/API-User"
-import axios from "axios"
+// import Badge from 'material-ui/Badge'
+// import queryString from 'query-string'
+// import API from "../../utils/API-User"
+// import axios from "axios"
 
 const isActive = (history, path) => {
-    if (history.location.pathname == path)
+    if (history.location.pathname === path)
         return { color: '#bef67a' }
     else
         return { color: '#ffffff' }

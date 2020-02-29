@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { withRouter } from 'react-router-dom';
 import API from "../utils/API-Barter";
 import ChatList from "../components/ChatList";
-import APIU from "../utils/API-User";
+// import APIU from "../utils/API-User";
 import axios from 'axios';
 import ChatWindow from "../components/ChatWindow";
 import $ from "jquery";
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-    },
+// const useStyles = makeStyles(theme => ({
+//     root: {
+//         flexGrow: 1,
+//     },
 
-}));
+// }));
 
 const Chat = withRouter(({ history, currUser, setCurrUser }) => {
-    const classes = useStyles();
+    // const classes = useStyles();
     const [state, setState] = useState({
         chatList: [],
         currChat: {},
@@ -71,7 +71,7 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
 
 
     return (
-        <div className={classes.root}>
+        <div>
             <Grid container spacing={2}>
                 <Grid item xs={4}>
                     <ChatList chatList={state.chatList} state={state} setState={setState} currUser={currUser} setCurrUser={setCurrUser} />
