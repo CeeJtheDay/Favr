@@ -9,6 +9,12 @@ require("dotenv").config();
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
+app.use((req, res, next) => {
+  // console.log("logger");
+  console.log(req.originalUrl);
+  console.log(req.method);
+  return next();
+})
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

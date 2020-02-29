@@ -59,7 +59,7 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
                 <div style={classes.demo}>
                     <List>
                         {candidates.map((user, i) => (
-                            <ListItem>
+                            <ListItem key={i}>
                                 <ListItemText
                                     primary={user.name}
                                 />
