@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { withRouter } from 'react-router-dom';
 import API from "../utils/API-Barter";
 import ChatList from "../components/ChatList";
-import APIU from "../utils/API-User";
+// import APIU from "../utils/API-User";
 import axios from 'axios';
 import ChatWindow from "../components/ChatWindow";
 import $ from "jquery";

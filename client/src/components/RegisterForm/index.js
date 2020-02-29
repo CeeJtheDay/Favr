@@ -16,70 +16,70 @@ const useStyles = makeStyles(theme => ({
 const RegisterForm = () => {
 
     const classes = useStyles();
-    
+
     return (
         <div className={classes.root}>
             <Grid container spacing={3}>
                 <Grid item xs={4}>
                     <form>
-                        <TextField id="outlined-basic" label="First Name" variant="outlined" />
+                        <TextField id="firstName" label="First Name" variant="outlined" />
                     </form>
                 </Grid>
                 <Grid item xs={4}>
                     <form>
-                        <TextField id="outlined-basic" label="Last Name" variant="outlined" />
+                        <TextField id="lastName" label="Last Name" variant="outlined" />
                     </form>
                 </Grid>
             </Grid>
             <Grid container spacing={3}>
                 <Grid item xs={8}>
                     <form>
-                        <TextField id="outlined-basic" label="email" variant="outlined" />
+                        <TextField id="email" label="email" variant="outlined" />
                     </form>
                 </Grid>
             </Grid>
             <Grid container spacing={3}>
                 <Grid item xs={8}>
                     <form>
-                        <TextField id="outlined-basic" label="passwordd" variant="outlined" />
+                        <TextField id="password" label="password" variant="outlined" />
                     </form>
                 </Grid>
             </Grid>
             <Grid container spacing={3}>
                 <Grid item xs={8}>
                     <form>
-                        <TextField id="outlined-basic" label="Verify password" variant="outlined" />
+                        <TextField id="verifyPass" label="Verify password" variant="outlined" />
                     </form>
                 </Grid>
             </Grid>
             <Grid container spacing={3}>
                 <Grid item xs={8}>
                     <form>
-                        <TextField id="outlined-basic" label="Introduce yourself..." variant="outlined" />
+                        <TextField id="intro" label="Introduce yourself..." variant="outlined" />
                     </form>
                 </Grid>
             </Grid>
             <Grid container spacing={3}>
                 <Grid item xs={8}>
                    <form>
-                        <TextField id="outlined-basic" label="Street Address" variant="outlined" />
+                        <TextField id="streetAdd" label="Street Address" variant="outlined" />
                     </form>
                 </Grid>
             </Grid>
             <Grid container spacing={3}>
                 <Grid item xs={3}>
                     <form>
-                        <TextField id="outlined-basic" label="City" variant="outlined" />
+                        <TextField id="city" label="City" variant="outlined" />
                     </form>
                 </Grid>
                 <Grid item xs={2}>
                     <form>
-                        <TextField id="outlined-basic" label="State" variant="outlined" />
+                        <TextField id="state" label="State" variant="outlined" />
                     </form>
                 </Grid>
                 <Grid item xs={3}>
                     <form>
-                        <TextField id="outlined-basic" label="Zip" variant="outlined" />
+                        <TextField id="zip" label="Zip" variant="outlined" />
                     </form>
                 </Grid>
             </Grid>

@@ -9,7 +9,7 @@ const ChatWindow = ({ chatRoom, currUser }) => {
         //var socket = io();
         // join
         socket.on('connect', function () {
-            console.log(chatRoom.id);
+            console.log("CHATROOM.ID", chatRoom.id);
             socket.emit('join', currUser.id, chatRoom.id, currUser.name);
         });
     }
@@ -36,7 +36,7 @@ const ChatWindow = ({ chatRoom, currUser }) => {
     //load previous history
 
     socket.on('history', function (history) {
-        console.log(history);
+        console.log("HISTORY", history);
         for (var i = 0; i < history.length; i++) {
             var message = '' +
                 '<div class="message">' +
