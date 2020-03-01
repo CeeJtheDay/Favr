@@ -56,6 +56,8 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
     }
 
     useEffect(() => {
+        let temp = [];
+        localStorage.setItem("socketDup", JSON.stringify(temp));
         console.log(currUser);
         API.findAll()
             .then(data => {
