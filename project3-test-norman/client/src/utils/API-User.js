@@ -16,6 +16,7 @@ export default {
     findAllUsers: function() {
         return axios.get('../api/users');
     },
+    
 
     updateUsers: function(id,obj) {
         return axios.put(`../api/users/update/${id}`,obj);

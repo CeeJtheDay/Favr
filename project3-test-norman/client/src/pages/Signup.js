@@ -10,6 +10,7 @@ import { createMuiTheme } from 'material-ui/styles';
 import API from "../utils/API-User";
 import $ from "jquery";
 import Script from 'react-load-script';
+import axios from "axios";
 
 const Signup = () => {
 
@@ -105,13 +106,21 @@ const Signup = () => {
     if (!(user.name && user.email && user.password && user.street && user.city && user.state)) {
       setState({ ...state, error: 'please enter all the required queries!' })
     } else {
-      API.signup(user)
+      let address = user.street+" "+user.city+" "+user.state;
+      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyCy_fsa23_HL03eeIZhtAcxDd8RCmVnogo`)
+      .then(data1=>{
+        let temp = data1.data.results[0].geometry.location;
+        console.log(temp);
+        user.lat = temp.lat;
+        user.lng = temp.lng;
+        API.signup(user)
         .then((data) => {
           setState({ ...state, error: '', open: true })
         })
         .catch(error=>{
           setState({ ...state, error: "please enter a valid email!"})
         })
+      })
     }
   }
   return (
