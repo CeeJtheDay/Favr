@@ -43,6 +43,14 @@ const UserSchema = new Schema({
     type: String,
     default:""
   },
+  lat: {
+    type:Number,
+    required: true
+  },
+  lng: {
+    type:Number,
+    required: true
+  },
   needs:{
     type: Array,
     default: []
@@ -54,6 +62,14 @@ const UserSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  rate: {
+    type: Number,
+    default: 0
+  },
+  ratingQuantity: {
+    type: Number,
+    default: 0
   }
 });
 
