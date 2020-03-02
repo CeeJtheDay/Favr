@@ -1,6 +1,10 @@
+<<<<<<< HEAD
+import React from 'react'
+=======
 import React, { useState, useEffect } from 'react'
+>>>>>>> 67df7988952f0132a6e586fc5792d940a29d1f19
 import { createMuiTheme } from 'material-ui/styles'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';

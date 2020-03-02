@@ -7,24 +7,25 @@ import Typography from 'material-ui/Typography'
 import ArrowForward from 'material-ui-icons/ArrowForward'
 import Person from 'material-ui-icons/Person'
 import { Link } from 'react-router-dom'
-import { createMuiTheme } from 'material-ui/styles';
+// import { createMuiTheme } from 'material-ui/styles';
+// import { useTheme } from '@material-ui/core/styles';
 
 
 
 
 const Users = () => {
 
-  const theme = createMuiTheme();
-  const classes = {
-    root: theme.mixins.gutters({
-      padding: theme.spacing.unit,
-      margin: theme.spacing.unit * 5
-    }),
-    title: {
-      margin: `${theme.spacing.unit * 4}px 0 ${theme.spacing.unit * 2}px`,
-      color: theme.palette.openTitle
-    }
-  };
+  // const theme = useTheme();
+  // const classes = {
+  //   root: theme.mixins.gutters({
+  //     padding: theme.spacing.unit,
+  //     margin: theme.spacing.unit * 5
+  //   }),
+  //   title: {
+  //     margin: `${theme.spacing.unit * 4}px 0 ${theme.spacing.unit * 2}px`,
+  //     color: theme.palette.openTitle
+  //   }
+  // };
   const [state, setState] = useState({
     users: []
   });
@@ -40,8 +41,33 @@ const Users = () => {
   // }
 
   return (
-    <Paper style={classes.root} elevation={4}>
-      <Typography type="title" style={classes.title}>
+    // <Paper style={classes.root} elevation={4}>
+    //   <Typography type="title" style={classes.title}>
+    //     All Users
+    //     </Typography>
+    //   <List dense>
+    //     {this.state.users.map((item, i) => {
+    //       return <Link to={"/user/" + item._id} key={i}>
+    //         <ListItem button>
+    //           <ListItemAvatar>
+    //             <Avatar>
+    //               <Person />
+    //             </Avatar>
+    //           </ListItemAvatar>
+    //           <ListItemText primary={item.name} />
+    //           <ListItemSecondaryAction>
+    //             <IconButton>
+    //               <ArrowForward />
+    //             </IconButton>
+    //           </ListItemSecondaryAction>
+    //         </ListItem>
+    //       </Link>
+    //     })
+    //     }
+    //   </List>
+    // </Paper>
+    <Paper elevation={4}>
+      <Typography type="title" >
         All Users
         </Typography>
       <List dense>

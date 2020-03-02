@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import Title from "./pages/Title";
 import Menu from "../src/components/Menu"
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
@@ -66,6 +67,7 @@ const MainRouter = withRouter(({ history }) => {
       <div style={{ marginLeft: "15px", marginRight: "15px" }}>
         <Switch>
           {/* <Route exact path="/" component={Home} /> */}
+          <Route exact path="/" component={Title} />
           <Route path="/user" component={() => <Home currUser={currUser} setCurrUser={setCurrUser} />} />
           <Route path="/barter" component={() => <Chat currUser={currUser} setCurrUser={setCurrUser} />} />
           <Route path="/profile" component={() => <Profile currUser={currUser} setCurrUser={setCurrUser} />} />

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import Paper from 'material-ui/Paper'
-import List, { ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText } from 'material-ui/List'
-import Avatar from 'material-ui/Avatar'
+// import List, { ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText } from 'material-ui/List'
+// import Avatar from 'material-ui/Avatar'
 import Typography from 'material-ui/Typography'
-import Person from 'material-ui-icons/Person'
-import Divider from 'material-ui/Divider'
-import { createMuiTheme } from 'material-ui/styles'
-import NSList from '../components/NeedsNServices/index'
+// import Person from 'material-ui-icons/Person'
+// import Divider from 'material-ui/Divider'
+// import { createMuiTheme } from 'material-ui/styles'
+import { useTheme } from '@material-ui/core/styles';
+// import NSList from '../components/NeedsNServices/index'
 import Grid from 'material-ui/Grid'
 import VirtualizedList from '../components/ProfileList/scottList'
 import ProfileHeader from '../components/ProfileHeader/index'
@@ -16,7 +17,7 @@ import { StylesProvider } from '@material-ui/core/styles';
 
 
 const Profile = ({ currUser, setCurrUser }) => {
-  const theme = createMuiTheme();
+  const theme = useTheme();
   const classes = {
     root: theme.mixins.gutters({
       maxWidth: 600,
@@ -86,8 +87,12 @@ const Profile = ({ currUser, setCurrUser }) => {
       </Paper>
       </Grid>
     </Paper>
+<<<<<<< HEAD
+    
+=======
 
     </Grid>
+>>>>>>> 67df7988952f0132a6e586fc5792d940a29d1f19
   )
 }
 

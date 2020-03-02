@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import Card from 'material-ui/Card'
 import Divider from 'material-ui/Divider'
-import MenuItem from 'material-ui/Menu/MenuItem'
+// import MenuItem from 'material-ui/Menu/MenuItem'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
 import SearchIcon from 'material-ui-icons/Search'
 import API from "../../utils/API-User";
 import { createMuiTheme } from 'material-ui/styles'
 import Candidates from "../Candidates";
-import axios from "axios";
+// import axios from "axios";
 import Fuse from "fuse.js";
 
 
@@ -93,13 +93,13 @@ const Search = ({ category, currUser, setCurrUser }) => {
             .then(data => {
                 console.log(data.data);
                 if (!state.search || state.search.trim().length === 0) {
-                    currResult = data.data.filter(user => user._id != currUser.id);
+                    currResult = data.data.filter(user => user._id !== currUser.id);
                     setState({ ...state, results: currResult });
                 } else {
                     if (state.category === "need") {
                         let fuse = new Fuse(data.data, serviceOptions);
                         currResult = fuse.search(state.search);
-                        currResult = currResult.filter(user => user._id != currUser.id);
+                        currResult = currResult.filter(user => user._id !== currUser.id);
                         // data.data.map(user => {
                         //     console.log(user);
                         //     if (user._id!==currUser.id) {
@@ -111,7 +111,7 @@ const Search = ({ category, currUser, setCurrUser }) => {
                         // });
                         // console.log(currResult);
                         if (currResult.length === 0) {
-                            currResult = data.data.filter(user => user._id != currUser.id);
+                            currResult = data.data.filter(user => user._id !== currUser.id);
                             setState({ ...state, results: currResult });
                         } else {
                             setState({ ...state, results: currResult, searched: true });
@@ -119,7 +119,7 @@ const Search = ({ category, currUser, setCurrUser }) => {
                     } else {
                         let fuse = new Fuse(data.data, needOptions);
                         currResult = fuse.search(state.search);
-                        currResult = currResult.filter(user => user._id != currUser.id);
+                        currResult = currResult.filter(user => user._id !== currUser.id);
                         // data.data.map(user => {
                         //     if (user.id !== currUser.id) {
                         //         if (user.needs.includes(state.search)) {
@@ -128,7 +128,7 @@ const Search = ({ category, currUser, setCurrUser }) => {
                         //     }
                         // });
                         if (currResult.length === 0) {
-                            currResult = data.data.filter(user => user._id != currUser.id);
+                            currResult = data.data.filter(user => user._id !== currUser.id);
                             setState({ ...state, results: currResult });
                         } else {
                             setState({ ...state, results: currResult, searched: true });
@@ -139,7 +139,7 @@ const Search = ({ category, currUser, setCurrUser }) => {
     };
 
     const enterKey = (event) => {
-        if (event.keyCode == 13) {
+        if (event.keyCode === 13) {
             event.preventDefault()
             search();
         }

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import ReactStars from "react-rating-stars-component";
-import API from '../../utils/API-Review';
+// import API from '../../utils/API-Review';
 import APIU from "../../utils/API-User";
 import axios from "axios";
 
