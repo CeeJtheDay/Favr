@@ -8,6 +8,7 @@ import ChatList from "../components/ChatList";
 import axios from 'axios';
 import ChatWindow from "../components/ChatWindow";
 import $ from "jquery";
+// import { useTheme } from '@material-ui/core/styles';
 
 // const useStyles = makeStyles(theme => ({
 //     root: {
@@ -17,6 +18,7 @@ import $ from "jquery";
 // }));
 
 const Chat = withRouter(({ history, currUser, setCurrUser }) => {
+    // const theme = useTheme();
     // const classes = useStyles();
     const [state, setState] = useState({
         chatList: [],

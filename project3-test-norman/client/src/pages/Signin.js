@@ -5,12 +5,13 @@ import TextField from 'material-ui/TextField'
 import Typography from 'material-ui/Typography'
 import WarningIcon from '@material-ui/icons/Warning';
 import { Redirect } from 'react-router-dom'
-import { createMuiTheme } from 'material-ui/styles';
+// import { createMuiTheme } from 'material-ui/styles';
+import { useTheme } from '@material-ui/core/styles';
 import API from "../utils/API-User";
 
 const Signin = () => {
 
-  const theme = createMuiTheme();
+  const theme = useTheme();
   const classes = {
     card: {
       maxWidth: 600,

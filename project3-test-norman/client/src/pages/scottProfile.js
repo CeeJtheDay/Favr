@@ -5,7 +5,8 @@ import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
 // import Person from 'material-ui-icons/Person'
 // import Divider from 'material-ui/Divider'
-import { createMuiTheme } from 'material-ui/styles'
+// import { createMuiTheme } from 'material-ui/styles'
+import { useTheme } from '@material-ui/core/styles';
 // import NSList from '../components/NeedsNServices/index'
 import Grid from 'material-ui/Grid'
 import VirtualizedList from '../components/ProfileList/scottList'
@@ -13,7 +14,7 @@ import VirtualizedList from '../components/ProfileList/scottList'
 
 
 const Profile = ({ currUser, setCurrUser }) => {
-  const theme = createMuiTheme();
+  const theme = useTheme();
   const classes = {
     root: theme.mixins.gutters({
       maxWidth: 600,
@@ -65,6 +66,7 @@ const Profile = ({ currUser, setCurrUser }) => {
         
       </Paper>
     </Paper>
+    
   )
 }
 

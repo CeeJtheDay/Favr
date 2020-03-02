@@ -6,14 +6,16 @@ import Typography from 'material-ui/Typography'
 import WarningIcon from '@material-ui/icons/Warning';
 import Dialog, { DialogActions, DialogContent, DialogContentText, DialogTitle } from 'material-ui/Dialog'
 import { Link } from 'react-router-dom'
-import { createMuiTheme } from 'material-ui/styles';
+// import { createMuiTheme } from 'material-ui/styles';
+import { useTheme } from '@material-ui/core/styles';
+
 import API from "../utils/API-User";
 import $ from "jquery";
 import Script from 'react-load-script';
 
 const Signup = () => {
 
-  const theme = createMuiTheme();
+  const theme = useTheme();
   const classes = {
     card: {
       maxWidth: 600,
@@ -155,8 +157,52 @@ const Signup = () => {
         </DialogActions>
       </Dialog>
     </div>
+  //   <div>
+  //     <Script
+  //       url="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy_fsa23_HL03eeIZhtAcxDd8RCmVnogo&libraries=places"
+  //       onLoad={handleScriptLoad}
+  //     />
+  //     <Card >
+  //       <CardContent>
+  //         <Typography type="headline" component="h2" >
+  //           Sign Up
+  //         </Typography>
+  //         <TextField id="name" label="Name"  value={state.name} onChange={handleChange('name')} margin="normal" /><br />
+  //         <TextField id="email" type="email" label="Email" value={state.email} onChange={handleChange('email')} margin="normal" /><br />
+  //         <TextField id="password" type="password" label="Password" value={state.password} onChange={handleChange('password')} margin="normal" br />
+  //         <TextField id="intro" label="Personal Intro" value={state.intro} onChange={handleChange('intro')} margin="normal" /><br />
+  //         <TextField id="street" label="Street" value={state.street} onChange={handleChange('street')} margin="normal" /><br />
+  //         <TextField id="city" label="City" value={state.city} onChange={handleChange('city')} margin="normal" /><br />
+  //         <TextField id="state" label="State" value={state.state} onChange={handleChange('state')} margin="normal" /><br />
+  //         <TextField id="ZIP" label="Zip Code (Optional)" value={state.zip} onChange={handleChange('zip')} margin="normal" /><br />
+  //         <br /> {
+  //           state.error && (<Typography component="p" color="error">
+  //             <WarningIcon />
+  //             {state.error}</Typography>)
+  //         }
+  //       </CardContent>
+  //       <CardActions>
+  //         <Button color="primary" variant="raised" onClick={clickSubmit}>Submit</Button>
+  //       </CardActions>
+  //     </Card>
+  //     <Dialog open={state.open} disableBackdropClick={true}>
+  //       <DialogTitle>New Account</DialogTitle>
+  //       <DialogContent>
+  //         <DialogContentText>
+  //           New account successfully created.
+  //         </DialogContentText>
+  //       </DialogContent>
+  //       <DialogActions>
+  //         <Link to="/signin">
+  //           <Button color="primary" autoFocus="autoFocus" variant="raised">
+  //             Sign In
+  //           </Button>
+  //         </Link>
+  //       </DialogActions>
+  //     </Dialog>
+  //   </div>
+  // )
   )
-
 }
 
 export default Signup;

@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import Paper from 'material-ui/Paper'
-import List, { ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText } from 'material-ui/List'
-import Avatar from 'material-ui/Avatar'
-import Typography from 'material-ui/Typography'
-import Person from 'material-ui-icons/Person'
-import Divider from 'material-ui/Divider'
-import { createMuiTheme } from 'material-ui/styles'
+import React, { useState, useEffect } from 'react';
+import Paper from 'material-ui/Paper';
+import List, { ListItem, ListItemAvatar, ListItemText } from 'material-ui/List';
+import Avatar from 'material-ui/Avatar';
+import Typography from 'material-ui/Typography';
+import Person from 'material-ui-icons/Person';
+import Divider from 'material-ui/Divider';
+// import { createMuiTheme } from 'material-ui/styles'
+import { useTheme } from '@material-ui/core/styles';
 
 
 const Profile = ({ currUser, setCurrUser }) => {
-  const theme = createMuiTheme();
+  const theme = useTheme();
   const classes = {
     root: theme.mixins.gutters({
       maxWidth: 600,
@@ -34,14 +35,14 @@ const Profile = ({ currUser, setCurrUser }) => {
   }
 
   const [state, setState] = useState({
-    orders: []
+    offers: []
   });
 
   useEffect(() => {
     console.log(currUser);
-    let currOrders = currUser.orders;
-    console.log(currOrders);
-    setState({ ...state, orders: currOrders })
+    let currOffers = currUser.offers;
+    console.log(currOffers);
+    setState({ ...state, offers: currOffers })
   }, [])
 
 
@@ -66,11 +67,11 @@ const Profile = ({ currUser, setCurrUser }) => {
           Your Orders
         </Typography>
         <List dense>
-          {state.orders.map((order, i) => {
+          {state.offers.map((offer, i) => {
             return <span key={i}>
-              <a href={order.link} target="_blank">
+              <a href={offer.link} target="_blank">
                 <ListItem button>
-                  <ListItemText primary={<strong>{order.name}</strong>} secondary={`quantity: ${order.quantity} price: $${order.price}`} />
+                  <ListItemText primary={<strong>{offer}</strong>} secondary={`quantity: ${offer.quantity} price: $${offer.price}`} />
                 </ListItem>
               </a>
               <Divider />
@@ -82,4 +83,4 @@ const Profile = ({ currUser, setCurrUser }) => {
   )
 }
 
-export default Profile
+export default Profile;
