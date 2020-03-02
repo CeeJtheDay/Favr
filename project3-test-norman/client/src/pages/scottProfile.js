@@ -12,7 +12,7 @@ import Grid from 'material-ui/Grid'
 import VirtualizedList from '../components/ProfileList/scottList'
 import ProfileHeader from '../components/ProfileHeader/index'
 import Popover from "../components/Popover/index"
-import { StylesProvider } from '@material-ui/core/styles';
+// import { StylesProvider } from '@material-ui/core/styles';
 
 
 
@@ -71,7 +71,7 @@ const Profile = ({ currUser, setCurrUser }) => {
             <VirtualizedList></VirtualizedList>
            
           </Grid>
-          <Divider />
+          {/* <Divider /> */}
           <Popover></Popover>
 
         </Paper>
@@ -82,17 +82,13 @@ const Profile = ({ currUser, setCurrUser }) => {
           <Grid container item xs={12} spacing={3}>
             <VirtualizedList></VirtualizedList>
           </Grid>
-          <Divider/>
+          {/* <Divider/> */}
           <Popover></Popover>
       </Paper>
       </Grid>
     </Paper>
-<<<<<<< HEAD
-    
-=======
 
     </Grid>
->>>>>>> 67df7988952f0132a6e586fc5792d940a29d1f19
   )
 }
 
