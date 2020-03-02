@@ -20,6 +20,8 @@ const MainRouter = withRouter(({ history }) => {
     city:'',
     state:'',
     zip:'',
+    lat:0,
+    lng:0,
     needs:[],
     offers:[],
     createDate: ''
@@ -43,6 +45,8 @@ const MainRouter = withRouter(({ history }) => {
             city:userInfo.data.city,
             state:userInfo.data.state,
             zip:userInfo.data.zip,
+            lat:userInfo.data.lat,
+            lng:userInfo.data.lng,
             needs:userInfo.data.needs,
             offers:userInfo.data.offers,
           })

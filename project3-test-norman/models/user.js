@@ -43,6 +43,14 @@ const UserSchema = new Schema({
     type: String,
     default:""
   },
+  lat: {
+    type:Number,
+    required: true
+  },
+  lng: {
+    type:Number,
+    required: true
+  },
   needs:{
     type: Array,
     default: []
