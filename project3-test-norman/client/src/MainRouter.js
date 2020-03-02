@@ -24,7 +24,9 @@ const MainRouter = withRouter(({ history }) => {
     lng:0,
     needs:[],
     offers:[],
-    createDate: ''
+    createDate: '',
+    rate:0,
+    ratingQuantity:0
   });
 
   useEffect(() => {
@@ -49,6 +51,8 @@ const MainRouter = withRouter(({ history }) => {
             lng:userInfo.data.lng,
             needs:userInfo.data.needs,
             offers:userInfo.data.offers,
+            rate: userInfo.data.rate,
+            ratingQuantity: userInfo.data.ratingQuantity
           })
         })
     }

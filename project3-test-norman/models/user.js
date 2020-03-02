@@ -62,6 +62,14 @@ const UserSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  rate: {
+    type: Number,
+    default: 0
+  },
+  ratingQuantity: {
+    type: Number,
+    default: 0
   }
 });
 
