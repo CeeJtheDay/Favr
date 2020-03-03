@@ -4,7 +4,7 @@ import Search from '../components/Search';
 // import axios from "axios";
 import { withRouter } from 'react-router-dom';
 // import queryString from 'query-string'
-import NSList from "../components/NeedsNServices";
+// import NSList from "../components/NeedsNServices";
 
 const Home = withRouter(({ history, currUser, setCurrUser }) => {
     // const classes = {
@@ -44,7 +44,7 @@ const Home = withRouter(({ history, currUser, setCurrUser }) => {
                     <Search category="service" currUser={currUser} setCurrUser={setCurrUser} />
                 </Grid>
             </Grid>
-            <Grid container spacing={24}>
+            {/* <Grid container spacing={24}>
                 <Grid item xs={6} sm={6}>
                     <NSList category="needs" list={currUser.needs} currUser={currUser} setCurrUser={setCurrUser} />
 
@@ -52,7 +52,7 @@ const Home = withRouter(({ history, currUser, setCurrUser }) => {
                 <Grid item xs={6} sm={6}>
                     <NSList category="offers" list={currUser.offers} currUser={currUser} setCurrUser={setCurrUser} />
                 </Grid>
-            </Grid>
+            </Grid> */}
         </div>
     )
 
