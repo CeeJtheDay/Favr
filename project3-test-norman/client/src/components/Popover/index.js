@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import TextField from "../TextField/index"
 // import BasicTextFields from '../TextField/index';
 
 const useStyles = makeStyles(theme => ({
@@ -45,7 +46,9 @@ export default function SimplePopover() {
           horizontal: 'center',
         }}
       >
-        <Typography className={classes.typography}>Enter Need</Typography>
+        <Typography className={classes.typography}>Enter Need
+        <TextField></TextField>
+        </Typography>
       </Popover>
     </div>
   );
