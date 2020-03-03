@@ -13,6 +13,7 @@ import VirtualizedList from '../components/ProfileList/scottList'
 import ProfileHeader from '../components/ProfileHeader/index'
 import Popover from "../components/Popover/index"
 // import { StylesProvider } from '@material-ui/core/styles';
+import Navbar from "../components/Navbar/index"
 
 
 
@@ -57,9 +58,7 @@ const Profile = ({ currUser, setCurrUser }) => {
     <Grid container item xs={12} spacing={3}>
     <Paper >
       <ProfileHeader></ProfileHeader>
-      <Typography type="title" style={classes.title}>
-        Profile
-        </Typography>
+     
 
       <Grid container item xs={12} spacing={3}>
         <Paper style={classes.root1} elevation={4}>
@@ -87,7 +86,7 @@ const Profile = ({ currUser, setCurrUser }) => {
       </Paper>
       </Grid>
     </Paper>
-
+<Navbar></Navbar>
     </Grid>
   )
 }
