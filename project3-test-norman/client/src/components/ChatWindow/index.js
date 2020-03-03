@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import $ from "jquery";
 // import Script from 'react-load-script';
 import socketIOClient from "socket.io-client";
@@ -20,12 +20,12 @@ const ChatWindow = ({ chatRoom, currUser }) => {
         socket.once('history', function (history) {
             console.log(history);
             for (var i = 0; i < history.length; i++) {
-                var message = '' +
-                    '<div class="message">' +
-                    '  <span class="user">' + history[i].userName + ': </span>' +
-                    '  <span class="msg">' + history[i].message + '</span>' +
-                    '</div>' +
-                    '<div class="sysMsg">' + history[i].time + '</div>';
+                var message = 
+                    `<div class="message">
+                    <span class="user">${history[i].userName}: </span>
+                    <span class="msg">${history[i].message}</span>
+                    </div>
+                    <div class="sysMsg">${history[i].time}</div>`;
                 $('#msglog').append(message);
                 $('#msglog').scrollTop($('#msglog')[0].scrollHeight);
             }
@@ -51,29 +51,28 @@ const ChatWindow = ({ chatRoom, currUser }) => {
                 if (acknowledged.length > 20) {
                     acknowledged.length = 20;
                 }
-<<<<<<< HEAD
-                var message = 
-                    `<div class='message'> 
-                    <span class='user bold'> ${userName}</span>
-                    <span class='sysMsg'>${time}</span>
-                    <br>
-                    <span class='msg'>${msg.msg}</span>
-                    </div>`;
-=======
 
                 localStorage.setItem("socketDup", JSON.stringify(acknowledged));
 
                 let message;
                 if (!msg.image) {
-                    message = '' +
-                        '<div class="message">' +
-                        '  <span class="user bold">' + userName + ' </span>' + '<span class="sysMsg">' + time + '</span>' + '<br>' +
-                        '<span class="msg">' + msg.msg + '</span>' +
-                        '</div>';
+                    message =
+                        `<div class="message">
+                        <span class="user bold">${userName}</span>
+                        <span class="sysMsg">${time}</span>
+                        <br/>
+                        <span class="msg">${msg.msg}</span>
+                        </div>`;
                 } else {
-                    message = ` <div class='message'><span class='user bold'>${userName}</span><span class='sysMsg'>${time}</span><br><img src='/uploads/${msg.image}' height='100' width='100'><br><span class='msg'>${msg.msg}</span></div>`;
+                    message = `<div class='message'>
+                    <span class='user bold'>${userName}</span>
+                    <span class='sysMsg'>${time}</span>
+                    <br/>
+                    <img src='/uploads/${msg.image}' height='100' width='100'>
+                    <br/>
+                    <span class='msg'>${msg.msg}</span>
+                    </div>`;
                 }
->>>>>>> 67df7988952f0132a6e586fc5792d940a29d1f19
                 $('#msglog').append(message);
                 $('#msglog').scrollTop($('#msglog')[0].scrollHeight);
             }

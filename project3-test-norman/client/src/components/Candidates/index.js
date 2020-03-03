@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React from 'react'
-=======
-import React, { useState, useEffect } from 'react'
->>>>>>> 67df7988952f0132a6e586fc5792d940a29d1f19
+import React, { useState } from 'react'
 import { createMuiTheme } from 'material-ui/styles'
 // import { Link } from 'react-router-dom'
 import List from '@material-ui/core/List';
@@ -16,13 +12,13 @@ import TelegramIcon from '@material-ui/icons/Telegram';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import API from "../../utils/API-Barter";
 import { withRouter } from 'react-router-dom';
-import InputLabel from '@material-ui/core/InputLabel';
+// import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import axios from "axios";
-import $ from "jquery";
+// import axios from "axios";
+// import $ from "jquery";
 
 const Candidates = withRouter(({ history, category, candidates, searched, currUser, setCurrUser }) => {
     const theme = createMuiTheme();
