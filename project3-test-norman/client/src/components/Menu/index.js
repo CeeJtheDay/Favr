@@ -7,6 +7,7 @@ import HomeIcon from 'material-ui-icons/Home'
 import Button from 'material-ui/Button'
 import { Link, withRouter } from 'react-router-dom'
 import ChatIcon from '@material-ui/icons/WhatsApp';
+import { useTheme } from '@material-ui/core/styles';
 // import Badge from 'material-ui/Badge'
 // import queryString from 'query-string'
 // import API from "../../utils/API-User"
@@ -24,10 +25,18 @@ const isPartActive = (history, path) => {
     else
         return { color: '#ffffff' }
 }
+
+// const classes = {
+//     navbar: {
+//         marginBottom: "20px"
+//     }
+// }
 const Menu = withRouter(({ history, currUser, setCurrUser }) => {
 
+    const theme = useTheme();
+
     return (
-        <AppBar position="static" style={{ marginBottom: "20px" }}>
+        <AppBar position="static" style={theme.primary}>
             <Toolbar>
                 <Typography type="title" color="inherit">
                     Favr
