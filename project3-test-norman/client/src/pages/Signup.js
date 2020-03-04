@@ -13,7 +13,8 @@ import API from "../utils/API-User";
 import $ from "jquery";
 import Script from 'react-load-script';
 import axios from "axios";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+
 
 const Signup = () => {
 

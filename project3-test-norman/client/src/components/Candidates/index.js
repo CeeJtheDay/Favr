@@ -29,7 +29,7 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
             margin: 'auto'
         },
         demo: {
-            backgroundColor: theme.palette.background.paper,
+            backgroundColor: "#8693AB"
         },
         title: {
             margin: theme.spacing.unit * 1,
@@ -41,6 +41,9 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
         selectEmpty: {
             marginTop: theme.spacing.unit * 1,
         },
+        list:{
+            backgroundColor: "#8693AB"
+        }
     };
 
     const handleConnect = (user1Id, user2Id) => {
@@ -139,7 +142,7 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
                 </FormControl>
                 <div style={classes.demo}>
                     {state.finalCandidates.length > 0 ? (
-                        <List>
+                        <List >
                             {state.finalCandidates.map((user, i) => (
                                 <ListItem>
                                     <ListItemText
