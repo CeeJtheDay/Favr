@@ -71,7 +71,7 @@ const Profile = ({ currUser, setCurrUser }) => {
             <VirtualizedList></VirtualizedList>
            
           </Grid>
-          <Divider />
+          {/* <Divider /> */}
           <Popover></Popover>
 
         </Paper>
@@ -82,7 +82,7 @@ const Profile = ({ currUser, setCurrUser }) => {
           <Grid container item xs={12} spacing={3}>
             <VirtualizedList></VirtualizedList>
           </Grid>
-          <Divider/>
+          {/* <Divider/> */}
           <Popover></Popover>
       </Paper>
       </Grid>
