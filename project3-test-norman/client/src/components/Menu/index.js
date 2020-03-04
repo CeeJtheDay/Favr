@@ -39,8 +39,8 @@ const Menu = withRouter(({ history, currUser, setCurrUser }) => {
     const classes = {
         menu: {
           width: "full",
-          backgroundColor: "white",
-          border: "solid 1px white"
+          backgroundColor: "#565656",
+          border: "solid 1px #8693AB"
           
         },
         logo: {

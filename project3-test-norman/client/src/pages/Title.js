@@ -3,7 +3,7 @@ import Logo from "../assets/images/Favr Logo.png";
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { useTheme } from '@material-ui/core/styles';
-import Handshake from "../assets/images/handshake.png";
+import Handshake from "../assets/images/handshake2.png";
 // import { green } from 'material-ui/colors';
 // import { lightGreen } from '@material-ui/core/colors';
 // import Grid from 'material-ui/Grid'
@@ -19,7 +19,7 @@ const Title = () => {
     const theme = useTheme();
     const classes = {
         container: {
-          backgroundColor: "rgb(236, 247, 250, 0.5)",
+          backgroundColor: "#565656",
           margin: 'auto',
           textAlign: 'center',
           marginTop: theme.spacing(5),
@@ -28,11 +28,12 @@ const Title = () => {
           marginLeft: 'auto',
           marginRight: 'auto',
           borderRadius: '15px',
-          border: "solid 1px white",
+          border: "solid 1px #8693AB",
           width: "300px",
+          // paddingTop: "200px"
           // opacity: 0.7
           // alignItems: "center",
-          boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0"
+          // boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0"
         },
         // container: {
         //   background: "url(https://media.giphy.com/media/y30LCMuHRVbxK/giphy.gif)",
@@ -59,10 +60,15 @@ const Title = () => {
         h3: {
           textAlign: "center",
           color: "rgb(236, 247, 250)",
-          textShadow: "2px 2px 4px #000000"
+          // textShadow: "2px 2px 4px #000000"
         },
         handshake: {
-          justifyContent: "space-around"
+          justifyContent: "space-around",
+          paddingTop: "110px"
+        },
+        handshakePic: {
+          width: "400px",
+          // bottom: 0
         }
       };
 
@@ -76,7 +82,7 @@ const Title = () => {
        </Container>
        <Grid container justify="center">
         <Grid item style={classes.handshake}>
-         <img alt="handshake" src={Handshake} />
+         <img alt="handshake" src={Handshake} style={classes.handshakePic}/>
         </Grid>
        </Grid>
       </React.Fragment>
