@@ -87,12 +87,8 @@ const Profile = ({ currUser, setCurrUser }) => {
       </Paper>
       </Grid>
     </Paper>
-<<<<<<< HEAD
-    
-=======
 
     </Grid>
->>>>>>> 67df7988952f0132a6e586fc5792d940a29d1f19
   )
 }
 
