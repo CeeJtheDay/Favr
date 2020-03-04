@@ -26,22 +26,22 @@ const useStyles = makeStyles({
 
 
   
-export default function SimpleCard() {
+export default function SimpleCard({currUser}) {
   const classes = useStyles();
-
+console.log(currUser);
   return (
     <Card className={classes.root}>
       <CardContent>
        
         <Typography variant="h5" component="h2">
-name goes here          {/* name */}
+   {currUser.name}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-  {/* location */}
-  location
+  {currUser.city}
+  
         </Typography>
         <Typography variant="body2" component="p">
-          rating
+         {currUser.rate}
         {/* <ReactStars
                             value={3}
                             size={50}

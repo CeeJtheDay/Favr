@@ -57,7 +57,7 @@ const Profile = ({ currUser, setCurrUser }) => {
   return (
     <Grid container item xs={12} spacing={3}>
     <Paper >
-      <ProfileHeader></ProfileHeader>
+      <ProfileHeader currUser={currUser} setCurrUser={setCurrUser}></ProfileHeader>
      
 
       <Grid container item xs={12} spacing={3}>
