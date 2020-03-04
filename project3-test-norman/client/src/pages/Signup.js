@@ -13,6 +13,7 @@ import API from "../utils/API-User";
 import $ from "jquery";
 import Script from 'react-load-script';
 import axios from "axios";
+import PropTypes from "prop-types";
 
 const Signup = () => {
 
@@ -23,23 +24,41 @@ const Signup = () => {
       margin: 'auto',
       textAlign: 'center',
       marginTop: theme.spacing.unit * 5,
-      paddingBottom: theme.spacing.unit * 2
+      paddingBottom: theme.spacing.unit * 2,
+      paddingRight: "auto",
+      paddingLeft: "auto",
+      backgroundColor: "#8693AB",
+      borderRadius: "20px",
+      border: "inset 1px white",
+      // display: "flex"
     },
     error: {
       verticalAlign: 'middle'
     },
     title: {
-      marginTop: theme.spacing.unit * 2,
-      color: theme.palette.openTitle
+      marginTop: "20px",
+      color: "white",
+      // backgroundColor: "#96CDFF",
+      // border: "solid 1px #077699",
+      // borderRadius: "15px",
+      width: "auto",
+      flexBox: "center",
+      // backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)"
+     
     },
     textField: {
       marginLeft: theme.spacing.unit,
       marginRight: theme.spacing.unit,
-      width: 300
+      width: 300,
+      color: "secondary",
+      border: "white",
     },
     submit: {
       margin: 'auto',
-      marginBottom: theme.spacing.unit * 2
+      marginBottom: theme.spacing.unit * 2,
+      backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
+      border: "solid 1px #077699",
+      borderRadius: "15px"
     }
   };
 
@@ -129,18 +148,80 @@ const Signup = () => {
       />
       <Card style={classes.card}>
         <CardContent>
-          <Typography type="headline" component="h2" style={classes.title}>
+          <Typography 
+          type="headline" 
+          component="h2" 
+          style={classes.title}>
             Sign Up
           </Typography>
-          <TextField id="name" label="Name" style={classes.textField} value={state.name} onChange={handleChange('name')} margin="normal" /><br />
-          <TextField id="email" type="email" label="Email" style={classes.textField} value={state.email} onChange={handleChange('email')} margin="normal" /><br />
-          <TextField id="password" type="password" label="Password" style={classes.textField} value={state.password} onChange={handleChange('password')} margin="normal" br />
-          <TextField id="intro" label="Personal Intro" style={classes.textField} value={state.intro} onChange={handleChange('intro')} margin="normal" /><br />
-          <TextField id="street" label="Street" style={classes.textField} value={state.street} onChange={handleChange('street')} margin="normal" /><br />
-          <TextField id="city" label="City" style={classes.textField} value={state.city} onChange={handleChange('city')} margin="normal" /><br />
-          <TextField id="state" label="State" style={classes.textField} value={state.state} onChange={handleChange('state')} margin="normal" /><br />
-          <TextField id="ZIP" label="Zip Code (Optional)" style={classes.textField} value={state.zip} onChange={handleChange('zip')} margin="normal" /><br />
-          <br /> {
+          <form className={classes.root} noValidate autoComplete="on">
+
+          <TextField 
+          id="name" 
+          label="Name" 
+          variant="filled"
+          InputProps ={{
+            className: classes.textField
+          }}
+          style={classes.textField} 
+          value={state.name} 
+          onChange={handleChange('name')} margin="normal"
+          variant="filled" />
+          <br />
+          <TextField 
+          id="email" 
+          type="email" 
+          label="Email" 
+          style={classes.textField} 
+          value={state.email} 
+          onChange={handleChange('email')} margin="normal" />
+          <br />
+          <TextField 
+          id="password" 
+          type="password" 
+          label="Password" 
+          style={classes.textField} 
+          value={state.password} 
+          onChange={handleChange('password')} margin="normal" />
+          <br />
+          <TextField 
+          id="intro" 
+          label="Personal Intro" 
+          style={classes.textField} 
+          value={state.intro} 
+          onChange={handleChange('intro')} margin="normal" />
+          <br />
+          <TextField 
+          id="street" 
+          label="Street" 
+          style={classes.textField} 
+          value={state.street} 
+          onChange={handleChange('street')} margin="normal" />
+          <br />
+          <TextField 
+          id="city" 
+          label="City" 
+          style={classes.textField} 
+          value={state.city} 
+          onChange={handleChange('city')} margin="normal" />
+          <br />
+          <TextField 
+          id="state" 
+          label="State" 
+          style={classes.textField} 
+          value={state.state} 
+          onChange={handleChange('state')} margin="normal" />
+          <br />
+          <TextField 
+          id="ZIP" 
+          label="Zip Code (Optional)" 
+          style={classes.textField} 
+          value={state.zip} 
+          onChange={handleChange('zip')} margin="normal" />
+          </form>
+          <br />
+          <br /> 
+          {
             state.error && (<Typography component="p" color="error">
               <WarningIcon />
               {state.error}</Typography>)

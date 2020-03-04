@@ -25,3 +25,11 @@ body {
     line-height: 100px;
     flex-shrink: 0;
   } */
+
+  .MuiInputBase-root {
+    color: white;
+  }
+  
+  .MuiInputBase-input {
+    color: white;
+  }
