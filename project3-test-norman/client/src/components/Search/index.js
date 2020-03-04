@@ -10,6 +10,9 @@ import { createMuiTheme } from 'material-ui/styles'
 import Candidates from "../Candidates";
 // import axios from "axios";
 import Fuse from "fuse.js";
+import Select from '../SearchSelect/index'
+
+// set a default search value for onMount
 
 
 const Search = ({ category, currUser, setCurrUser }) => {
@@ -157,6 +160,7 @@ const Search = ({ category, currUser, setCurrUser }) => {
                     style={classes.searchField}
                     margin="normal"
                 />
+                <Select/>
                 <Button variant="raised" color={'primary'} style={classes.searchButton} onClick={search}>
                     <SearchIcon />
                 </Button>

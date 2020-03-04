@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 // import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-// import ReactStars from '../Modal/index'
+import ReactStars from '../Modal/index'
 
 const useStyles = makeStyles({
   root: {
@@ -42,14 +42,12 @@ name goes here          {/* name */}
         </Typography>
         <Typography variant="body2" component="p">
           rating
-        {/* <ReactStars
-                            value={3}
-                            size={50}
-                            half={true}
-                            // onChange={newRating => {
-                            //     setReview({...review, rate:newRating});
-                            // }}
-                        /> */}
+        <ReactStars
+            value={3}
+            size={50}
+            half={true}
+
+          />
        
         </Typography>
       </CardContent>
