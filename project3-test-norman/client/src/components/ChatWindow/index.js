@@ -51,29 +51,28 @@ const ChatWindow = ({ chatRoom, currUser }) => {
                 if (acknowledged.length > 20) {
                     acknowledged.length = 20;
                 }
-<<<<<<< HEAD
-                var message = 
-                    `<div class='message'> 
-                    <span class='user bold'> ${userName}</span>
-                    <span class='sysMsg'>${time}</span>
-                    <br>
-                    <span class='msg'>${msg.msg}</span>
-                    </div>`;
-=======
 
                 localStorage.setItem("socketDup", JSON.stringify(acknowledged));
 
                 let message;
                 if (!msg.image) {
-                    message = '' +
-                        '<div class="message">' +
-                        '  <span class="user bold">' + userName + ' </span>' + '<span class="sysMsg">' + time + '</span>' + '<br>' +
-                        '<span class="msg">' + msg.msg + '</span>' +
-                        '</div>';
+                    message = 
+                        `<div class="message">
+                        <span class="user bold">${userName}</span>
+                        <span class="sysMsg">${time}</span>
+                        <br>
+                        <span class="msg">${msg.msg}</span>
+                        </div>`;
                 } else {
-                    message = ` <div class='message'><span class='user bold'>${userName}</span><span class='sysMsg'>${time}</span><br><img src='/uploads/${msg.image}' height='100' width='100'><br><span class='msg'>${msg.msg}</span></div>`;
+                    message = 
+                    `<div class='message'>
+                    <span class='user bold'>${userName}</span>
+                    <span class='sysMsg'>${time}</span>
+                    <br>
+                    <img src='/uploads/${msg.image}' height='100' width='100'><br><span class='msg'>${msg.msg}
+                    </span>
+                    </div>`;
                 }
->>>>>>> 67df7988952f0132a6e586fc5792d940a29d1f19
                 $('#msglog').append(message);
                 $('#msglog').scrollTop($('#msglog')[0].scrollHeight);
             }
