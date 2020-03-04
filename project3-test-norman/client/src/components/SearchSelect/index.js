@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function NativeSelects() {
+export default function NativeSelects(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     wants: true
@@ -28,13 +28,7 @@ export default function NativeSelects() {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
 
-  const handleChange = name => event => {
-    setState({
-      ...state,
-      [name]: event.target.value,
-    });
-  };
-
+ const setCategory = (props.setState)
   return (
     <span>
      <FormControl variant="outlined" className={classes.formControl}>
@@ -42,19 +36,17 @@ export default function NativeSelects() {
           Select
         </InputLabel>
         <Select
-          native
-        //   value={state.age}
-          onChange={handleChange('Select')}
+          
+          onChange={setCategory}
           labelWidth={labelWidth}
           inputProps={{
             name: 'Select',
             id: 'outlined-age-native-simple',
           }}
         >
-          <option value="" />
-          <option value={1}>Wants</option>
-          <option value={2}>Services</option>
-          <option value={3}>Both</option>
+          <option value={'need'}>Wants</option>
+          <option value={'services'}>Services</option>
+          {/* <option value={'both'}>Both</option> */}
         </Select>
       </FormControl>
     </span>

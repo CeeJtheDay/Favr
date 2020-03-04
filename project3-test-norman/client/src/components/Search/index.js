@@ -99,7 +99,9 @@ const Search = ({ category, currUser, setCurrUser }) => {
                     currResult = data.data.filter(user => user._id !== currUser.id);
                     setState({ ...state, results: currResult });
                 } else {
+                    console.log(state.category)
                     if (state.category === "need") {
+                        console.log('need selected')
                         let fuse = new Fuse(data.data, serviceOptions);
                         currResult = fuse.search(state.search);
                         currResult = currResult.filter(user => user._id !== currUser.id);
@@ -120,6 +122,8 @@ const Search = ({ category, currUser, setCurrUser }) => {
                             setState({ ...state, results: currResult, searched: true });
                         }
                     } else {
+                        console.log('service selected')
+
                         let fuse = new Fuse(data.data, needOptions);
                         currResult = fuse.search(state.search);
                         currResult = currResult.filter(user => user._id !== currUser.id);
@@ -148,6 +152,8 @@ const Search = ({ category, currUser, setCurrUser }) => {
         }
     };
 
+   
+
     return (
         <div >
             <Card style={classes.card}>
@@ -160,7 +166,9 @@ const Search = ({ category, currUser, setCurrUser }) => {
                     style={classes.searchField}
                     margin="normal"
                 />
-                <Select/>
+                <Select 
+                setState = {handleChange('category')}
+                />
                 <Button variant="raised" color={'primary'} style={classes.searchButton} onClick={search}>
                     <SearchIcon />
                 </Button>
