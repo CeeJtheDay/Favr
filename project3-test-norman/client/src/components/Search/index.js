@@ -10,6 +10,9 @@ import { createMuiTheme } from 'material-ui/styles'
 import Candidates from "../Candidates";
 // import axios from "axios";
 import Fuse from "fuse.js";
+import Select from '../SearchSelect/index'
+
+// set a default search value for onMount
 
 
 const Search = ({ category, currUser, setCurrUser }) => {
@@ -96,7 +99,9 @@ const Search = ({ category, currUser, setCurrUser }) => {
                     currResult = data.data.filter(user => user._id !== currUser.id);
                     setState({ ...state, results: currResult });
                 } else {
+                    console.log(state.category)
                     if (state.category === "need") {
+                        console.log('need selected')
                         let fuse = new Fuse(data.data, serviceOptions);
                         currResult = fuse.search(state.search);
                         currResult = currResult.filter(user => user._id !== currUser.id);
@@ -117,6 +122,8 @@ const Search = ({ category, currUser, setCurrUser }) => {
                             setState({ ...state, results: currResult, searched: true });
                         }
                     } else {
+                        console.log('service selected')
+
                         let fuse = new Fuse(data.data, needOptions);
                         currResult = fuse.search(state.search);
                         currResult = currResult.filter(user => user._id !== currUser.id);
@@ -145,6 +152,8 @@ const Search = ({ category, currUser, setCurrUser }) => {
         }
     };
 
+   
+
     return (
         <div >
             <Card style={classes.card}>
@@ -156,6 +165,9 @@ const Search = ({ category, currUser, setCurrUser }) => {
                     onChange={handleChange('search')}
                     style={classes.searchField}
                     margin="normal"
+                />
+                <Select 
+                setState = {handleChange('category')}
                 />
                 <Button variant="raised" color={'primary'} style={classes.searchButton} onClick={search}>
                     <SearchIcon />

@@ -163,6 +163,13 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
                                     <ListItem>
                                         <ListItemText
                                             primary={user.name}
+                                            secondary={user.rate}
+
+                                        />
+                                        <ListItemText
+                                            primary={'Needs: '+user.needs}
+                                            secondary={'Services: '+user.offers}
+
                                         />
                                         <ListItemSecondaryAction>
                                             <IconButton edge="end" aria-label="connect" onClick={() => handleConnect(user._id, currUser.id)}>

@@ -20,12 +20,12 @@ const ChatWindow = ({ chatRoom, currUser }) => {
         socket.once('history', function (history) {
             console.log(history);
             for (var i = 0; i < history.length; i++) {
-                var message = '' +
-                    '<div class="message">' +
-                    '  <span class="user">' + history[i].userName + ': </span>' +
-                    '  <span class="msg">' + history[i].message + '</span>' +
-                    '</div>' +
-                    '<div class="sysMsg">' + history[i].time + '</div>';
+                var message = 
+                    `<div class="message">
+                    <span class="user">${history[i].userName}: </span>
+                    <span class="msg">${history[i].message}</span>
+                    </div>
+                    <div class="sysMsg">${history[i].time}</div>`;
                 $('#msglog').append(message);
                 $('#msglog').scrollTop($('#msglog')[0].scrollHeight);
             }
@@ -56,21 +56,21 @@ const ChatWindow = ({ chatRoom, currUser }) => {
 
                 let message;
                 if (!msg.image) {
-                    message = 
+                    message =
                         `<div class="message">
                         <span class="user bold">${userName}</span>
                         <span class="sysMsg">${time}</span>
-                        <br>
+                        <br/>
                         <span class="msg">${msg.msg}</span>
                         </div>`;
                 } else {
-                    message = 
-                    `<div class='message'>
+                    message = `<div class='message'>
                     <span class='user bold'>${userName}</span>
                     <span class='sysMsg'>${time}</span>
-                    <br>
-                    <img src='/uploads/${msg.image}' height='100' width='100'><br><span class='msg'>${msg.msg}
-                    </span>
+                    <br/>
+                    <img src='/uploads/${msg.image}' height='100' width='100'>
+                    <br/>
+                    <span class='msg'>${msg.msg}</span>
                     </div>`;
                 }
                 $('#msglog').append(message);

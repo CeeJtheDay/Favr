@@ -9,14 +9,18 @@ import Typography from 'material-ui/Typography'
 import { useTheme } from '@material-ui/core/styles';
 // import NSList from '../components/NeedsNServices/index'
 import Grid from 'material-ui/Grid'
-import VirtualizedList from '../components/ProfileList/scottList'
+import OffersList from '../components/ProfileList/scottList'
 import ProfileHeader from '../components/ProfileHeader/index'
 import Popover from "../components/Popover/index"
-import { StylesProvider } from '@material-ui/core/styles';
+// import { StylesProvider } from '@material-ui/core/styles';
+import Navbar from "../components/Navbar/index"
+// import NSList from "../components/NeedsNServices/index"
+import NeedsList from "../components/ProfileList/needsList"
 
 
 
 const Profile = ({ currUser, setCurrUser }) => {
+  console.log("PROFILE CURRUSER", currUser);
   const theme = useTheme();
   const classes = {
     root: theme.mixins.gutters({
@@ -46,9 +50,9 @@ const Profile = ({ currUser, setCurrUser }) => {
   });
 
   useEffect(() => {
-    console.log(currUser);
+    // console.log(currUser);
     let currOrders = currUser.orders;
-    console.log(currOrders);
+    // console.log(currOrders);
     setState({ ...state, orders: currOrders })
   }, [])
 
@@ -56,38 +60,34 @@ const Profile = ({ currUser, setCurrUser }) => {
   return (
     <Grid container item xs={12} spacing={3}>
     <Paper >
-      <ProfileHeader></ProfileHeader>
-      <Typography type="title" style={classes.title}>
-        Profile
-        </Typography>
+      <ProfileHeader currUser={currUser} setCurrUser={setCurrUser}></ProfileHeader>
+     
 
-      <Grid container item xs={12} spacing={3}>
+      <Grid item xs={12} sm={12}>
         <Paper style={classes.root1} elevation={4}>
           <Typography type="title" style={classes.title1}>
             Needs
   
         </Typography>
-          <Grid container item xs={12} spacing={3}>
-            <VirtualizedList></VirtualizedList>
-           
+          <Grid citem xs={12} sm={12}>
+            <NeedsList currUser={currUser} setCurrUser={setCurrUser} />
           </Grid>
-          {/* <Divider /> */}
-          <Popover></Popover>
 
         </Paper>
+        </Grid>
+        <Grid item xs={12} sm={12}>
         <Paper style={classes.root1} elevation={4}>
           <Typography type="title" style={classes.title1}>
             Services
         </Typography>
-          <Grid container item xs={12} spacing={3}>
-            <VirtualizedList></VirtualizedList>
+          <Grid item xs={12} sm={12}>
+            <OffersList currUser={currUser} setCurrUser={setCurrUser}></OffersList>
           </Grid>
-          {/* <Divider/> */}
-          <Popover></Popover>
       </Paper>
       </Grid>
+      
     </Paper>
-
+<Navbar></Navbar>
     </Grid>
   )
 }
