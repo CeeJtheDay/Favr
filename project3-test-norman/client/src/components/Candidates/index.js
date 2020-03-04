@@ -32,14 +32,14 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
             backgroundColor: theme.palette.background.paper,
         },
         title: {
-            margin: theme.spacing(1),
+            margin: theme.spacing.unit * 1,
         },
         formControl: {
-            margin: theme.spacing(1),
+            margin: theme.spacing.unit * 1,
             minWidth: 120,
         },
         selectEmpty: {
-            marginTop: theme.spacing(1),
+            marginTop: theme.spacing.unit * 1,
         },
     };
 
