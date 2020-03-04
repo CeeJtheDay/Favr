@@ -53,15 +53,15 @@ const Search = ({ category, currUser, setCurrUser }) => {
             width: 200,
         },
         textField: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1),
             width: 130,
             verticalAlign: 'bottom',
             marginBottom: '20px'
         },
         searchField: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1),
             width: "50%",
             marginBottom: '20px'
         },

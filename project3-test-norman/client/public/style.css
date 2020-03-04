@@ -1,0 +1,27 @@
+body { 
+    background-color: #4fc3f7;
+    /* background: url(../src/assets/images/handshake.png); */
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+    /* filter: invert(1) hue-rotate(210deg); */
+}
+
+
+/* body {
+    background: url(https://media.giphy.com/media/y30LCMuHRVbxK/giphy.gif);
+    background-repeat: no;
+    background-size: cover;
+    background-position: center;
+    
+    -webkit-background-clip: text;
+    color: transparent; 
+    
+    width: 300px; 
+    height: 100px; 
+    box-sizing: border-box;
+    font-size: 58px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 100px;
+    flex-shrink: 0;
+  } */

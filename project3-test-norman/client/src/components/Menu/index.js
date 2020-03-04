@@ -7,7 +7,8 @@ import HomeIcon from 'material-ui-icons/Home'
 import Button from 'material-ui/Button'
 import { Link, withRouter } from 'react-router-dom'
 import ChatIcon from '@material-ui/icons/WhatsApp';
-import { useTheme } from '@material-ui/core/styles';
+import Logo from "../../assets/images/Favr Logo.png";
+// import { useTheme } from '@material-ui/core/styles';
 // import Badge from 'material-ui/Badge'
 // import queryString from 'query-string'
 // import API from "../../utils/API-User"
@@ -17,7 +18,7 @@ const isActive = (history, path) => {
     if (history.location.pathname === path)
         return { color: '#bef67a' }
     else
-        return { color: '#ffffff' }
+        return { color: '#ffffff',}
 }
 const isPartActive = (history, path) => {
     if (history.location.pathname.includes(path))
@@ -33,13 +34,27 @@ const isPartActive = (history, path) => {
 // }
 const Menu = withRouter(({ history, currUser, setCurrUser }) => {
 
-    const theme = useTheme();
+    // const theme = useTheme();
+
+    const classes = {
+        menu: {
+          width: "full",
+          backgroundColor: "white",
+          border: "solid 1px white"
+          
+        },
+        logo: {
+            width: "50px",
+            height: "auto",
+            // opacity: 1.0
+        }
+      }
 
     return (
-        <AppBar position="static" style={theme.primary}>
+        <AppBar position="static" style={classes.menu}>
             <Toolbar>
                 <Typography type="title" color="inherit">
-                    Favr
+                   <img alt="logo" src={Logo} style={classes.logo} />
                 </Typography>
                 <div>
                     {history.location.pathname.includes("/user") || history.location.pathname.includes("/barter") || history.location.pathname.includes("/profile") ? (

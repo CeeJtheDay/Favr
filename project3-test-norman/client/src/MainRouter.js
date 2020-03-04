@@ -60,7 +60,6 @@ const MainRouter = withRouter(({ history }) => {
   }, [history.location])
 
 
-
   return (
     <div>
       <Menu currUser={currUser} setCurrUser={setCurrUser} />

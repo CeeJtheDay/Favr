@@ -25,10 +25,10 @@ const NSList = ({ category, list, currUser, setCurrUser }) => {
             backgroundColor: theme.palette.background.paper,
         },
         title: {
-            margin: theme.spacing.unit,
+            margin: theme.spacing(1),
         },
         root1: {
-              margin: theme.spacing.unit,
+              margin: theme.spacing(1),
               width: 200,
         }
     };

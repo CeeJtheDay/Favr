@@ -34,7 +34,7 @@ const Cart = ({currUser, setCurrUser}) => {
     //   </Grid>
     // </div>
     <div>
-      <Grid container spacing={theme.spacing} >
+      <Grid container >
         <Grid item xs={6} sm={6}>
           <CartItems state= {state} setCheckout={setState} currUser={currUser} setCurrUser={setCurrUser} />
         </Grid>

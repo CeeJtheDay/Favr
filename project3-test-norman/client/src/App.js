@@ -3,28 +3,30 @@ import MainRouter from './MainRouter'
 import {BrowserRouter} from 'react-router-dom'
 // import { StylesProvider } from '@material-ui/core/styles';
 // import purple from '@material-ui/core/colors/purple';
-import red from '@material-ui/core/colors/red';
-import {createMuiTheme} from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/core/styles';
+// import lightGreen from '@material-ui/core/colors/lightGreen';
+// import {createMuiTheme} from '@material-ui/core/styles';
+// import { ThemeProvider } from '@material-ui/core/styles';
 // import { blueGrey, lightGreen } from 'material-ui/colors'
 // import { hot } from 'react-hot-loader'
 
 // Create a theme instance.
-const theme = createMuiTheme({
-  palette: {
-    primary: red,
-    secondary: {
-      main: red[100],
-    },
-  },
-});
+// const theme = createMuiTheme(
+//   {
+//     palette: {
+//       primary: {
+//         main: '#66bb6a',
+//       },
+//       secondary: lightGreen,
+//     },
+//   }
+// );
 
 const App = () => (
   <BrowserRouter>
   {/* <StylesProvider injectFirst> */}
-    <ThemeProvider theme={theme}>
+    {/* <ThemeProvider theme={theme}> */}
       <MainRouter/>
-    </ThemeProvider>
+    {/* </ThemeProvider> */}
   {/* </StylesProvider> */}
   </BrowserRouter>
 )
