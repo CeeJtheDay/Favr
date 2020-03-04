@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 // import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-// import ReactStars from '../Modal/index'
+import ReactStars from '../Modal/index'
 
 const useStyles = makeStyles({
   root: {
@@ -25,37 +25,40 @@ const useStyles = makeStyles({
 });
 
 
-  
-export default function SimpleCard({currUser}) {
+
+export default function SimpleCard({ currUser }) {
   const classes = useStyles();
-console.log(currUser);
+  // console.log(currUser);
   return (
+ 
+       
+   
     <Card className={classes.root}>
       <CardContent>
-       
+
         <Typography variant="h5" component="h2">
-   {currUser.name}
+          {currUser.name}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-  {currUser.city}
-  
+          {currUser.city}
+
         </Typography>
-        <Typography variant="body2" component="p">
-         {currUser.rate}
-        {/* <ReactStars
-                            value={3}
-                            size={50}
-                            half={true}
-                            // onChange={newRating => {
-                            //     setReview({...review, rate:newRating});
-                            // }}
-                        /> */}
+        {/* <Typography variant="body2" component="p">
+          {currUser.rate} Stars
+        
+
+        </Typography> */}
+        <ReactStars
+            value={3}
+            size={50}
+            half={true}
+          />
        
-        </Typography>
       </CardContent>
       {/* <CardActions>
         <Button size="small">Learn More</Button>
       </CardActions> */}
     </Card>
+   
   );
 }
