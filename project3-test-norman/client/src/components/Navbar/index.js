@@ -7,6 +7,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import MessageIcon from '@material-ui/icons/Message';
 import SyncAltIcon from '@material-ui/icons/SyncAlt';
+import { Link, withRouter } from 'react-router-dom'
 
 const useStyles = makeStyles({
     root: {
@@ -21,14 +22,19 @@ export default function LabelBottomNavigation() {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    // const Navbar = withRouter(({currUser, setCurrUser}) =>{
 
     return(
         <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
             <BottomNavigationAction label="Home" value="recents" icon={<HomeIcon />} />
+            <Link to="/"></Link>
+
             <BottomNavigationAction label="User" value="favorites" icon={<AccountBoxIcon />} />
             <BottomNavigationAction label="Messages" value="nearby" icon={<MessageIcon />} />
             <BottomNavigationAction label="Trades" value="folder" icon={<SyncAltIcon />} />
         </BottomNavigation>
     );
+// })
 }
+// export default Navbar
 
