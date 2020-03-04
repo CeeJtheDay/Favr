@@ -43,15 +43,12 @@ export default function SimpleCard({ currUser }) {
           {currUser.city}
 
         </Typography>
-        {/* <Typography variant="body2" component="p">
-          {currUser.rate} Stars
-        
 
-        </Typography> */}
         <ReactStars
             value={3}
             size={50}
             half={true}
+
           />
        
       </CardContent>
