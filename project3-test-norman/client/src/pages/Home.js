@@ -40,9 +40,9 @@ const Home = withRouter(({ history, currUser, setCurrUser }) => {
                 <Grid item xs={12} sm={12}>
                     <Search category="need" currUser={currUser} setCurrUser={setCurrUser} />
                 </Grid>
-                <Grid item xs={12} sm={12}>
+                {/* <Grid item xs={12} sm={12}>
                     <Search category="service" currUser={currUser} setCurrUser={setCurrUser} />
-                </Grid>
+                </Grid> */}
             </Grid>
             {/* <Grid container spacing={24}>
                 <Grid item xs={6} sm={6}>
