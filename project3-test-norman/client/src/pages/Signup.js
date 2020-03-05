@@ -1,20 +1,18 @@
 import React, { useState } from 'react'
 import Card, { CardActions, CardContent } from 'material-ui/Card'
-import Button from 'material-ui/Button'
+import Button from '@material-ui/core/Button';
 import TextField from 'material-ui/TextField'
 import Typography from 'material-ui/Typography'
 import WarningIcon from '@material-ui/icons/Warning';
 import Dialog, { DialogActions, DialogContent, DialogContentText, DialogTitle } from 'material-ui/Dialog'
 import { Link } from 'react-router-dom'
-// import { createMuiTheme } from 'material-ui/styles';
 import { useTheme } from '@material-ui/core/styles';
-
+import Alert from "../components/Alert";
 import API from "../utils/API-User";
 import $ from "jquery";
 import Script from 'react-load-script';
 import axios from "axios";
-// import PropTypes from "prop-types";
-
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 const Signup = () => {
 
@@ -74,9 +72,44 @@ const Signup = () => {
     city: '',
     state: '',
     zip: '',
+    image:'blank-template.jpg',
     open: false,
     error: ''
   });
+
+  const [imagedata, setImageData] = useState({
+    success: "",
+    error: ""
+  });
+
+  const handleSubmitImage = event => {
+    event.preventDefault();
+    console.log(new FormData(event.target));
+    fetch(event.target.action, {
+      method: 'POST',
+      encType: "multipart/form-data",
+      body: new FormData(event.target) // event.target is the form
+    }).then((resp) => {
+      return resp.json(); // or resp.text() or whatever the server sends
+    }).then((body) => {
+      console.log(body);
+      if (body.err) {
+        setImageData({ success: "", error: body.err });
+      } else {
+        console.log(body.name);
+        setState({...state,image:body.name});
+        setImageData({ success: body.message, error: "" });
+      }
+    }).catch((error) => {
+      console.log(error);
+    });
+  };
+
+  const clearAlert = event => {
+    setImageData({ success: "", error: "" });
+  };
+
+
 
 
   // useEffect(() => {
@@ -113,7 +146,7 @@ const Signup = () => {
     // $("#city").val(faddress.city);
     // $("#state").val(faddress.street);
 
-    setState({...state, street: faddress.street, city: faddress.city, state: faddress.state });
+    setState({ ...state, street: faddress.street, city: faddress.city, state: faddress.state });
   }
 
   const clickSubmit = () => {
@@ -126,6 +159,7 @@ const Signup = () => {
       city: state.city || undefined,
       state: state.state || undefined,
       zip: state.zip,
+      image: state.image,
     }
     if (!(user.name && user.email && user.password && user.street && user.city && user.state)) {
       setState({ ...state, error: 'please enter all the required queries!' })
@@ -137,13 +171,14 @@ const Signup = () => {
           console.log(temp);
           user.lat = temp.lat;
           user.lng = temp.lng;
+          console.log(user);
           API.signup(user)
             .then((data) => {
               setState({ ...state, error: '', open: true })
             })
             .catch(error => {
               console.log(error);
-              if(error.message.includes("400")) setState({ ...state, error: "Please enter a valid email!" });
+              if (error.message.includes("400")) setState({ ...state, error: "Please enter a valid email!" });
               else setState({ ...state, error: "Email has been registered!" })
             })
         })
@@ -227,8 +262,29 @@ const Signup = () => {
               value={state.zip}
               onChange={handleChange('zip')} margin="normal" />
           </form>
-          <br />
-          <br />
+          <br/>
+          <form id="imageSubmit" action="/upload" method="POST" encType="multipart/form-data" onSubmit={handleSubmitImage} style={{border:"2px solid",borderRadius:'10px',padding:'10px'}}>
+                <div className="form-group">
+                    <label htmlFor="pic">Upload Profile Image (Optional):</label>
+                    <input type="file" className="form-control-file" name="userImage" id="upload" onChange={clearAlert}></input>
+                </div>
+                <button className="btn btn-success" type="submit">Upload(Upload Before Submit)</button>
+                <Alert type="danger" style={{ display: imagedata.error ? 'block' : 'none', marginBottom: 10 }}>
+                    {imagedata.error}
+                </Alert>
+                <Alert type="success" style={{ display: imagedata.success ? 'block' : 'none', marginBottom: 10 }}>
+                    {imagedata.success}
+                </Alert>
+            </form>
+
+          {/* <Button
+            variant="contained"
+            color="default"
+            startIcon={<CloudUploadIcon />}
+          >
+            Upload Profile Image (Optional)
+        </Button> */}
+        {/* <ImageUploadPop/> */}
           {
             state.error && (<Typography component="p" color="error">
               <WarningIcon />

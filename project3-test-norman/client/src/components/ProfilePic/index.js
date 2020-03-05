@@ -19,11 +19,11 @@ const useStyles = makeStyles(theme => ({
     height: theme.spacing(8),
   },
 }));
-export default function ImageAvatars() {
+export default function ImageAvatars({currUser}) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Avatar alt="Profile Pic" src={Profileimage} className={classes.large} />
+      <Avatar alt="Profile Pic" src={'/uploads/'+currUser.image} className={classes.large} />
     </div>
   );
 }

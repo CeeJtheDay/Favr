@@ -10,7 +10,7 @@ const ProfileHeader = ({ currUser, setCurrUser }) => {
         <div style={{ width: '100%' }}>
             <Box display="flex" p={1} bgcolor="background.paper">
                 <Box flexGrow={1} bgcolor="grey.300" style={{paddingTop:'20px'}}>
-                    <ProfilePic />
+                    <ProfilePic currUser={currUser}/>
                 </Box>
                 <Box flexGrow={4} bgcolor="grey.300">
                     <ProfileText currUser={currUser} setCurrUser={setCurrUser}/>

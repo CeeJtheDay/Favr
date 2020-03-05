@@ -12,6 +12,7 @@ import RateReviewIcon from '@material-ui/icons/RateReview';
 import "./chat-style.css";
 import $ from "jquery";
 import Modal from "../components/Modal";
+import Title from './Title';
 
 const useStyles = makeStyles({
     list: {
@@ -55,13 +56,14 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
             let otherId = chat.user2 === currUser.id ? chat.user1 : chat.user2;
             let tempChatObj = {
                 id: chat._id,
-                self: { id: selfId, name: currUser.name },//add image here later
+                self: { id: selfId, name: currUser.name,image:currUser.image},//add image here later
                 other: { id: otherId }
             };
             axios.get(`../api/users/${otherId}`)
                 .then(data1 => {
                     console.log(data1.data);
-                    tempChatObj.other.name = data1.data.name; //add image here later
+                    tempChatObj.other.name = data1.data.name;
+                    tempChatObj.other.image = data1.data.image; //add image here later
                     tempChatList.push(tempChatObj);
                     console.log(tempChatList);
                     if (tempChatList.length === currList.length) {
@@ -152,7 +154,7 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
                             <li className="active" onClick={() => handleOpenChatWindow(tile)}>
                                 <div className="d-flex bd-highlight">
                                     <div className="img_cont">
-                                        <img src="https://i.pinimg.com/originals/ac/b9/90/acb990190ca1ddbb9b20db303375bb58.jpg" className="rounded-circle user_img" />
+                                        <img src={'/uploads/'+tile.other.image} className="rounded-circle user_img" />
                                     </div>
                                     <div className="user_info">
                                         <span>{tile.other.name}</span>

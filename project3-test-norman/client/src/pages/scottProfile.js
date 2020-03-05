@@ -4,8 +4,9 @@ import Grid from 'material-ui/Grid'
 import ProfileHeader from '../components/ProfileHeader/index'
 import DisplayList from '../components/DisaplayList'
 import axios from "axios"
-
-const Profile = ({ currUser, setCurrUser }) => {
+import { withRouter } from 'react-router-dom';
+import OtherDisplayList from '../components/DisaplayListOther';
+const Profile = withRouter(({ history, currUser, setCurrUser }) => {
 
   const theme = useTheme();
   const classes = {
@@ -40,9 +41,10 @@ const Profile = ({ currUser, setCurrUser }) => {
   return (
     <Grid style={classes.root1} container item xs={12} spacing={1}>
       <ProfileHeader currUser={currUser} setCurrUser={setCurrUser} />
-      <DisplayList currUser={currUser} setCurrUser={setCurrUser} />
+      {history.location.pathname.includes("/profile") && (<DisplayList currUser={currUser} setCurrUser={setCurrUser} />)}
+      {history.location.pathname.includes("/other") && (<OtherDisplayList currUser={currUser} setCurrUser={setCurrUser} />)}
     </Grid>
   )
-}
+})
 
 export default Profile
