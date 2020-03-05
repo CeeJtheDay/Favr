@@ -28,11 +28,12 @@ const MainRouter = withRouter(({ history }) => {
     offers: [],
     createDate: '',
     rate: 0,
-    ratingQuantity: 0
+    ratingQuantity: 0,
+    image:'blank-template.jpg'
   });
 
   useEffect(() => {
-    if (history.location.pathname.includes("/user") || history.location.pathname.includes("/barter") || history.location.pathname.includes("/profile")) {
+    if (history.location.pathname.includes("/user") || history.location.pathname.includes("/barter") || history.location.pathname.includes("/profile")|| history.location.pathname.includes("/other")) {
       console.log(queryString.parse(history.location.search));
       const user_id = queryString.parse(history.location.search).id;
       axios.get(`../api/users/${user_id}`)
@@ -54,7 +55,8 @@ const MainRouter = withRouter(({ history }) => {
             needs: userInfo.data.needs,
             offers: userInfo.data.offers,
             rate: userInfo.data.rate,
-            ratingQuantity: userInfo.data.ratingQuantity
+            ratingQuantity: userInfo.data.ratingQuantity,
+            image:userInfo.data.image
           })
         })
     }
@@ -73,6 +75,7 @@ const MainRouter = withRouter(({ history }) => {
           <Route path="/user" component={() => <Home currUser={currUser} setCurrUser={setCurrUser} />} />
           <Route path="/barter" component={() => <Chat currUser={currUser} setCurrUser={setCurrUser} />} />
           <Route path="/profile" component={() => <Profile currUser={currUser} setCurrUser={setCurrUser} />} />
+          <Route path="/other" component={() => <Profile currUser={currUser} setCurrUser={setCurrUser} />} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/signin" component={Signin} />
         </Switch>
