@@ -70,7 +70,7 @@ const Search = ({ category, currUser, setCurrUser }) => {
             marginBottom: '20px'
         },
         searchButton: {
-            minWidth: '60px',
+            width: 'auto',
             height: '60px',
             padding: '0 8px',
             backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",

@@ -21,13 +21,13 @@ const Signup = () => {
   const theme = useTheme();
   const classes = {
     card: {
-      maxHeight: "600px",
-      overflow: "auto",
-      marginRight: '20px',
-      marginLeft: '20px',
+      // maxHeight: "600px",
+      // overflow: "auto",
+      marginRight: 'auto',
+      marginLeft: 'auto',
       textAlign: 'center',
-      marginTop: theme.spacing.unit * 5,
-      paddingBottom: theme.spacing.unit * 2,
+      marginTop: "80px",
+      // paddingBottom: theme.spacing.unit * 2,
       paddingRight: "auto",
       paddingLeft: "auto",
       backgroundColor: "#8693AB",
@@ -50,15 +50,15 @@ const Signup = () => {
 
     },
     textField: {
-      marginLeft: theme.spacing.unit,
-      marginRight: theme.spacing.unit,
+      // marginLeft: theme.spacing.unit,
+      // marginRight: theme.spacing.unit,
+      margin: "10px auto",
       width: 300,
-      color: "secondary",
-      border: "white",
+      // color: "secondary",
+      // border: "white",
     },
     submit: {
-      margin: 'auto',
-      marginBottom: theme.spacing.unit * 2,
+      margin: '10px auto',
       backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
       border: "solid 1px #077699",
       borderRadius: "15px"
@@ -151,6 +151,7 @@ const Signup = () => {
   }
   return (
     <div>
+    {/* // <React.Fragment> */}
       <Script
         url="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy_fsa23_HL03eeIZhtAcxDd8RCmVnogo&libraries=places"
         onLoad={handleScriptLoad}
@@ -168,9 +169,9 @@ const Signup = () => {
             <TextField
               id="name"
               label="Name (Required)"
-              InputProps={{
-                className: classes.textField
-              }}
+              // InputProps={{
+              //   className: classes.textField
+              // }}
               style={classes.textField}
               value={state.name}
               onChange={handleChange('name')} margin="normal" />
@@ -253,6 +254,7 @@ const Signup = () => {
           </Link>
         </DialogActions>
       </Dialog>
+    {/* </React.Fragment> */}
     </div>
     //   <div>
     //     <Script

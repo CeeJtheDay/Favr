@@ -37,26 +37,31 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
         },
         title: {
             margin: theme.spacing.unit * 1,
-            color: "white"
+            color: "white",
+            fontWeight: "bold",
+            textShadow: "2px 2px 4px #000000"
         },
         formControl: {
-            margin: theme.spacing.unit * 1,
-            minWidth: 120,
+            // margin: theme.spacing.unit * 1,
+            // minWidth: 120,
         },
         selectEmpty: {
             marginTop: theme.spacing.unit * 1,
             color: "white"
         },
         list:{
-            backgroundColor: "#8693AB",
-            border: "solid 1px white",
+            backgroundColor: " rgb(43, 41, 44, 0.5)",
+            border: "inset 1px white",
             borderRadius: "20px",
+            padding: "10px"
             
         },
         listItem: {
-           
+            backgroundColor: "#8693AB",
+            margin: "8px auto",   
+            borderRadius: "20px"      
         },
-        liText:{
+        liText1:{
             
         },
         messageBtn: {
@@ -148,12 +153,13 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
         <React.Fragment>
         {/* // <div style={classes.root}>
         //     <Grid item xs={12} md={12}> */}
-                {/* {searched ? (<Typography variant="h6" style={classes.title}>
+                {searched ? (<Typography variant="h6" style={classes.title}> 
                     Result for {category}
-                </Typography>) : ( */}
-                    <Typography variant="h6" style={classes.title}>
+                </Typography>) : (
+                <Typography variant="h6" style={classes.title}>
                     Search Results
                 </Typography>
+                )}
 
                 <FormControl style={classes.formControl}>
                     <Select value={state.filter} onChange={handleChange} displayEmpty style={classes.selectEmpty}>
@@ -178,12 +184,17 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
                                     <ListItemSecondaryAction>
                                         <IconButton
                                         style={classes.messageBtn} 
-                                        edge="end" aria-label="connect" onClick={() => handleConnect(user._id, currUser.id)}>
+                                        edge="end" 
+                                        aria-label="connect" 
+                                        onClick={() => handleConnect(user._id, currUser.id)}
+                                        >
                                             <TelegramIcon />
                                         </IconButton>
                                         <IconButton 
                                         style={classes.profileBtn}
-                                        edge="end" aria-label="profile">
+                                        edge="end" 
+                                        aria-label="profile"
+                                        >
                                             <AccountCircleIcon />
                                         </IconButton>
                                     </ListItemSecondaryAction>
@@ -196,24 +207,34 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
                             disablePadding="true"
                             style={classes.list}>
                                 {candidates.map((user, i) => (
-                                    <ListItem style={classes.listItem}>
+                                    <ListItem 
+                                    style={classes.listItem}
+                                    key ={i}
+                                    >
                                         <ListItemText
-                                            style={classes.liText}
+                                            style={classes.liText1}
                                             primary={user.name}
                                             secondary={user.rate}
 
                                         />
                                         <ListItemText
-                                            style={classes.liText}
-                                            primary={`Services: ${user.offers}`}
-                                            secondary={`Needs: ${user.needs}`}
+                                            style={classes.liText2}
+                                            primary={`${user.offers}`}
+                                            secondary={`Needs: /n ${user.needs}`}
 
                                         />
                                         <ListItemSecondaryAction>
-                                            <IconButton edge="end" aria-label="connect" onClick={() => handleConnect(user._id, currUser.id)}>
+                                            <IconButton 
+                                            edge="end" 
+                                            aria-label="connect" 
+                                            onClick={() => handleConnect(user._id, currUser.id)}
+                                            >
                                                 <TelegramIcon />
                                             </IconButton>
-                                            <IconButton edge="end" aria-label="profile">
+                                            <IconButton 
+                                            edge="end" 
+                                            aria-label="profile"
+                                            >
                                                 <AccountCircleIcon />
                                             </IconButton>
                                         </ListItemSecondaryAction>

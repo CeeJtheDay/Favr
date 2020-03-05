@@ -14,14 +14,15 @@ const Home = withRouter(({ history, currUser, setCurrUser }) => {
           // maxWidth: 600,
           margin: 'auto',
           textAlign: 'center',
-          // marginTop: "40px",
+          height: "100vh",
+          margin: "80px auto",
           // height: "100%",
           // bottom: 0,
           paddingBottom: "40px",
           paddingRight: "auto",
           paddingLeft: "auto",
           backgroundColor: "#8693AB",
-          // borderRadius: "20px",
+          borderRadius: "20px",
           border: "inset 1px white",
           overflow: "auto"
           // display: "flex"
