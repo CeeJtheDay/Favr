@@ -9,6 +9,7 @@ import Box from "@material-ui/core/Box";
 import List from "../NeedsNServices"
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Review from '../Reviews';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -98,7 +99,7 @@ export default function NavTabs({ currUser, setCurrUser }) {
                 <List category="offers" list={currUser.offers} currUser={currUser} setCurrUser={setCurrUser} />
             </TabPanel>
             <TabPanel value={value} index={2} className={classes.tabPage}>
-                Coming soon!!!
+                <Review currUser={currUser} setCurrUser={setCurrUser} />
             </TabPanel>
         </div>
     );

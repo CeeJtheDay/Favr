@@ -28,7 +28,7 @@ const Profile = withRouter(({ history, currUser, setCurrUser }) => {
       backgroundColor: "#8693AB",
       // borderRadius: "20px",
       border: "inset 1px white",
-      overflow:"auto"
+      overflow: "auto"
     },
     title1: {
       margin: `12px 24px`,
@@ -38,11 +38,56 @@ const Profile = withRouter(({ history, currUser, setCurrUser }) => {
     }
   }
 
+  const [reviewList, setReviewList] = useState([]);
+
+  useEffect(() => {
+    axios.get('../api/reviews')
+      .then(data => {
+        console.log(data);
+        if (data.length > 0) {
+          let newList = data.filter(obj => obj.reviwee === currUser.id);
+          handleName(newList);
+        }
+      })
+  }, [history.location])
+
+  const handleName = (currList) => {
+    let tempChatList = [];
+    currList.map(async (review, i) => {
+      await ran(currList, review, tempChatList);
+    })
+  }
+
+  function ran(currList, review, tempChatList) {
+    return new Promise(resolve => {
+      let tempChatObj = {
+        id: review._id,
+        rate: review.rate,
+        comment: review.comment,
+        reviewer: { id: review.reviewer},//add image here later
+        reviewee: { id: review.reviewee, name:currUser.name, image:currUser.image }
+      };
+      axios.get(`../api/users/${review.reviewer}`)
+        .then(data1 => {
+          console.log(data1.data);
+          tempChatObj.reviewer.name = data1.data.name;
+          tempChatObj.reviewer.image = data1.data.image; //add image here later
+          tempChatList.push(tempChatObj);
+          console.log(tempChatList);
+          if (tempChatList.length === currList.length) {
+            console.log(tempChatList);
+            setReviewList(tempChatList);
+          }
+        })
+    })
+  }
+
+
   return (
     <Grid style={classes.root1} container item xs={12} spacing={1}>
       <ProfileHeader currUser={currUser} setCurrUser={setCurrUser} />
-      {history.location.pathname.includes("/profile") && (<DisplayList currUser={currUser} setCurrUser={setCurrUser} />)}
-      {history.location.pathname.includes("/other") && (<OtherDisplayList currUser={currUser} setCurrUser={setCurrUser} />)}
+      {history.location.pathname.includes("/profile") && (<DisplayList currUser={currUser} setCurrUser={setCurrUser} reviewList = {reviewList}/>)}
+      {history.location.pathname.includes("/other") && (<OtherDisplayList currUser={currUser} setCurrUser={setCurrUser} reviewList = {reviewList}/>)}
     </Grid>
   )
 })
