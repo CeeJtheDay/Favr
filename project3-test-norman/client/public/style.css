@@ -6,6 +6,10 @@ body {
     /* filter: invert(1) hue-rotate(210deg); */
 }
 
+#root {
+    background-color: #2B292C;
+}
+
 
 /* body {
     background: url(https://media.giphy.com/media/y30LCMuHRVbxK/giphy.gif);

@@ -54,9 +54,11 @@ const Signin = () => {
     submit: {
       margin: 'auto',
       marginBottom: theme.spacing.unit * 2,
+      // backgroundColor: "#96CDFF",
       backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
       border: "solid 1px #077699",
-      borderRadius: "15px"
+      borderRadius: "15px",
+      color: "#07769"
     }
   };
 
