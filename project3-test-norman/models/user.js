@@ -70,6 +70,10 @@ const UserSchema = new Schema({
   ratingQuantity: {
     type: Number,
     default: 0
+  },
+  image: {
+    type:String,
+    default:"blank-template.jpg"
   }
 });
 

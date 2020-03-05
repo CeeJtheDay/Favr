@@ -67,14 +67,14 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
                         <span class="msg_time_send">${history[i].time}</span>
                     </div>
                     <div class="img_cont_msg">
-                        <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg" />
+                        <img src='/uploads/${chatRoom.self.image}' class="rounded-circle user_img_msg" />
                     </div>
                 </div>`
             } else {
                 message = `
                 <div class="d-flex justify-content-start mb-4">
                     <div class="img_cont_msg">
-                        <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg" />
+                        <img src='/uploads/${chatRoom.other.image}' class="rounded-circle user_img_msg" />
                     </div>
                     <div class="msg_cotainer">
                         ${history[i].message}
@@ -123,7 +123,7 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
                         <span class="msg_time_send">${time}</span>
                     </div>
                     <div class="img_cont_msg">
-                        <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg" />
+                        <img src='/uploads/${chatRoom.self.image}' class="rounded-circle user_img_msg" />
                     </div>
                 </div>
                 `;
@@ -131,7 +131,7 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
                     message = `
                     <div class="d-flex justify-content-start mb-4">
                         <div class="img_cont_msg">
-                            <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg" />
+                            <img src='/uploads/${chatRoom.other.image}' class="rounded-circle user_img_msg" />
                         </div>
                         <div class="msg_cotainer">
                             ${msg.msg}
@@ -242,7 +242,7 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
                 <div className="card-header msg_head">
                     <div className="d-flex bd-highlight">
                         <div className="img_cont">
-                            <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" className="rounded-circle user_img" />
+                            <img src={'/uploads/'+chatRoom.other.image} className="rounded-circle user_img" />
                             <span className="online_icon"></span>
                         </div>
                         <div className="user_info">
