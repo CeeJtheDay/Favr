@@ -5,13 +5,14 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 // import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-// import Divider from '@material-ui/core/Divider';
-// import { STATES } from 'mongoose';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
 import RateReviewIcon from '@material-ui/icons/RateReview';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Modal from "../Modal";
+// import Divider from '@material-ui/core/Divider';
+// import { STATES } from 'mongoose';
+import "./style.css";
 
 const useStyles = makeStyles(theme => ({
     root: {

@@ -168,7 +168,7 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
         );
     } else {
         return (
-            <div style={{ height: "100vh" }}>
+            <div style={{ height: "90vh" }}>
                 <div id="action_menu_btn1">
                     <IconButton onClick={toggleDrawer("left", true)}>
                         <ListIcon />
