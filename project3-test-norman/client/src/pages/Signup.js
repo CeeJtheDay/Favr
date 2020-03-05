@@ -39,6 +39,8 @@ const Signup = () => {
     title: {
       marginTop: "20px",
       color: "white",
+      textShadow: "2px 2px 4px #000000",
+      fontWeight: "bold",
       // backgroundColor: "#96CDFF",
       // border: "solid 1px #077699",
       // borderRadius: "15px",

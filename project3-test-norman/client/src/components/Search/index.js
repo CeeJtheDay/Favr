@@ -7,7 +7,7 @@ import Button from 'material-ui/Button'
 import SearchIcon from 'material-ui-icons/Search'
 import API from "../../utils/API-User";
 // import { createMuiTheme } from 'material-ui/styles'
-import { useTheme } from '@material-ui/core/styles';
+// import { useTheme } from '@material-ui/core/styles';
 import Candidates from "../Candidates";
 // import axios from "axios";
 import Fuse from "fuse.js";
@@ -45,27 +45,28 @@ const Search = ({ category, currUser, setCurrUser }) => {
             "needs"
         ]
     };
-    const theme = useTheme();
+    // const theme = useTheme();
     const classes = {
         card: {
             margin: 'auto',
             textAlign: 'center',
             paddingTop: 10,
-            backgroundColor: '#80808024'
+            backgroundColor: '#80808024',
+            border: "groove 1px #96CDFF"
         },
         menu: {
             width: 200,
         },
         textField: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
+            marginLeft: "auto",
+            marginRight: "auto",
             width: 130,
             verticalAlign: 'bottom',
             marginBottom: '20px'
         },
         searchField: {
-            marginLeft: theme.spacing.unit,
-            marginRight: theme.spacing.unit,
+            marginLeft: "auto",
+            marginRight: "auto",
             width: "50%",
             marginBottom: '20px'
         },
@@ -73,6 +74,7 @@ const Search = ({ category, currUser, setCurrUser }) => {
             width: 'auto',
             height: '60px',
             padding: '0 8px',
+            // backgroundColor: "#96CDFF",
             backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
             border: "solid 1px #077699",
             borderRadius: "15px",

@@ -5,7 +5,7 @@ import {BrowserRouter} from 'react-router-dom'
 // import { ThemeProvider } from '@material-ui/core/styles';
 // import { blueGrey, lightGreen } from 'material-ui/colors'
 import { hot } from 'react-hot-loader'
-import { StylesProvider } from '@material-ui/core'
+// import { StylesProvider } from '@material-ui/core'
 
 // Create a theme instance.
 // const theme = createMuiTheme({
@@ -30,11 +30,11 @@ import { StylesProvider } from '@material-ui/core'
 
 const App = () => (
   <BrowserRouter>
-  <StylesProvider injectFirst>
+  {/* <StylesProvider injectFirst> */}
     {/* <ThemeProvider theme={theme}> */}
       <MainRouter/>
     {/* </ThemeProvider> */}
-  </StylesProvider>
+  {/* </StylesProvider> */}
   </BrowserRouter>
 )
 
