@@ -31,6 +31,7 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
     const id = open ? 'simple-popover' : undefined;
 
     function loadSocket() {
+        
         // join
         socket.on('connect', function () {
             socket.emit('join', currUser.id, chatRoom.id, currUser.name);
@@ -321,7 +322,7 @@ export default ChatWindow;
             <div class="container-fluid justify-content-center">
                 <div class="chatBox col" id="msglog">
                 </div>
-                <textarea name="message" class="col p-1" id={chatRoom.id + currUser.id} placeholder="Enter chat content here"></textarea>
+                <textarea style={classes.chatBox} name="message" className="col p-1" id={chatRoom.id + currUser.id} placeholder="Enter chat content here"></textarea>
                 <form id="imageSubmit" action="/upload" method="POST" encType="multipart/form-data" onSubmit={handleSubmitImage}>
                     <div className="form-group">
                         <label htmlFor="pic">Upload Profile Image:</label>

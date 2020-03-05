@@ -62,7 +62,8 @@ const MainRouter = withRouter(({ history }) => {
 
 
   return (
-    <div>
+    // <div>
+    <React.Fragment>
       <Menu currUser={currUser} setCurrUser={setCurrUser} />
       {/* <ProminentAppBar /> */}
       <div>
@@ -77,7 +78,8 @@ const MainRouter = withRouter(({ history }) => {
         </Switch>
       </div>
       {history.location.pathname.includes("/user") || history.location.pathname.includes("/barter") || history.location.pathname.includes("/profile") ? (<Footer currUser={currUser} setCurrUser={setCurrUser}/>) : (null)}
-    </div>
+    </React.Fragment>
+    // </div>
   )
 
 })

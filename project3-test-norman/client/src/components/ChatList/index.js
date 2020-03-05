@@ -12,13 +12,13 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Modal from "../Modal";
 // import Divider from '@material-ui/core/Divider';
 // import { STATES } from 'mongoose';
-import "./style.css";
+// import "./style.css";
 
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
         maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: "#8693AB"
     },
     paper: {
         position: 'absolute',

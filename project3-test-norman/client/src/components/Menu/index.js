@@ -41,6 +41,7 @@ const Menu = withRouter(({ history, currUser, setCurrUser }) => {
             width: "full",
             backgroundColor: "#565656",
             border: "solid 1px #8693AB",
+            // marginBottom: "10px"
             // position:'fixed',
             // top:0
 
@@ -53,7 +54,7 @@ const Menu = withRouter(({ history, currUser, setCurrUser }) => {
     }
 
     return (
-        <AppBar position="static" style={classes.menu}>
+        <AppBar style={classes.menu}>
             <Toolbar>
                 <Typography type="title" color="inherit">
                     <img alt="logo" src={Logo} style={classes.logo} />

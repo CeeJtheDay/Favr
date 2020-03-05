@@ -25,24 +25,51 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
     const classes = {
         root: {
             flexGrow: 1,
-            width: "50%",
-            margin: 'auto'
+            // width: "50%",
+            // margin: 'auto',
+            border: "solid 1px white",
+            borderRadius: "20px",
+            width: "400px",
+            padding: "50px"
         },
         demo: {
             backgroundColor: "#8693AB"
         },
         title: {
             margin: theme.spacing.unit * 1,
+            color: "white",
+            fontWeight: "bold",
+            textShadow: "2px 2px 4px #000000"
         },
         formControl: {
-            margin: theme.spacing.unit * 1,
-            minWidth: 120,
+            // margin: theme.spacing.unit * 1,
+            // minWidth: 120,
         },
         selectEmpty: {
             marginTop: theme.spacing.unit * 1,
+            color: "white"
         },
         list:{
-            backgroundColor: "#8693AB"
+            backgroundColor: " rgb(43, 41, 44, 0.5)",
+            border: "inset 1px white",
+            borderRadius: "20px",
+            padding: "10px"
+            
+        },
+        listItem: {
+            backgroundColor: "#8693AB",
+            margin: "8px auto",   
+            borderRadius: "20px"      
+        },
+        liText1:{
+            
+        },
+        messageBtn: {
+            margin: "5px",
+
+        },
+        profileBtn: {
+            margin: "5px"
         }
     };
 
@@ -123,13 +150,17 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
 
 
     return (
-        <div style={classes.root}>
-            <Grid item xs={12} md={12}>
-                {searched ? (<Typography variant="h6" style={classes.title}>
+        <React.Fragment>
+        {/* // <div style={classes.root}>
+        //     <Grid item xs={12} md={12}> */}
+                {searched ? (<Typography variant="h6" style={classes.title}> 
                     Result for {category}
-                </Typography>) : (<Typography variant="h6" style={classes.title}>
+                </Typography>) : (
+                <Typography variant="h6" style={classes.title}>
                     Search Results
-                </Typography>)}
+                </Typography>
+                )}
+
                 <FormControl style={classes.formControl}>
                     <Select value={state.filter} onChange={handleChange} displayEmpty style={classes.selectEmpty}>
                         <MenuItem value="">
@@ -142,17 +173,28 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
                 </FormControl>
                 <div style={classes.demo}>
                     {state.finalCandidates.length > 0 ? (
-                        <List >
+                        <List 
+                        disablePadding="true"
+                        style={classes.list}>
                             {state.finalCandidates.map((user, i) => (
-                                <ListItem>
+                                <ListItem key={i} style={classes.listItem}>
                                     <ListItemText
                                         primary={user.name}
                                     />
                                     <ListItemSecondaryAction>
-                                        <IconButton edge="end" aria-label="connect" onClick={() => handleConnect(user._id, currUser.id)}>
+                                        <IconButton
+                                        style={classes.messageBtn} 
+                                        edge="end" 
+                                        aria-label="connect" 
+                                        onClick={() => handleConnect(user._id, currUser.id)}
+                                        >
                                             <TelegramIcon />
                                         </IconButton>
-                                        <IconButton edge="end" aria-label="profile">
+                                        <IconButton 
+                                        style={classes.profileBtn}
+                                        edge="end" 
+                                        aria-label="profile"
+                                        >
                                             <AccountCircleIcon />
                                         </IconButton>
                                     </ListItemSecondaryAction>
@@ -161,24 +203,38 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
                         </List>
 
                     ) : (
-                            <List>
+                            <List 
+                            disablePadding="true"
+                            style={classes.list}>
                                 {candidates.map((user, i) => (
-                                    <ListItem>
+                                    <ListItem 
+                                    style={classes.listItem}
+                                    key ={i}
+                                    >
                                         <ListItemText
+                                            style={classes.liText1}
                                             primary={user.name}
                                             secondary={user.rate}
 
                                         />
                                         <ListItemText
-                                            primary={'Needs: '+user.needs}
-                                            secondary={'Services: '+user.offers}
+                                            style={classes.liText2}
+                                            primary={`${user.offers}`}
+                                            secondary={`Needs: /n ${user.needs}`}
 
                                         />
                                         <ListItemSecondaryAction>
-                                            <IconButton edge="end" aria-label="connect" onClick={() => handleConnect(user._id, currUser.id)}>
+                                            <IconButton 
+                                            edge="end" 
+                                            aria-label="connect" 
+                                            onClick={() => handleConnect(user._id, currUser.id)}
+                                            >
                                                 <TelegramIcon />
                                             </IconButton>
-                                            <IconButton edge="end" aria-label="profile">
+                                            <IconButton 
+                                            edge="end" 
+                                            aria-label="profile"
+                                            >
                                                 <AccountCircleIcon />
                                             </IconButton>
                                         </ListItemSecondaryAction>
@@ -188,8 +244,9 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
 
                         )}
                 </div>
-            </Grid>
-        </div >
+        {/* //     </Grid> */}
+        {/* // </div > */}
+    </React.Fragment>
     )
 })
 

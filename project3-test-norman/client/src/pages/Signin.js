@@ -14,18 +14,20 @@ const Signin = () => {
   const theme = useTheme();
   const classes = {
     card: {
-      maxWidth: 600,
+      // maxWidth: 600,
+      height: "auto",
       margin: 'auto',
       textAlign: 'center',
-      marginTop: theme.spacing.unit * 5,
-      paddingBottom: theme.spacing.unit * 2,
+      marginTop: "80px",
+      marginBottom: "80px",
+      // paddingBottom: ""
       paddingRight: "auto",
       paddingLeft: "auto",
       backgroundColor: "#8693AB",
       borderRadius: "20px",
       border: "inset 1px white",
-      marginRight:"20px",
-      marginLeft:"20px"
+      marginRight:"auto",
+      marginLeft:"auto"
       // display: "flex"
     },
     error: {
@@ -95,9 +97,11 @@ const Signin = () => {
     return (<Redirect to={`/user/?id=${state.id}`} />)
   } else {
     console.log("here");
+
     return (
-      <Card style={classes.card}>
-        <CardContent>
+      <div style={classes.card}>
+      {/* // <Card style={classes.card}> */}
+        {/* // <CardContent> */}
           <Typography type="headline" component="h2" style={classes.title}>
             Sign In
             </Typography>
@@ -109,11 +113,12 @@ const Signin = () => {
               {state.error}
             </Typography>)
           }
-        </CardContent>
-        <CardActions>
+        {/* // </CardContent> */}
+        {/* // <CardActions> */}
           <Button color="primary" variant="raised" onClick={clickSubmit} style={classes.submit}>Submit</Button>
-        </CardActions>
-      </Card>
+        {/* // </CardActions> */}
+      {/* // </Card> */}
+      </div>
     )
   }
 }

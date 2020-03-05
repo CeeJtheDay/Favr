@@ -6,36 +6,38 @@ import Typography from 'material-ui/Typography';
 import Person from 'material-ui-icons/Person';
 import Divider from 'material-ui/Divider';
 // import { createMuiTheme } from 'material-ui/styles'
-import { useTheme } from '@material-ui/core/styles';
+// import { useTheme } from '@material-ui/core/styles';
 
 
 const Profile = ({ currUser, setCurrUser }) => {
-  const theme = useTheme();
+  // const theme = useTheme();
   const classes = {
-    root: theme.mixins.gutters({
+    root: {
+    // theme.mixins.gutters({
       maxWidth: 600,
       margin: 'auto',
-      padding: theme.spacing.unit * 3,
-      marginTop: theme.spacing.unit * 5
-    }),
+      // padding: theme.spacing(3),
+      // marginTop: theme.spacing(5)
+    },
     title: {
-      margin: `${theme.spacing.unit * 3}px 0 ${theme.spacing.unit * 2}px`,
-      color: theme.palette.protectedTitle
+      // margin: `${theme.spacing(3)}px 0 ${theme.spacing(2)}px`,
+      // color: theme.palette.protectedTitle
     },
     root1: theme.mixins.gutters({
       maxWidth: 600,
       margin: '12px 24px',
-      padding: theme.spacing.unit * 3,
+      padding: theme.spacing(3),
       backgroundColor: '#3f3f3f0d'
     }),
     title1: {
-      margin: `${theme.spacing.unit * 2}px 0 12px ${theme.spacing.unit}px` ,
+      margin: `${theme.spacing(2)}px 0 12px ${theme.spacing(1)}px` ,
       color: theme.palette.openTitle
     }
   }
 
   const [state, setState] = useState({
-    offers: []
+    offers: [],
+    needs:[]  
   });
 
   useEffect(() => {
