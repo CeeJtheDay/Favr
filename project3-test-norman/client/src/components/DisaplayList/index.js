@@ -69,7 +69,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function NavTabs({ currUser, setCurrUser }) {
+export default function NavTabs({ currUser, setCurrUser,reviewList }) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -99,7 +99,7 @@ export default function NavTabs({ currUser, setCurrUser }) {
                 <List category="offers" list={currUser.offers} currUser={currUser} setCurrUser={setCurrUser} />
             </TabPanel>
             <TabPanel value={value} index={2} className={classes.tabPage}>
-                <Review currUser={currUser} setCurrUser={setCurrUser} />
+                <Review currUser={currUser} setCurrUser={setCurrUser} reviewList={reviewList}/>
             </TabPanel>
         </div>
     );

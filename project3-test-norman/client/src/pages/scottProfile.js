@@ -64,6 +64,7 @@ const Profile = withRouter(({ history, currUser, setCurrUser }) => {
         id: review._id,
         rate: review.rate,
         comment: review.comment,
+        time: review.createdAt,
         reviewer: { id: review.reviewer},//add image here later
         reviewee: { id: review.reviewee, name:currUser.name, image:currUser.image }
       };
