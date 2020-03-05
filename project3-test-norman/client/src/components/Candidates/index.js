@@ -128,7 +128,7 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
                 {searched ? (<Typography variant="h6" style={classes.title}>
                     Result for {category}
                 </Typography>) : (<Typography variant="h6" style={classes.title}>
-                    All Result for {category}
+                    Search Results
                 </Typography>)}
                 <FormControl style={classes.formControl}>
                     <Select value={state.filter} onChange={handleChange} displayEmpty style={classes.selectEmpty}>
