@@ -18,7 +18,8 @@ const OffersList = ({ category, list, currUser, setCurrUser }) => {
       width: '100%',
       height: 400,
       maxWidth: 300,
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: "#8693AB",
+      margin: "5px"
     },
   }));
   // console.log(currUser);

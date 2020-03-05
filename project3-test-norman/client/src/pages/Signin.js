@@ -18,23 +18,41 @@ const Signin = () => {
       margin: 'auto',
       textAlign: 'center',
       marginTop: theme.spacing.unit * 5,
-      paddingBottom: theme.spacing.unit * 2
+      paddingBottom: theme.spacing.unit * 2,
+      paddingRight: "auto",
+      paddingLeft: "auto",
+      backgroundColor: "#8693AB",
+      borderRadius: "20px",
+      border: "inset 1px white",
+      // display: "flex"
     },
     error: {
       verticalAlign: 'middle'
     },
     title: {
-      marginTop: theme.spacing.unit * 2,
-      color: theme.palette.openTitle
+      marginTop: "20px",
+      color: "white",
+      // backgroundColor: "#96CDFF",
+      // border: "solid 1px #077699",
+      // borderRadius: "15px",
+      width: "auto",
+      flexBox: "center",
+      // backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)"
+     
     },
     textField: {
       marginLeft: theme.spacing.unit,
       marginRight: theme.spacing.unit,
-      width: 300
+      width: 300,
+      color: "secondary",
+      border: "white",
     },
     submit: {
       margin: 'auto',
-      marginBottom: theme.spacing.unit * 2
+      marginBottom: theme.spacing.unit * 2,
+      backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
+      border: "solid 1px #077699",
+      borderRadius: "15px"
     }
   };
 

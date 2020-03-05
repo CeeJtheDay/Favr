@@ -6,7 +6,8 @@ import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
 import SearchIcon from 'material-ui-icons/Search'
 import API from "../../utils/API-User";
-import { createMuiTheme } from 'material-ui/styles'
+// import { createMuiTheme } from 'material-ui/styles'
+import { useTheme } from '@material-ui/core/styles';
 import Candidates from "../Candidates";
 // import axios from "axios";
 import Fuse from "fuse.js";
@@ -44,7 +45,7 @@ const Search = ({ category, currUser, setCurrUser }) => {
             "needs"
         ]
     };
-    const theme = createMuiTheme();
+    const theme = useTheme();
     const classes = {
         card: {
             margin: 'auto',

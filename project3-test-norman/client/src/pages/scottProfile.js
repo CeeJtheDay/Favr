@@ -23,25 +23,31 @@ const Profile = ({ currUser, setCurrUser }) => {
   console.log("PROFILE CURRUSER", currUser);
   const theme = useTheme();
   const classes = {
-    root: theme.mixins.gutters({
+    list:{
+      margin: "5px",
+      backgroundColor: "#8693AB"
+    },
+    root: {
       maxWidth: 600,
       margin: 'auto',
-      padding: theme.spacing.unit * 3,
-      marginTop: theme.spacing.unit * 5
-    }),
-    title: {
-      margin: `${theme.spacing.unit * 3}px 0 ${theme.spacing.unit * 2}px`,
-      color: theme.palette.protectedTitle
     },
-    root1: theme.mixins.gutters({
+    title: {
+      margin: `12px 24px`,
+      // color: theme.palette.protectedTitle
+    },
+    root1: {
       maxWidth: 600,
-      margin: '12px 24px',
-      padding: theme.spacing.unit * 3,
-      backgroundColor: '#3f3f3f0d'
-    }),
+      margin: '20px auto 20px auto',
+      padding: "40px",
+      backgroundColor: "#8693AB",
+      borderRadius: "20px",
+      border: "inset 1px white"
+    },
     title1: {
-      margin: `${theme.spacing.unit * 2}px 0 12px ${theme.spacing.unit}px`,
-      color: theme.palette.openTitle
+      margin: `12px 24px`,
+      color: "white",
+      textAlign: "center"
+      // color: 
     }
   }
 
@@ -58,37 +64,33 @@ const Profile = ({ currUser, setCurrUser }) => {
 
 
   return (
-    <Grid container item xs={12} spacing={3}>
-    <Paper >
-      <ProfileHeader currUser={currUser} setCurrUser={setCurrUser}></ProfileHeader>
-     
+    <Grid style={classes.root1} container item xs={12} spacing={3}>
+    {/* <Paper > */}
+      <ProfileHeader currUser={currUser} setCurrUser={setCurrUser} />
+      <Grid item xs={6} sm={6}>
+        {/* <Paper style={classes.root} elevation={4}> */}
+            <Typography type="title" style={classes.title1}>
+              Needs
+            </Typography>
+            {/* <Grid item xs={12} sm={12}> */}
+            <NeedsList style={classes.list} currUser={currUser} setCurrUser={setCurrUser} />
 
-      <Grid item xs={12} sm={12}>
-        <Paper style={classes.root1} elevation={4}>
-          <Typography type="title" style={classes.title1}>
-            Needs
-  
-        </Typography>
-          <Grid citem xs={12} sm={12}>
-            <NeedsList currUser={currUser} setCurrUser={setCurrUser} />
-          </Grid>
-
-        </Paper>
-        </Grid>
-        <Grid item xs={12} sm={12}>
-        <Paper style={classes.root1} elevation={4}>
-          <Typography type="title" style={classes.title1}>
-            Services
-        </Typography>
-          <Grid item xs={12} sm={12}>
-            <OffersList currUser={currUser} setCurrUser={setCurrUser}></OffersList>
-          </Grid>
-
-      </Paper>
+        {/* </Paper> */}
+      </Grid>
+        {/* </Grid> */}
+        <Grid item xs={6} sm={6}>
+          {/* <Paper style={classes.root} elevation={4}> */}
+              <Typography type="title" style={classes.title1}>
+                Services
+              </Typography>
+              {/* <Grid item xs={12} sm={12}> */}
+              <OffersList style={classes.list} currUser={currUser} setCurrUser={setCurrUser} />
+              {/* </Grid> */}
+          {/* </Paper> */}
       </Grid>
       
-    </Paper>
-<Navbar></Navbar>
+      <Navbar />
+    {/* </Paper> */}
     </Grid>
   )
 }
