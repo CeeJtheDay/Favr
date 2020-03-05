@@ -24,6 +24,8 @@ const Signin = () => {
       backgroundColor: "#8693AB",
       borderRadius: "20px",
       border: "inset 1px white",
+      marginRight:"20px",
+      marginLeft:"20px"
       // display: "flex"
     },
     error: {

@@ -18,41 +18,37 @@ const NSList = ({ category, list, currUser, setCurrUser }) => {
     const classes = {
         root: {
             flexGrow: 1,
-            width: "50%",
+            width: "100%",
             margin: 'auto'
         },
-        demo: {
-            backgroundColor: theme.palette.background.paper,
-        },
-        title: {
-            margin: theme.spacing.unit,
-        },
         root1: {
-              margin: theme.spacing.unit,
-              width: 200,
+            width: "100%",
+            display: "inline-block",
+            textAlign: "center",
+            marginTop:"15px"
         }
     };
 
     const [state, setState] = useState({
         list: list,
-        newItem:""
+        newItem: ""
     });
 
     const handleChange = e => {
         console.log(e.target.value);
-        setState({...state, newItem:e.target.value});
+        setState({ ...state, newItem: e.target.value });
     }
 
     const handleDelete = (i) => {
         console.log(i);
         let currList = state.list;
-        currList.splice(i,1);
+        currList.splice(i, 1);
         let obj = {};
-        obj[category]=currList;
+        obj[category] = currList;
         API.updateUsers(currUser.id, obj)
             .then(() => {
                 console.log("delete!!!");
-                setState({...state,list:currList});
+                setState({ ...state, list: currList });
             })
     }
 
@@ -60,43 +56,36 @@ const NSList = ({ category, list, currUser, setCurrUser }) => {
         let currList = state.list;
         currList.push(state.newItem);
         let obj = {};
-        obj[category]=currList;
+        obj[category] = currList;
         console.log(currUser);
         API.updateUsers(currUser.id, obj)
             .then(() => {
                 console.log("add!!!");
-                setState({...state,newItem:"", list:currList});
+                setState({ ...state, newItem: "", list: currList });
             })
 
     }
 
     return (
         <div style={classes.root}>
-            <Grid item xs={12} md={12}>
-                <Typography variant="h6" style={classes.title}>
-                    My {category}:
-                </Typography>
-                <div style={classes.demo}>
-                    <List>
-                        {list.map((item, i) => (
-                            <ListItem>
-                                <ListItemText
-                                    primary={item}
-                                />
-                                <ListItemSecondaryAction>
-                                    <IconButton edge="end" aria-label="delete" onClick={(i)=> handleDelete(i)}>
-                                        <DeleteIcon />
-                                    </IconButton>
-                                </ListItemSecondaryAction>
-                            </ListItem>
-                        ))}
-                    </List>
-                </div>
-                <form style={classes.root1} noValidate autoComplete="off">
-                    <TextField id="outlined-basic" label={category} variant="outlined" value={state.newItem} onChange={handleChange}/>
-                    <Button variant="contained" color="primary" onClick={handleSubmit}>Submit</Button>
-                </form>
-            </Grid>
+            <List>
+                {list.map((item, i) => (
+                    <ListItem>
+                        <ListItemText
+                            primary={item}
+                        />
+                        <ListItemSecondaryAction>
+                            <IconButton edge="end" aria-label="delete" onClick={(i) => handleDelete(i)}>
+                                <DeleteIcon />
+                            </IconButton>
+                        </ListItemSecondaryAction>
+                    </ListItem>
+                ))}
+            </List>
+            <form style={classes.root1} noValidate autoComplete="off">
+                <TextField id="standard-basic" label={category} value={state.newItem} onChange={handleChange} style={{ marginRight: "10px" }} />
+                <Button variant="contained" color="primary" onClick={handleSubmit} style={{ padding: "10px" }}>Add</Button>
+            </form>
         </div>
     )
 }

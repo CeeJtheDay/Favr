@@ -78,7 +78,7 @@ const ModalPop = ({ open, handleClose, modalStyle, reviewer, reviewee }) => {
                             }}
                         />
                         <h3>Comment</h3>
-                        <textarea rows="5" cols="80" value={review.comment} onChange={handleChange}></textarea>
+                        <textarea rows="5" cols="40" value={review.comment} onChange={handleChange}></textarea>
 
                         <button onClick={handleSubmit}>Submit</button>
                     </div>

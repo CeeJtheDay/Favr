@@ -165,8 +165,9 @@ const Search = ({ category, currUser, setCurrUser }) => {
    
 
     return (
-        <div >
-            <Card style={classes.card}>
+        // <div >
+        <React.Fragment>
+            {/* <Card style={classes.card}> */}
                 <TextField
                     id="search"
                     label="Search products"
@@ -182,10 +183,11 @@ const Search = ({ category, currUser, setCurrUser }) => {
                 <Button variant="raised" style={classes.searchButton} onClick={search}>
                     <SearchIcon />
                 </Button>
-                <Divider />
+                {/* <Divider /> */}
                 <Candidates category={state.category} candidates={state.results} searched={state.searched} currUser={currUser} setCurrUser={setCurrUser} />
-            </Card>
-        </div>
+            {/* </Card> */}
+        </React.Fragment>
+        // </div>
 
     )
 }

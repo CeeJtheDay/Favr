@@ -145,8 +145,9 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
 
 
     return (
-        <div style={classes.root}>
-            <Grid item xs={12} md={12}>
+        <React.Fragment>
+        {/* // <div style={classes.root}>
+        //     <Grid item xs={12} md={12}> */}
                 {/* {searched ? (<Typography variant="h6" style={classes.title}>
                     Result for {category}
                 </Typography>) : ( */}
@@ -222,8 +223,9 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
 
                         )}
                 </div>
-            </Grid>
-        </div >
+        {/* //     </Grid> */}
+        {/* // </div > */}
+    </React.Fragment>
     )
 })
 

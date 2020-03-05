@@ -11,15 +11,17 @@ const Home = withRouter(({ history, currUser, setCurrUser }) => {
     // const theme = useTheme();
     const classes = {
         container: {
-          maxWidth: 600,
+          // maxWidth: 600,
           margin: 'auto',
           textAlign: 'center',
-          marginTop: "40px",
+          // marginTop: "40px",
+          // height: "100%",
+          // bottom: 0,
           paddingBottom: "40px",
           paddingRight: "auto",
           paddingLeft: "auto",
           backgroundColor: "#8693AB",
-          borderRadius: "20px",
+          // borderRadius: "20px",
           border: "inset 1px white",
           overflow: "auto"
           // display: "flex"
@@ -81,9 +83,9 @@ const Home = withRouter(({ history, currUser, setCurrUser }) => {
         //         </Grid>
         //     </Grid>
         // </div>
-        <div style={classes.container}>
+        // <div style={classes.container}>
 
-            <Grid container spacing={24}>
+            <Grid style={classes.container} container spacing={24}>
                 <Grid item xs={12} sm={12}>
                     <Search category="need" currUser={currUser} setCurrUser={setCurrUser} />
                 </Grid>
@@ -91,7 +93,7 @@ const Home = withRouter(({ history, currUser, setCurrUser }) => {
                     <Search category="service" currUser={currUser} setCurrUser={setCurrUser} />
                 </Grid> */}
             </Grid>
-        </div>
+        // </div>
            
         
     )

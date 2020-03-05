@@ -11,24 +11,24 @@ import Signin from "./pages/Signin";
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string'
 import axios from "axios"
-
+import Footer from "./components/Navbar";
 const MainRouter = withRouter(({ history }) => {
   const [currUser, setCurrUser] = useState({
     id: '',
     name: '',
     email: '',
     intro: '',
-    street:'',
-    city:'',
-    state:'',
-    zip:'',
-    lat:0,
-    lng:0,
-    needs:[],
-    offers:[],
+    street: '',
+    city: '',
+    state: '',
+    zip: '',
+    lat: 0,
+    lng: 0,
+    needs: [],
+    offers: [],
     createDate: '',
-    rate:0,
-    ratingQuantity:0
+    rate: 0,
+    ratingQuantity: 0
   });
 
   useEffect(() => {
@@ -45,14 +45,14 @@ const MainRouter = withRouter(({ history }) => {
             email: userInfo.data.email,
             createDate: userInfo.data.createAt,
             intro: userInfo.data.intro,
-            street:userInfo.data.street,
-            city:userInfo.data.city,
-            state:userInfo.data.state,
-            zip:userInfo.data.zip,
-            lat:userInfo.data.lat,
-            lng:userInfo.data.lng,
-            needs:userInfo.data.needs,
-            offers:userInfo.data.offers,
+            street: userInfo.data.street,
+            city: userInfo.data.city,
+            state: userInfo.data.state,
+            zip: userInfo.data.zip,
+            lat: userInfo.data.lat,
+            lng: userInfo.data.lng,
+            needs: userInfo.data.needs,
+            offers: userInfo.data.offers,
             rate: userInfo.data.rate,
             ratingQuantity: userInfo.data.ratingQuantity
           })
@@ -62,10 +62,11 @@ const MainRouter = withRouter(({ history }) => {
 
 
   return (
-    <div>
+    // <div>
+    <React.Fragment>
       <Menu currUser={currUser} setCurrUser={setCurrUser} />
       {/* <ProminentAppBar /> */}
-      <div style={{ marginLeft: "15px", marginRight: "15px" }}>
+      <div>
         <Switch>
           {/* <Route exact path="/" component={Home} /> */}
           <Route exact path="/" component={Title} />
@@ -76,7 +77,9 @@ const MainRouter = withRouter(({ history }) => {
           <Route exact path="/signin" component={Signin} />
         </Switch>
       </div>
-    </div>
+      {history.location.pathname.includes("/user") || history.location.pathname.includes("/barter") || history.location.pathname.includes("/profile") ? (<Footer currUser={currUser} setCurrUser={setCurrUser}/>) : (null)}
+    </React.Fragment>
+    // </div>
   )
 
 })
