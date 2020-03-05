@@ -3,8 +3,22 @@ import $ from "jquery";
 // import Script from 'react-load-script';
 import socketIOClient from "socket.io-client";
 import Alert from "../Alert";
+import "./style.css";
 
 const ChatWindow = ({ chatRoom, currUser }) => {
+    const classes= {
+        container: {
+            border: "inset 1px white",
+            borderRadius: "20px",
+            backgroundColor: "#8693AB",
+            padding: "40px",
+            color: "white",
+            margin: "20px auto 20px auto"
+        },
+        chatBox: {
+            maxWidth: 400,
+        }
+    }
     const socket = socketIOClient();
     const [imagePath, setImagePath] = useState("");
     const [imagedata, setImageData] = useState({
@@ -13,6 +27,7 @@ const ChatWindow = ({ chatRoom, currUser }) => {
     });
 
     function loadSocket() {
+        
         // join
         socket.on('connect', function () {
             socket.emit('join', currUser.id, chatRoom.id, currUser.name);
@@ -143,12 +158,12 @@ const ChatWindow = ({ chatRoom, currUser }) => {
 
 
     return (
-        <div>
-            <h3>chatRoom#: {chatRoom.id}</h3>
-            <div class="container-fluid justify-content-center">
-                <div class="chatBox col" id="msglog">
+        <div style={classes.container} >
+            {/* <h3>chatRoom#: {chatRoom.id}</h3> */}
+            <div className="container-fluid justify-content-center">
+                <div className="chatBox col" id="msglog">
                 </div>
-                <textarea name="message" class="col p-1" id={chatRoom.id + currUser.id} placeholder="Enter chat content here"></textarea>
+                <textarea style={classes.chatBox} name="message" className="col p-1" id={chatRoom.id + currUser.id} placeholder="Enter chat content here"></textarea>
                 <form id="imageSubmit" action="/upload" method="POST" encType="multipart/form-data" onSubmit={handleSubmitImage}>
                     <div className="form-group">
                         <label htmlFor="pic">Upload Profile Image:</label>

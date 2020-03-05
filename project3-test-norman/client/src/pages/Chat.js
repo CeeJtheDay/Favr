@@ -18,6 +18,23 @@ import $ from "jquery";
 // }));
 
 const Chat = withRouter(({ history, currUser, setCurrUser }) => {
+    const classes = {
+        chatList:{
+            backgroundColor:  "#8693AB",
+            borderRadius: "20px",
+            margin: "30px"
+
+        },
+        container:{
+            border: "white"
+        },
+        user:{
+            borderRadius: "20px",
+            backgroundColor: "#8693AB",
+            margin: "30px"
+
+        }
+    }
     // const theme = useTheme();
     // const classes = useStyles();
     const [state, setState] = useState({
@@ -76,9 +93,9 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
 
     return (
         <div>
-            <Grid container spacing={2}>
-                <Grid item xs={4}>
-                    <ChatList chatList={state.chatList} state={state} setState={setState} currUser={currUser} setCurrUser={setCurrUser} />
+            <Grid style={classes.container} container spacing={2}>
+                <Grid style={classes.user} item xs={4}>
+                    <ChatList style={classes.chatList} chatList={state.chatList} state={state} setState={setState} currUser={currUser} setCurrUser={setCurrUser} />
                 </Grid>
                 <Grid item xs={8}>
                     {!$.isEmptyObject(state.currChat) && (<ChatWindow chatRoom={state.currChat} currUser={currUser} />)}

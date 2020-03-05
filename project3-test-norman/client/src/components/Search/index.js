@@ -70,10 +70,19 @@ const Search = ({ category, currUser, setCurrUser }) => {
             marginBottom: '20px'
         },
         searchButton: {
-            minWidth: '20px',
-            height: '30px',
-            padding: '0 8px'
-        }
+            minWidth: '60px',
+            height: '60px',
+            padding: '0 8px',
+            backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
+            border: "solid 1px #077699",
+            borderRadius: "15px",
+            marginBottom: "24px"
+        },
+        // candidates: {
+        //     border: "solid 1px white",
+        //     borderRadius: "20px",
+        //     maxWidth: 400,
+        // }
     };
 
     const [state, setState] = useState({
@@ -170,7 +179,7 @@ const Search = ({ category, currUser, setCurrUser }) => {
                 <Select 
                 setState = {handleChange('category')}
                 />
-                <Button variant="raised" color={'primary'} style={classes.searchButton} onClick={search}>
+                <Button variant="raised" style={classes.searchButton} onClick={search}>
                     <SearchIcon />
                 </Button>
                 <Divider />
