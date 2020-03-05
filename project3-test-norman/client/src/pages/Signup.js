@@ -21,8 +21,10 @@ const Signup = () => {
   const theme = useTheme();
   const classes = {
     card: {
-      maxWidth: 600,
-      margin: 'auto',
+      maxHeight:"600px",
+      overflow:"auto",
+      marginRight: '20px',
+      marginLeft: '20px',
       textAlign: 'center',
       marginTop: theme.spacing.unit * 5,
       paddingBottom: theme.spacing.unit * 2,

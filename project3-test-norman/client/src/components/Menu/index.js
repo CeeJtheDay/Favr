@@ -18,7 +18,7 @@ const isActive = (history, path) => {
     if (history.location.pathname === path)
         return { color: '#bef67a' }
     else
-        return { color: '#ffffff',}
+        return { color: '#ffffff', }
 }
 const isPartActive = (history, path) => {
     if (history.location.pathname.includes(path))
@@ -38,38 +38,41 @@ const Menu = withRouter(({ history, currUser, setCurrUser }) => {
 
     const classes = {
         menu: {
-          width: "full",
-          backgroundColor: "#565656",
-          border: "solid 1px #8693AB"
-          
+            width: "full",
+            backgroundColor: "#565656",
+            border: "solid 1px #8693AB",
+            // position:'fixed',
+            // top:0
+
         },
         logo: {
             width: "50px",
             height: "auto",
             // opacity: 1.0
         }
-      }
+    }
 
     return (
         <AppBar position="static" style={classes.menu}>
             <Toolbar>
                 <Typography type="title" color="inherit">
-                   <img alt="logo" src={Logo} style={classes.logo} />
+                    <img alt="logo" src={Logo} style={classes.logo} />
                 </Typography>
                 <div>
                     {history.location.pathname.includes("/user") || history.location.pathname.includes("/barter") || history.location.pathname.includes("/profile") ? (
-                        <Link to={`/user/?id=${currUser.id}`}>
-                            <IconButton aria-label="Home" style={isPartActive(history, "/user")}>
-                                <HomeIcon />
-                            </IconButton>
-                        </Link>
+                        null
+                        // <Link to={`/user/?id=${currUser.id}`}>
+                        //     <IconButton aria-label="Home" style={isPartActive(history, "/user")}>
+                        //         <HomeIcon />
+                        //     </IconButton>
+                        // </Link>
                     ) : (
                             <Link to="/">
                                 <IconButton aria-label="Home" style={isActive(history, "/")}>
                                     <HomeIcon />
                                 </IconButton>
                             </Link>)}
-                    {history.location.pathname.includes("/barter") && (
+                    {/* {history.location.pathname.includes("/barter") && (
                         <Link to={`/barter/?id=${currUser.id}`}>
                             <Button style={isPartActive(history, "/cart")}>
                                 Message
@@ -92,43 +95,23 @@ const Menu = withRouter(({ history, currUser, setCurrUser }) => {
                                     <ChatIcon />
                             </Button>
                         </Link>
-                    )}
+                    )} */}
                 </div>
                 <div style={{ 'position': 'absolute', 'right': '10px' }}>
                     <span style={{ 'float': 'right' }}>
                         {
-                            history.location.pathname === "/" && (<span>
+                            history.location.pathname === "/" || history.location.pathname === "/signup" || history.location.pathname === "/signin" ? (<span>
                                 <Link to="/signup">
                                     <Button style={isActive(history, "/signup")}>Sign up</Button>
                                 </Link>
                                 <Link to="/signin">
                                     <Button style={isActive(history, "/signin")}>Sign In</Button>
                                 </Link>
-                            </span>)
-                        }
-                        {
-                            history.location.pathname.includes("/user") && (<span>
-                                <Link to={`/profile/?id=${currUser.id}`}>
-                                    <Button style={isPartActive(history, "/profile")}>My Profile</Button>
-                                </Link>
-                                <Button color="inherit" onClick={() => history.push('/')}>Sign out</Button>
-                            </span>)
-                        }
-                        {
-                            history.location.pathname.includes("/barter") && (<span>
-                                <Link to={`/profile/?id=${currUser.id}`}>
-                                    <Button style={isPartActive(history, "/profile")}>My Profile</Button>
-                                </Link>
-                                <Button color="inherit" onClick={() => history.push('/')}>Sign out</Button>
-                            </span>)
-                        }
-                        {
-                            history.location.pathname.includes("/profile") && (<span>
-                                <Link to={`/profile/?id=${currUser.id}`}>
-                                    <Button style={isPartActive(history, "/profile")}>My Profile</Button>
-                                </Link>
-                                <Button color="inherit" onClick={() => history.push('/')}>Sign out</Button>
-                            </span>)
+                            </span>) : (
+                                    <Link to="/">
+                                        <Button>Sign out</Button>
+                                    </Link>
+                                )
                         }
                     </span>
                 </div>

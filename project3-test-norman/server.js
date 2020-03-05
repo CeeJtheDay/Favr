@@ -65,11 +65,13 @@ socketIO.on('connection', function (socket) {
     }
     //push out all the previous chat history belonged to this roomID
     socket.join(roomID);
+    console.log(history);
     socket.emit('history', history[roomID]);
     socketIO.to(roomID).emit('sys', userName + ' is online now!');
   });
 
   socket.on('message', function (msg,roomID,userId,userNameG,flag,imagePath) {
+    console.log(roomID);
     let msgObj = {
       id: userId,
       userName: userNameG,
@@ -78,12 +80,13 @@ socketIO.on('connection', function (socket) {
       time: new Date()
     };
     history[roomID].push(msgObj);
+    console.log(history);
     let message ={msg:msg,event_id:flag+uni,image:imagePath};
     uni++;
     console.log(message);
     console.log(msgObj);
 
-    socketIO.to(roomID).emit('msg', userNameG, message, new Date());
+    socketIO.to(roomID).emit('msg', userNameG, message, msgObj, new Date());
   });
 
 });
