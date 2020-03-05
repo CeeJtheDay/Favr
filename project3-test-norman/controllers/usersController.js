@@ -8,7 +8,8 @@ module.exports = {
       .then(data => res.json(data))
       .catch(err => {
         console.log(err.message);
-        res.status(500).json(err.message);
+        if (err.message.includes("validation")) res.status(400).json(new Error(err.message));
+        else res.status(500).json(new Error(err.message));
       })
   },
   findAllUsers: function(req,res) {
@@ -18,7 +19,7 @@ module.exports = {
     })
     .catch(err => {
       console.log(err.message);
-      res.status(500).json(err.message);
+      res.status(400).json(err.message);
     })
   }
 };

@@ -13,10 +13,11 @@ import "./chat-style.css";
 import $ from "jquery";
 import Modal from "../components/Modal";
 
-
 const useStyles = makeStyles({
     list: {
-        width: 300
+        width: 350,
+        marginRight:'auto',
+        marginLeft:'auto'
     },
 });
 
@@ -92,7 +93,7 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
         open: false,
         reviewee: ""
     });
-    const handleOpen = (reviewee) => {
+    const handleOpen = reviewee => {
         setModalState({
             open: true,
             reviewee: reviewee
@@ -126,6 +127,17 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
         setState({ ...state, currChat: tile, left: false })
     };
 
+    const handleDeleteChat = id => {
+        console.log(id);
+        console.log(state.chatList);
+        let newChatList = state.chatList.filter(chat=>chat.id!=id);
+        console.log(newChatList);
+        API.remove(id)
+        .then(()=>{
+            setState({...state,chatList:newChatList});
+        })
+    }
+
     const sideList = side => (
         <div
             className={classes.list}
@@ -146,10 +158,15 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
                                         <span>{tile.other.name}</span>
                                     </div>
                                     <div className="user_button">
-                                        <IconButton edge="end" aria-label="review" style={{ padding: "0px", marginRight: "8px" }} onClick={() => handleOpen(tile.other.id)}>
+                                        <IconButton edge="end" aria-label="review" style={{ padding: "0px", marginRight: "8px" }} onClick={() => 
+                                            handleOpen(tile.other.id)
+                                        }>
                                             <RateReviewIcon />
                                         </IconButton>
-                                        <IconButton edge="end" aria-label="delete" style={{ padding: "0px" }}>
+                                        <IconButton edge="end" aria-label="delete" style={{ padding: "0px" }} onClick={(e)=>{
+                                            handleDeleteChat(tile.id)
+                                            e.stopPropagation();
+                                        }}>
                                             <DeleteIcon />
                                         </IconButton>
                                     </div>
@@ -168,8 +185,9 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
         );
     } else {
         return (
-            <div style={{ height: "90vh" }}>
-                <div id="action_menu_btn1">
+            <div style={{ height: "85vh", paddingBottom:"10px", paddingTop:"10px", overflow:"auto" }}>
+                {sideList("left")}
+                {/* <div id="action_menu_btn1">
                     <IconButton onClick={toggleDrawer("left", true)}>
                         <ListIcon />
                     </IconButton>
@@ -180,7 +198,7 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
                     onOpen={toggleDrawer("left", true)}
                 >
                     {sideList("left")}
-                </SwipeableDrawer>
+                </SwipeableDrawer> */}
                 <Modal open={modalState.open} handleClose={handleClose} modalStyle={modalStyle} reviewer={currUser.id} reviewee={modalState.reviewee} />
             </div>
         );

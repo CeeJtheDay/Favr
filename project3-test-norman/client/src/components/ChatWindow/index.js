@@ -196,6 +196,7 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
 
     const handSendEnter = e => {
         if (e && e.type === "keydown" && e.keyCode === 13) {
+            e.preventDefault();
             let msg = $(`#${chatRoom.id}${currUser.id}`).val().trim();
             $(`#${chatRoom.id}${currUser.id}`).val('');
             console.log(imagePath);
@@ -236,7 +237,7 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
 
 
     return (
-        <div style={{ height: "90vh" }}>
+        <div style={{ height: "85vh", paddingBottom:"10px", paddingTop:"10px"}}>
             <div className="card" style={{ minHeight: "100%" }}>
                 <div className="card-header msg_head">
                     <div className="d-flex bd-highlight">
@@ -259,7 +260,7 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
                 <div className="card-footer">
                     <div className="input-group">
                         <div className="input-group-append">
-                            <span className="input-group-text attach_btn" aria-describedby={id} onClick={handleClick}><i className="fas fa-paperclip"></i></span>
+                            <span className="input-group-text attach_btn" aria-describedby={id} onClick={"handleClick"}><i className="fas fa-paperclip"></i></span>
                             <Popover
                                 id={id}
                                 open={open}
