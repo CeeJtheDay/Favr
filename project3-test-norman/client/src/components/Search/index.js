@@ -12,6 +12,8 @@ import Candidates from "../Candidates";
 // import axios from "axios";
 import Fuse from "fuse.js";
 import Select from '../SearchSelect/index'
+import Grid from 'material-ui/Grid'
+import Paper from 'material-ui/Paper'
 
 // set a default search value for onMount
 
@@ -60,25 +62,34 @@ const Search = ({ category, currUser, setCurrUser }) => {
         textField: {
             marginLeft: "auto",
             marginRight: "auto",
-            width: 130,
+            // width: "75%",
             verticalAlign: 'bottom',
-            marginBottom: '20px'
+            marginTop: '20px',
+            marginBottom: '20px',
         },
         searchField: {
             marginLeft: "auto",
             marginRight: "auto",
-            width: "50%",
-            marginBottom: '20px'
+            // height:"60%",
+            width: "100%",
+            // marginBottom: '20px',
+            backgroundColor: "white",
+            
         },
-        searchButton: {
-            width: 'auto',
-            height: '60px',
+        // search:{
+
+        // },
+        search: {
+            width: '85%',
+            // height: '60px',
             padding: '0 8px',
             // backgroundColor: "#96CDFF",
-            backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
-            border: "solid 1px #077699",
+            backgroundColor: "white",
+            // backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
+            // border: "solid 1px #077699",
             borderRadius: "15px",
-            marginBottom: "24px"
+            marginTop: "24px",
+            // marginLeft: "10px"
         },
         // candidates: {
         //     border: "solid 1px white",
@@ -164,30 +175,46 @@ const Search = ({ category, currUser, setCurrUser }) => {
         }
     };
 
-   
+
 
     return (
         // <div >
         <React.Fragment>
             {/* <Card style={classes.card}> */}
-                <TextField
-                    id="search"
-                    label="Search products"
-                    type="search"
-                    onKeyDown={enterKey}
-                    onChange={handleChange('search')}
-                    style={classes.searchField}
-                    margin="normal"
-                />
-                <Select 
-                setState = {handleChange('category')}
-                />
-                <Button variant="raised" style={classes.searchButton} onClick={search}>
-                    <SearchIcon />
-                </Button>
-                {/* <Divider /> */}
-                <Candidates category={state.category} candidates={state.results} searched={state.searched} currUser={currUser} setCurrUser={setCurrUser} />
-            {/* </Card> */}
+            <Grid container spacing={3}>
+                {/* <Paper> */}
+                    {/* <Grid item xs={7}>
+                        <TextField
+                            id="search"
+                            label="Search products"
+                            type="search"
+                            onKeyDown={enterKey}
+                            onChange={handleChange('search')}
+                            style={classes.searchField}
+                            margin="normal"
+                        />
+                    </Grid>
+
+                    <Grid item xs={4}>
+                        <Select
+                            setState={handleChange('category')}
+                        />
+                    </Grid>
+                    <Grid item xs={1}>
+                        {/* <Button variant="raised" style={classes.search} > */}
+                            {/* <SearchIcon style={classes.search}onClick={search}/> */}
+                        {/* </Button> */}
+                    {/* </Grid> */} 
+                    <Grid item xs={12}>
+                       <Select/>
+                    </Grid>
+
+                    {/* </Paper> */}
+                    {/* <Divider /> */}
+                    <Candidates category={state.category} candidates={state.results} searched={state.searched} currUser={currUser} setCurrUser={setCurrUser} />
+                    {/* </Card> */}
+                
+            </Grid>
         </React.Fragment>
         // </div>
 

@@ -26,7 +26,7 @@ const OffersList = ({ category, list, currUser, setCurrUser }) => {
 
   const [state, setState] = useState({
     needs: currUser.needs,
-        offers: currUser.offers,
+    offers: currUser.offers,
     newItem: ""
   });
 
