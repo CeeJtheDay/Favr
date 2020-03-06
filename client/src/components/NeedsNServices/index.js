@@ -5,8 +5,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import DeleteIcon from '@material-ui/icons/Delete';
 import API from "../../utils/API-User"
 import TextField from '@material-ui/core/TextField';
@@ -28,8 +26,6 @@ const NSList = ({ category, list, currUser, setCurrUser }) => {
         },
         delete: {
             color: "white",
-            // backgroundColor: "#96CDFF ",
-            // border: "dotted 2px #077699",
             boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)",
         },
         text: {

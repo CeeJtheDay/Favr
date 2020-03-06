@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Title from "./pages/Title.js";
 import Menu from "../src/components/Menu";
-// import ProminentAppBar from "./components/Menu/index2";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
 import Profile from "./pages/scottProfile";

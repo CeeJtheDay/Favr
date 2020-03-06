@@ -16,10 +16,7 @@ const ProfileHeader = ({ currUser, setCurrUser }) => {
         grid1: {
             borderRadius: "20px 0 0 0"
         },
-        profilePic: {
-            borderRadius: "20px 0 0 0",
-            margin: "20px"
-        },
+        
         grid2: {
             borderRadius: "0 20px 0 0"
         },
@@ -27,10 +24,6 @@ const ProfileHeader = ({ currUser, setCurrUser }) => {
             borderRadius: "0 20px 0 0"
 
         },
-        profileText: {
-            color: "white"
-
-        }
     }
 
 
@@ -42,8 +35,8 @@ const ProfileHeader = ({ currUser, setCurrUser }) => {
             item sm={3}>
                 
                     <ProfilePic 
-                    style={classes.profilePic}
-                    currUser={currUser}/>
+                    currUser={currUser}
+                    />
                 
             </Grid>
             <Grid 
@@ -54,10 +47,8 @@ const ProfileHeader = ({ currUser, setCurrUser }) => {
                 flexGrow={4} 
                 bgcolor="grey.300">
                     <ProfileText 
-                    style={classes.profileText}
                     currUser={currUser} 
                     setCurrUser={setCurrUser}
-
                     />
                 </Box>
             </Grid>
