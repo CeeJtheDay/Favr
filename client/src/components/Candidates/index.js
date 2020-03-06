@@ -13,6 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
 
 const Candidates = withRouter(({ history, category, candidates, searched, currUser, setCurrUser }) => {
     const classes = {
@@ -36,7 +37,7 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
             marginTop: "40px",
             color: "white"
         },
-        list:{
+        list: {
             backgroundColor: " rgb(43,41,44, 0.3)",
             border: "groove 1px rgb(43,41,44, 0.3)",
             borderRadius: "20px",
@@ -44,12 +45,12 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
         },
         listItem: {
             backgroundColor: "rgb(43,41,44, 0.3)",
-            margin: "8px auto", 
-            padding: "15px",  
+            margin: "8px auto",
+            padding: "15px",
             borderRadius: "20px",
             border: "groove 1px #96CDFF80",
         },
-        liText1:{
+        liText1: {
             color: "white",
             textShadow: "2px 2px 4px #000000",
             backgroundColor: "#96CDFF",
@@ -75,6 +76,10 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
             backgroundColor: "#96CDFF ",
             border: "dotted 2px #077699",
             boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)"
+        },
+        formControl:{
+            minWidth:"200px",
+            marginBottom:"10px"
         }
     };
 
@@ -98,11 +103,15 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
             })
     }
 
+    const handlePage = id => {
+        history.push(`/other/?id=${id}`);
+    }
+
     const [state, setState] = useState({
         finalCandidates: []
     });
 
-    async function handleChange (e) {
+    async function handleChange(e) {
         if (e.target.value === "rating") {
             console.log("doing rating sort");
         }
@@ -114,7 +123,7 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
                 lat: currUser.lat,
                 lng: currUser.lng
             };
-            tempCandidate.sort((user1,user2)=>{
+            tempCandidate.sort((user1, user2) => {
                 let obj1 = {
                     lat: user1.lat,
                     lng: user1.lng
@@ -123,12 +132,12 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
                     lat: user2.lat,
                     lng: user2.lng
                 }
-                console.log(haversine_distance(currUserObj,obj1));
-                return haversine_distance(currUserObj,obj1)-haversine_distance(currUserObj,obj2);
+                console.log(haversine_distance(currUserObj, obj1));
+                return haversine_distance(currUserObj, obj1) - haversine_distance(currUserObj, obj2);
             });
             console.log(tempCandidate);
             // console.log(tempCandidate);
-            setState({finalCandidates: tempCandidate});
+            setState({ finalCandidates: tempCandidate });
         }
     }
 
@@ -146,101 +155,102 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
 
     return (
         <React.Fragment>
-                {searched ? (<Typography variant="h6" style={classes.title}> 
-                    Result for {category}
-                </Typography>) : (
-                <Typography variant="h6" style={classes.title}>
-                    Search Results
+            {searched ? (<Typography variant="h6" style={classes.title}>
+                Result for {category}
+            </Typography>) : (
+                    <Typography variant="h6" style={classes.title}>
+                        Search Results
                 </Typography>
                 )}
-                <FormControl style={classes.formControl}>
-                    <Select 
-                    value={state.filter} 
-                    onChange={handleChange} 
+            <FormControl style={classes.formControl}>
+                <InputLabel id="demo-simple-select-helper-label">Sort Result By</InputLabel>
+                <Select
+                    value={state.filter}
+                    onChange={handleChange}
                     // displayEmpty 
                     style={classes.selectEmpty}>
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
-                        <MenuItem value="rating">Rating</MenuItem>
-                        <MenuItem value="distance">Distance</MenuItem>
-                    </Select>
-                    <FormHelperText>Results Sorted By</FormHelperText>
-                </FormControl>
-                <div style={classes.demo}>
-                    {state.finalCandidates.length > 0 ? (
-                        
-                        <List 
+                    <MenuItem value="">
+                        <em>None</em>
+                    </MenuItem>
+                    <MenuItem value="rating">Rating</MenuItem>
+                    <MenuItem value="distance">Distance</MenuItem>
+                </Select>
+            </FormControl>
+            <div style={classes.demo}>
+                {state.finalCandidates.length > 0 ? (
+
+                    <List
                         disablePadding="true"
                         style={classes.list}>
-                            {state.finalCandidates.map((user, i) => ( 
-                                <ListItem key={i} style={classes.listItem}>
+                        {state.finalCandidates.map((user, i) => (
+                            <ListItem key={i} style={classes.listItem}>
+                                <ListItemText
+                                    style={classes.liText1}
+                                    primary={`${user.name}`}
+                                />
+
+                                <ListItemSecondaryAction>
+                                    <IconButton
+                                        style={classes.messageBtn}
+                                        edge="end"
+                                        aria-label="connect"
+                                        onClick={() => handleConnect(user._id, currUser.id)}
+                                    >
+                                        <TelegramIcon />
+                                    </IconButton>
+                                    <IconButton
+                                        style={classes.profileBtn}
+                                        edge="end"
+                                        aria-label="profile"
+                                    >
+                                        <AccountCircleIcon />
+                                    </IconButton>
+                                </ListItemSecondaryAction>
+                            </ListItem>
+                        ))}
+                    </List>
+
+
+                ) : (
+                        <List
+                            disablePadding="true"
+                            style={classes.list}>
+                            {candidates.map((user, i) => (
+                                <ListItem
+                                    style={classes.listItem}
+                                    key={i}
+                                >
                                     <ListItemText
                                         style={classes.liText1}
-                                        primary={`${user.name}`}     
+                                        primary={`${user.name}`}
                                     />
-                                    
+
+
                                     <ListItemSecondaryAction>
                                         <IconButton
-                                        style={classes.messageBtn} 
-                                        edge="end" 
-                                        aria-label="connect" 
-                                        onClick={() => handleConnect(user._id, currUser.id)}
+                                            style={classes.messageBtn}
+                                            edge="end"
+                                            aria-label="connect"
+                                            onClick={() => handleConnect(user._id, currUser.id)}
                                         >
                                             <TelegramIcon />
                                         </IconButton>
-                                        <IconButton 
-                                        style={classes.profileBtn}
-                                        edge="end" 
-                                        aria-label="profile"
+                                        <IconButton
+                                            style={classes.profileBtn}
+                                            edge="end"
+                                            aria-label="profile"
+                                            onClick={() => handlePage(user._id)}
                                         >
                                             <AccountCircleIcon />
                                         </IconButton>
                                     </ListItemSecondaryAction>
                                 </ListItem>
                             ))}
-                        </List> 
-                        
+                        </List>
 
-                    ) : (
-                            <List 
-                            disablePadding="true"
-                            style={classes.list}>
-                                {candidates.map((user, i) => (
-                                    <ListItem 
-                                    style={classes.listItem}
-                                    key ={i}
-                                    >
-                                        <ListItemText
-                                            style={classes.liText1}
-                                            primary={`${user.name}`}
-                                        />
-                                        
-                                        
-                                        <ListItemSecondaryAction>
-                                            <IconButton 
-                                            style={classes.messageBtn} 
-                                            edge="end" 
-                                            aria-label="connect" 
-                                            onClick={() => handleConnect(user._id, currUser.id)}
-                                            >
-                                                <TelegramIcon />
-                                            </IconButton>
-                                            <IconButton 
-                                            style={classes.profileBtn}
-                                            edge="end" 
-                                            aria-label="profile"
-                                            >
-                                                <AccountCircleIcon />
-                                            </IconButton>
-                                        </ListItemSecondaryAction>
-                                    </ListItem>
-                                ))}
-                            </List>
-
-                        )}
-                </div>
-    </React.Fragment>
+                    )}
+            </div>
+        </React.Fragment>
     )
 })
 

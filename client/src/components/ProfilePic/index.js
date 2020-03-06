@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: 'auto'
   },
   large: {
-    margin: "20px 35px 20px 35px",
+    margin: "18px",
     boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)",
     width: theme.spacing(8),
     height: theme.spacing(8)

@@ -8,7 +8,7 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import MessageIcon from '@material-ui/icons/Message';
 import { Link, withRouter } from 'react-router-dom'
 import { TableFooter } from 'material-ui';
-
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 const useStyles = makeStyles({
     root: {
         width: '100%',
@@ -19,10 +19,6 @@ const useStyles = makeStyles({
 });
 
 
-const isPartActive = (history, path) => {
-    if (history.location.pathname.includes(path))
-        return { color: '#bef67a' }
-}
 
 
 
@@ -38,9 +34,7 @@ const Footer = withRouter(({ history, currUser, setCurrUser }) => {
             showLabels
             className={classes.root}
         >
-            <BottomNavigationAction href={'/user/?id=' + currUser.id} label="Dashborad" icon={<HomeIcon />} style={isPartActive(history, "/user")} />
-            <BottomNavigationAction href={'/profile/?id=' + currUser.id} label="Profile" icon={<AccountBoxIcon />} style={isPartActive(history, "/profile")} />
-            <BottomNavigationAction href={'/barter/?id=' + currUser.id} label="Messages" icon={<MessageIcon />} style={isPartActive(history, "/barter")} />
+            <BottomNavigationAction label="Back" icon={<ArrowBackIcon />} onClick={()=>history.goBack()}/>
         </BottomNavigation>
     );
 })
