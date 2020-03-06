@@ -1,33 +1,23 @@
 import React, { useState } from 'react'
-// import { useTheme } from '@material-ui/core/styles';
-// import { createMuiTheme } from 'material-ui/styles'
-// import { Link } from 'react-router-dom'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import API from "../../utils/API-Barter";
 import { withRouter } from 'react-router-dom';
-// import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-// import axios from "axios";
-// import $ from "jquery";
 
 const Candidates = withRouter(({ history, category, candidates, searched, currUser, setCurrUser }) => {
-    // const theme = useTheme();
     const classes = {
         root: {
             flexGrow: 1,
-            // width: "50%",
-            // margin: 'auto',
             border: "solid 1px white",
             borderRadius: "20px",
             width: "400px",
@@ -42,10 +32,6 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
             fontWeight: "bold",
             textShadow: "2px 2px 4px #000000"
         },
-        formControl: {
-            // margin: theme.spacing.unit * 1,
-            // minWidth: 120,
-        },
         selectEmpty: {
             marginTop: "40px",
             color: "white"
@@ -55,7 +41,6 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
             border: "groove 1px rgb(43,41,44, 0.3)",
             borderRadius: "20px",
             padding: "10px"
-            
         },
         listItem: {
             backgroundColor: "rgb(43,41,44, 0.3)",
@@ -63,29 +48,17 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
             padding: "15px",  
             borderRadius: "20px",
             border: "groove 1px #96CDFF80",
-            // backgroundImage: "linear-gradient(to right, #96CDFF80 0%, #07769980 51%, #96CDFF80 100%)", 
-            // background: "transparent"   
         },
         liText1:{
             color: "white",
             textShadow: "2px 2px 4px #000000",
             backgroundColor: "#96CDFF",
-            // backgroundImage: "linear-gradient(to right, #077699 0%, #96CDFF 51%, #077699 100%)",
             borderRadius: "20px",
             border: "hidden 1px #077699",
             boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)",
             padding: "5px"
-
-
         },
-        // liText2:{
-        //     color:"grey",
-        //     margin: "auto",
-        //     textAlign: "left"
-        // },
-        // textWrap: {
-        //     border: "solid 1px white"
-        // },
+
         messageBtn: {
             margin: "5px",
             color: "white",
@@ -159,16 +132,6 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
         }
     }
 
-    // key=AIzaSyCy_fsa23_HL03eeIZhtAcxDd8RCmVnogo
-    // const getLatLon = address => {
-    //     axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyCy_fsa23_HL03eeIZhtAcxDd8RCmVnogo`)
-    //         .then(data => {
-    //             console.log(data.data.results[0].geometry.location);
-    //             return data.data.results[0].geometry.location;
-    //         })
-
-    // }
-
     function haversine_distance(mk1, mk2) {
         var R = 3958.8; // Radius of the Earth in miles
         var rlat1 = mk1.lat * (Math.PI / 180); // Convert degrees to radians
@@ -183,8 +146,6 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
 
     return (
         <React.Fragment>
-        {/* // <div style={classes.root}>
-        //     <Grid item xs={12} md={12}> */}
                 {searched ? (<Typography variant="h6" style={classes.title}> 
                     Result for {category}
                 </Typography>) : (
@@ -214,12 +175,11 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
                         style={classes.list}>
                             {state.finalCandidates.map((user, i) => ( 
                                 <ListItem key={i} style={classes.listItem}>
-                                {/* <div style={classes.textWrap}> */}
                                     <ListItemText
                                         style={classes.liText1}
                                         primary={`${user.name}`}     
                                     />
-                               
+                                    
                                     <ListItemSecondaryAction>
                                         <IconButton
                                         style={classes.messageBtn} 
@@ -280,8 +240,6 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
 
                         )}
                 </div>
-        {/* //     </Grid> */}
-        {/* // </div > */}
     </React.Fragment>
     )
 })

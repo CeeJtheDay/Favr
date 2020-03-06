@@ -1,46 +1,19 @@
 import React, { useState, useEffect } from 'react'
-// import { useTheme } from '@material-ui/core/styles';
 import Grid from 'material-ui/Grid';
-// import Container from "@material-ui/core/Container";
 import ProfileHeader from '../components/ProfileHeader/index'
-import DisplayList from '../components/DisaplayList'
+import DisplayList from '../components/DisplayList'
 import axios from "axios"
 import { withRouter } from 'react-router-dom';
-import OtherDisplayList from '../components/DisaplayListOther';
+import OtherDisplayList from '../components/DisplayListOther';
 const Profile = withRouter(({ history, currUser, setCurrUser }) => {
 
-  // const theme = useTheme();
   const classes = {
-    list: {
-      margin: "5px",
-      backgroundColor: "#8693AB"
-    },
-    root: {
-      maxWidth: 600,
-      margin: 'auto',
-    },
-    title: {
-      margin: `12px 24px`,
-      // color: theme.palette.protectedTitle
-    },
-    root1: {
-      height: '90vh',
-      
-      backgroundColor: "#8693AB",
-      // borderRadius: "20px",
-      border: "inset 1px white",
-      overflow: "auto",
-      // maxWidth: 600,
-  
-    },
-    title1: {
-      margin: `12px 24px`,
-      color: "white",
-      textAlign: "center"
-      // color: 
-    },
     grid: {
-      marginTop: "60px"
+      margin: "80px auto",
+      maxWidth: 600,
+      borderRadius: "20px",
+      border: "groove 1px rgb(43,41,44, 0.3)",
+      backgroundColor: "#8693AB"
     }
   }
 
@@ -93,10 +66,28 @@ const Profile = withRouter(({ history, currUser, setCurrUser }) => {
   return (
     <Grid 
     container sm={12} 
-    style={classes.grid}>
-      <ProfileHeader currUser={currUser} setCurrUser={setCurrUser} />
-      {history.location.pathname.includes("/profile") && (<DisplayList currUser={currUser} setCurrUser={setCurrUser} reviewList = {reviewList}/>)}
-      {history.location.pathname.includes("/other") && (<OtherDisplayList currUser={currUser} setCurrUser={setCurrUser} reviewList = {reviewList}/>)}
+    style={classes.grid}
+    >
+      <ProfileHeader 
+      currUser={currUser} 
+      setCurrUser={setCurrUser} 
+      />
+      {history.location.pathname.includes("/profile") && (
+        <DisplayList 
+        currUser={currUser} 
+        setCurrUser={setCurrUser} 
+        reviewList = {reviewList}
+
+        />
+        )}
+      {history.location.pathname.includes("/other") && (
+        <OtherDisplayList 
+        currUser={currUser} 
+        setCurrUser={setCurrUser} 
+        reviewList = {reviewList}
+
+        />
+        )}
     </Grid>
   )
 })

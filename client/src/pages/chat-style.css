@@ -3,11 +3,81 @@ body,html{
     margin: 0;
 }
 
+.contacts_card {
+    margin-top: 80px;
+    background-color: #8693AB;
+    border: groove 1px rgb(43,41,44, 0.3);
+    border-radius: 20px;
+}
+
 .contacts_body{
     padding:  3.75rem 0 !important;
     overflow-y: auto;
     white-space: nowrap;
 }
+.contacts{
+    list-style: none;
+    padding: 0;
+    /* background-color: #96CDFF; */
+}
+.contacts li{
+    width: 100% !important;
+    padding: 5px 5px;
+    margin-bottom: 5px !important;
+    background-color: rgb(43,41,44, 0.3);
+    margin: 8px auto; 
+    padding: 15px;  
+    border-radius: 20px;
+    border: groove 1px #96CDFF80;
+}
+.img_cont{
+    position: relative;
+    height: auto;
+    
+}
+.img_cont_msg{
+    height: 40px;
+    width: 40px;
+}
+.user_info{
+margin-top: 0px;
+margin-bottom: 0px;
+margin-left: 15px;
+text-shadow: 2px 2px 4px #000000;
+background-color: #96CDFF;
+border-radius: 0px 20px 20px 0px;
+border: hidden 1px #077699;
+box-shadow: 2px 4px 2px rgb(43,41,44, 0.3);
+padding: 5px 140px 5px 30px;
+margin: 15px 0 0 -5px;
+height: 30px;
+color: white;
+
+}
+.user_button{
+    margin-top: auto;
+    margin-bottom: auto;
+    position: absolute;
+    right:10%
+}
+/* .user_info span{
+    font-size: 20px;
+    color: white;
+    
+} */
+.user_img{
+    height: 55px;
+    width: 60px;
+    margin: 5px;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    background-color: #96CDFF;
+    border: dotted 2px #077699;
+    box-shadow: 2px 4px 2px rgb(43,41,44, 0.3);
+    z-index: 100 !important;
+    
+}
+
 .msg_card_body{
     overflow-y: auto;
 }
@@ -54,56 +124,17 @@ background-color: rgba(0,0,0,0.3) !important;
     color: white !important;
     cursor: pointer;
 }
-.contacts{
-    list-style: none;
-    padding: 0;
-}
-.contacts li{
-    width: 100% !important;
-    padding: 5px 5px;
-    margin-bottom: 5px !important;
-}
 .active{
     background-color: white;
 }
 .active:hover{
     background-color: rgb(211, 207, 207);
 }
-.user_img{
-    height: 50px;
-    width: 50px;
-    border:1.5px solid black;
-
-}
 .user_img_msg{
     height: 40px;
     width: 40px;
     border:1.5px solid #f5f6fa;
 
-}
-.img_cont{
-    position: relative;
-    height: 50px;
-    width: 50px;
-}
-.img_cont_msg{
-    height: 40px;
-    width: 40px;
-}
-.user_info{
-margin-top: 0px;
-margin-bottom: 15px;
-margin-left: 15px;
-}
-.user_button{
-    margin-top: auto;
-    margin-bottom: auto;
-    position: absolute;
-    right:10%
-}
-.user_info span{
-font-size: 20px;
-color:black;
 }
 .user_info p{
 font-size: 10px;

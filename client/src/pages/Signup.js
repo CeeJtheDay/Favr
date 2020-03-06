@@ -6,32 +6,27 @@ import Typography from 'material-ui/Typography'
 import WarningIcon from '@material-ui/icons/Warning';
 import Dialog, { DialogActions, DialogContent, DialogContentText, DialogTitle } from 'material-ui/Dialog'
 import { Link } from 'react-router-dom'
-import { useTheme } from '@material-ui/core/styles';
 import Alert from "../components/Alert";
 import API from "../utils/API-User";
 import $ from "jquery";
 import Script from 'react-load-script';
 import axios from "axios";
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+
 
 const Signup = () => {
 
-  const theme = useTheme();
   const classes = {
     card: {
-      // maxHeight: "600px",
-      // overflow: "auto",
+      maxWidth: 600,
       marginRight: 'auto',
       marginLeft: 'auto',
       textAlign: 'center',
       marginTop: "80px",
-      // paddingBottom: theme.spacing.unit * 2,
       paddingRight: "auto",
       paddingLeft: "auto",
       backgroundColor: "#8693AB",
       borderRadius: "20px",
       border: "inset 1px white",
-      // display: "flex"
     },
     error: {
       verticalAlign: 'middle'
@@ -41,27 +36,30 @@ const Signup = () => {
       color: "white",
       textShadow: "2px 2px 4px #000000",
       fontWeight: "bold",
-      // backgroundColor: "#96CDFF",
-      // border: "solid 1px #077699",
-      // borderRadius: "15px",
       width: "auto",
       flexBox: "center",
-      // backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)"
-
     },
     textField: {
-      // marginLeft: theme.spacing.unit,
-      // marginRight: theme.spacing.unit,
-      margin: "10px auto",
+      margin: "0 30px",
       width: 300,
-      // color: "secondary",
-      // border: "white",
     },
     submit: {
       margin: '10px auto',
-      backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
-      border: "solid 1px #077699",
-      borderRadius: "15px"
+      backgroundImage: "linear-gradient( #96CDFF 0%, #077699 51%, #96CDFF 100%)",
+      border: "solid 1px #96CDFF",
+      borderRadius: "15px",
+      color: "white",
+      textShadow: "2px 2px 4px #000000",
+      boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)"
+    },
+    picUpload: {
+      maxWidth: 300,
+      textAlign: "center",
+      border: "groove 1px rgb(43,41,44, 0.3)",
+      backgroundColor: "rgb(43,41,44, 0.3)",
+      borderRadius: "20px",
+      margin: "0 auto",
+      color: "white"
     }
   };
 
@@ -111,22 +109,9 @@ const Signup = () => {
     setImageData({ success: "", error: "" });
   };
 
-
-
-
-  // useEffect(() => {
-  //   const googleScript = document.createElement('script')
-  //   googleScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCy_fsa23_HL03eeIZhtAcxDd8RCmVnogo&libraries=places`
-  //   window.document.body.appendChild(googleScript)
-
-  //   googleScript.addEventListener('load',
-  //     handleScriptLoad())
-  // }, [state]);
-
   const handleChange = name => event => {
     setState({ ...state, [name]: event.target.value })
   }
-
 
   const handleScriptLoad = () => {
     let autocomplete = new window.google.maps.places.Autocomplete(document.getElementById("street"));
@@ -144,9 +129,6 @@ const Signup = () => {
       city: addressComp[1],
       state: addressComp[2]
     };
-    // $("#street").val(faddress.street);
-    // $("#city").val(faddress.city);
-    // $("#state").val(faddress.street);
 
     setState({ ...state, street: faddress.street, city: faddress.city, state: faddress.state });
   }
@@ -186,9 +168,11 @@ const Signup = () => {
         })
     }
   }
+
   return (
-    <div>
-    {/* // <React.Fragment> */}
+    
+  
+    <React.Fragment>
       <Script
         url="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy_fsa23_HL03eeIZhtAcxDd8RCmVnogo&libraries=places"
         onLoad={handleScriptLoad}
@@ -206,9 +190,6 @@ const Signup = () => {
             <TextField
               id="name"
               label="Name (Required)"
-              // InputProps={{
-              //   className: classes.textField
-              // }}
               style={classes.textField}
               value={state.name}
               onChange={handleChange('name')} margin="normal" />
@@ -265,100 +246,95 @@ const Signup = () => {
               onChange={handleChange('zip')} margin="normal" />
           </form>
           <br/>
-          <form id="imageSubmit" action="/upload" method="POST" encType="multipart/form-data" onSubmit={handleSubmitImage} style={{border:"2px solid",borderRadius:'10px',padding:'10px'}}>
-                <div className="form-group">
-                    <label htmlFor="pic">Upload Profile Image (Optional):</label>
-                    <input type="file" className="form-control-file" name="userImage" id="upload" onChange={clearAlert}></input>
+          <form 
+          id="imageSubmit" 
+          action="/upload" 
+          method="POST" 
+          encType="multipart/form-data" 
+          onSubmit={handleSubmitImage} 
+          style={classes.picUpload}
+          >
+          
+                <div 
+                className="form-group">
+                    <label 
+                    htmlFor="pic"
+                    >
+                    Upload Profile Image (Optional):</label>
+                    <input 
+                    type="file" className="form-control-file" name="userImage" 
+                    id="upload" 
+                    onChange={clearAlert}
+                    ></input>
                 </div>
-                <button className="btn btn-success" type="submit">Upload(Upload Before Submit)</button>
-                <Alert type="danger" style={{ display: imagedata.error ? 'block' : 'none', marginBottom: 10 }}>
+                <button 
+                className="btn btn-success" type="submit"
+                style={classes.submit}
+                >
+                Upload(Upload Before Submit)
+                </button>
+                <Alert 
+                type="danger" 
+                style={{ display: imagedata.error ? 'block' : 'none', marginBottom: 10 }}>
                     {imagedata.error}
                 </Alert>
-                <Alert type="success" style={{ display: imagedata.success ? 'block' : 'none', marginBottom: 10 }}>
+                <Alert 
+                type="success" 
+                style={{ display: imagedata.success ? 'block' : 'none', marginBottom: 10 }}
+                >
                     {imagedata.success}
                 </Alert>
             </form>
-
-          {/* <Button
-            variant="contained"
-            color="default"
-            startIcon={<CloudUploadIcon />}
-          >
-            Upload Profile Image (Optional)
-        </Button> */}
-        {/* <ImageUploadPop/> */}
           {
-            state.error && (<Typography component="p" color="error">
+            state.error && (
+              <Typography 
+              component="p"
+               color="error"
+               >
               <WarningIcon />
-              {state.error}</Typography>)
+              {state.error}
+              </Typography>
+            )
           }
         </CardContent>
         <CardActions>
-          <Button color="primary" variant="raised" onClick={clickSubmit} style={classes.submit}>Submit</Button>
+          <Button 
+          color="primary" 
+          variant="raised" 
+          onClick={clickSubmit} 
+          style={classes.submit}
+          >
+          Submit
+          </Button>
         </CardActions>
       </Card>
-      <Dialog open={state.open} disableBackdropClick={true}>
-        <DialogTitle>New Account</DialogTitle>
+      <Dialog 
+      open={state.open} 
+      disableBackdropClick={true}>
+        <DialogTitle>
+        New Account
+        </DialogTitle>
         <DialogContent>
           <DialogContentText>
             New account successfully created.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Link to="/signin">
-            <Button color="primary" autoFocus="autoFocus" variant="raised">
+          <Link 
+          to="/signin"
+          >
+            <Button 
+            color="primary" 
+            autoFocus="autoFocus" 
+            variant="raised"
+            >
               Sign In
             </Button>
           </Link>
         </DialogActions>
       </Dialog>
-    {/* </React.Fragment> */}
-    </div>
-    //   <div>
-    //     <Script
-    //       url="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy_fsa23_HL03eeIZhtAcxDd8RCmVnogo&libraries=places"
-    //       onLoad={handleScriptLoad}
-    //     />
-    //     <Card >
-    //       <CardContent>
-    //         <Typography type="headline" component="h2" >
-    //           Sign Up
-    //         </Typography>
-    //         <TextField id="name" label="Name"  value={state.name} onChange={handleChange('name')} margin="normal" /><br />
-    //         <TextField id="email" type="email" label="Email" value={state.email} onChange={handleChange('email')} margin="normal" /><br />
-    //         <TextField id="password" type="password" label="Password" value={state.password} onChange={handleChange('password')} margin="normal" br />
-    //         <TextField id="intro" label="Personal Intro" value={state.intro} onChange={handleChange('intro')} margin="normal" /><br />
-    //         <TextField id="street" label="Street" value={state.street} onChange={handleChange('street')} margin="normal" /><br />
-    //         <TextField id="city" label="City" value={state.city} onChange={handleChange('city')} margin="normal" /><br />
-    //         <TextField id="state" label="State" value={state.state} onChange={handleChange('state')} margin="normal" /><br />
-    //         <TextField id="ZIP" label="Zip Code (Optional)" value={state.zip} onChange={handleChange('zip')} margin="normal" /><br />
-    //         <br /> {
-    //           state.error && (<Typography component="p" color="error">
-    //             <WarningIcon />
-    //             {state.error}</Typography>)
-    //         }
-    //       </CardContent>
-    //       <CardActions>
-    //         <Button color="primary" variant="raised" onClick={clickSubmit}>Submit</Button>
-    //       </CardActions>
-    //     </Card>
-    //     <Dialog open={state.open} disableBackdropClick={true}>
-    //       <DialogTitle>New Account</DialogTitle>
-    //       <DialogContent>
-    //         <DialogContentText>
-    //           New account successfully created.
-    //         </DialogContentText>
-    //       </DialogContent>
-    //       <DialogActions>
-    //         <Link to="/signin">
-    //           <Button color="primary" autoFocus="autoFocus" variant="raised">
-    //             Sign In
-    //           </Button>
-    //         </Link>
-    //       </DialogActions>
-    //     </Dialog>
-    //   </div>
-    // )
+    </React.Fragment>
+   
   )
 }
 

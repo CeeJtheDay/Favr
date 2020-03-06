@@ -10,6 +10,26 @@ import Alert from '../Alert';
 import "./chat-style.css";
 
 const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalState, modalStyle, handleClose }) => {
+
+    const classes = {
+        container: {
+            height: "85vh", 
+            paddingBottom:"10px", 
+            paddingTop:"10px",
+            margin: "80px 0 0 0"
+        },
+        card: {
+            minHeight: "100%",
+            backgroundColor: "#8693AB",
+            backgroundColor: "#8693AB",
+            borderRadius: "20px",
+            border: "groove 1px rgb(43,41,44, 0.3)"
+        },
+        text: {
+            color: "white",
+            textShadow: "2px 2px 4px #000000"
+        }
+    }
     const socket = socketIOClient();
     const [imagePath, setImagePath] = useState("");
     const [imagedata, setImageData] = useState({
@@ -36,22 +56,6 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
         socket.on('connect', function () {
             socket.emit('join', currUser.id, chatRoom.id, currUser.name);
         })
-
-        // message
-
-        // $(`#${chatRoom.id}${currUser.id}`).keydown(function (e) {
-        //     if (e.which === 13 && $(this).val()) {
-        //         e.preventDefault();
-        //         let msg = $(this).val();
-        //         $(this).val('');
-        //         console.log(imagePath);
-        //         let hash = currUser.name + chatRoom.id + currUser.id;
-        //         console.log(hash);
-        //         console.log(chatRoom.id);
-        //         socket.send(msg, chatRoom.id, currUser.id, currUser.name, hash, imagePath);
-        //     }
-        // });
-
 
     }
 
@@ -81,7 +85,7 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
                         ${history[i].message}
                         <span class="msg_time">${history[i].time}</span>
                     </div>
-                 </div>
+                </div>
                 `
             }
             $('#msglog').append(message);
@@ -238,16 +242,20 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
 
 
     return (
-        <div style={{ height: "85vh", paddingBottom:"10px", paddingTop:"10px"}}>
-            <div className="card" style={{ minHeight: "100%" }}>
+        <div style={classes.container}>
+            <div className="card" style={classes.card}>
                 <div className="card-header msg_head">
                     <div className="d-flex bd-highlight">
                         <div className="img_cont">
                             <img src={'/uploads/'+chatRoom.other.image} className="rounded-circle user_img" />
                             <span className="online_icon"></span>
                         </div>
-                        <div className="user_info">
-                            <span>Chat with {chatRoom.other.name}</span>
+                        <div 
+                        className="user_info">
+                            <span
+                            style={classes.text}
+                            >
+                            Chat with {chatRoom.other.name}</span>
                         </div>
                     </div>
                     <span id="action_menu_btn">
@@ -314,28 +322,3 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
 
 
 export default ChatWindow;
-
-
-
-{/* <div>
-            <h3>chatRoom#: {chatRoom.id}</h3>
-            <div class="container-fluid justify-content-center">
-                <div class="chatBox col" id="msglog">
-                </div>
-                <textarea style={classes.chatBox} name="message" className="col p-1" id={chatRoom.id + currUser.id} placeholder="Enter chat content here"></textarea>
-                <form id="imageSubmit" action="/upload" method="POST" encType="multipart/form-data" onSubmit={handleSubmitImage}>
-                    <div className="form-group">
-                        <label htmlFor="pic">Upload Profile Image:</label>
-                        <input type="file" className="form-control-file" name="userImage" id="upload" onChange={clearAlert}></input>
-                    </div>
-                    <button className="btn btn-success" type="submit">Upload(Upload Before Submit)</button>
-                    <Alert type="danger" style={{ display: imagedata.error ? 'block' : 'none', marginBottom: 10 }}>
-                        {imagedata.error}
-                    </Alert>
-                    <Alert type="success" style={{ display: imagedata.success ? 'block' : 'none', marginBottom: 10 }}>
-                        {imagedata.success}
-                    </Alert>
-                </form>
-                <div><button onClick={handSend}>Submit</button></div>
-            </div>
-        </div> */}
