@@ -6,11 +6,10 @@ const useStyles = makeStyles(theme => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      width: "75%"
+      width: 200,
     },
   },
 }));
-
 
 export default function BasicTextFields() {
   const classes = useStyles();
