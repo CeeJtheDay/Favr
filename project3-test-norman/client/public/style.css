@@ -1,14 +1,14 @@
-body { 
-    background-color: #2B292C;
+/* body { 
+    /* background-color: #2B292C; */
     /* background: url(../src/assets/images/handshake.png); */
     /* background-repeat: no-repeat; */
     /* background-position: center; */
     /* filter: invert(1) hue-rotate(210deg); */
-}
+/* } */
 
-#root {
+/* #root {
     background-color: #2B292C;
-}
+} */ 
 
 
 /* body {
@@ -29,11 +29,11 @@ body {
     line-height: 100px;
     flex-shrink: 0;
   } */
-
-  .MuiInputBase-root {
+/* 
+.MuiInputBase-root {
     color: white;
   }
   
   .MuiInputBase-input {
     color: white;
-  }
+  }   */
