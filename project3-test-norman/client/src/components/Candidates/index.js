@@ -37,7 +37,7 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
             backgroundColor: "#8693AB"
         },
         title: {
-            margin: "40px",
+            margin: "10px 40px",
             color: "white",
             fontWeight: "bold",
             textShadow: "2px 2px 4px #000000"

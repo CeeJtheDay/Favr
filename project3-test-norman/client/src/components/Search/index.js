@@ -12,6 +12,11 @@ import Candidates from "../Candidates";
 // import axios from "axios";
 import Fuse from "fuse.js";
 import Select from '../SearchSelect/index'
+import IconButton from '@material-ui/core/IconButton';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
 
 // set a default search value for onMount
 
@@ -68,7 +73,8 @@ const Search = ({ category, currUser, setCurrUser }) => {
             marginLeft: "auto",
             marginRight: "auto",
             width: "50%",
-            marginBottom: '20px'
+            marginBottom: '0px',
+            marginTop: '4px'
         },
         searchButton: {
             width: 'auto',
@@ -164,29 +170,43 @@ const Search = ({ category, currUser, setCurrUser }) => {
         }
     };
 
-   
+
 
     return (
         // <div >
         <React.Fragment>
             {/* <Card style={classes.card}> */}
-                <TextField
-                    id="search"
-                    label="Search products"
-                    type="search"
-                    onKeyDown={enterKey}
-                    onChange={handleChange('search')}
-                    style={classes.searchField}
-                    margin="normal"
+            <Select
+                setState={handleChange('category')} category={state.category}
+            />
+
+            <FormControl style={classes.searchField}>
+                <InputLabel onKeyDown={enterKey} onChange={handleChange('search')} style={classes.searchField}>Search</InputLabel>
+                <Input
+                    endAdornment={
+                        <InputAdornment position="end">
+                            <SearchIcon
+                                onClick={search}
+                            >
+                            </SearchIcon>
+                        </InputAdornment>
+                    }
                 />
-                <Select 
-                setState = {handleChange('category')}
-                />
-                <Button variant="raised" style={classes.searchButton} onClick={search}>
-                    <SearchIcon />
-                </Button>
-                {/* <Divider /> */}
-                <Candidates category={state.category} candidates={state.results} searched={state.searched} currUser={currUser} setCurrUser={setCurrUser} />
+            </FormControl>
+            {/* <TextField
+                id="search"
+                label="Search products"
+                type="search"
+                onKeyDown={enterKey}
+                onChange={handleChange('search')}
+                style={classes.searchField}
+                margin="normal"
+            /> */}
+            {/* <Button variant="raised" style={classes.searchButton} onClick={search}>
+                <SearchIcon />
+            </Button> */}
+            {/* <Divider /> */}
+            <Candidates category={state.category} candidates={state.results} searched={state.searched} currUser={currUser} setCurrUser={setCurrUser} />
             {/* </Card> */}
         </React.Fragment>
         // </div>
