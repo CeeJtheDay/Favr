@@ -11,4 +11,17 @@ router.route("/").post((req, res) => {
         })
 })
 
+router.route('/').get((req, res) => {
+    db.Review.find({})
+        .then(data => {
+            console.log(data);
+            res.json(data);
+        })
+        .catch(err => {
+            console.log(err.message);
+            res.status(500).json(err.message);
+        })
+
+})
+
 module.exports = router;
