@@ -1,96 +1,96 @@
 import React, { useState, useEffect } from 'react'
-import Paper from 'material-ui/Paper'
-// import List, { ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText } from 'material-ui/List'
-// import Avatar from 'material-ui/Avatar'
-import Typography from 'material-ui/Typography'
-// import Person from 'material-ui-icons/Person'
-// import Divider from 'material-ui/Divider'
-// import { createMuiTheme } from 'material-ui/styles'
 import { useTheme } from '@material-ui/core/styles';
-// import NSList from '../components/NeedsNServices/index'
 import Grid from 'material-ui/Grid'
-import OffersList from '../components/ProfileList/scottList'
 import ProfileHeader from '../components/ProfileHeader/index'
-import Popover from "../components/Popover/index"
-// import { StylesProvider } from '@material-ui/core/styles';
-import Navbar from "../components/Navbar/index"
-// import NSList from "../components/NeedsNServices/index"
-import NeedsList from "../components/ProfileList/needsList"
-// import TabList from "../components/ProfileList/tabList"
+import DisplayList from '../components/DisaplayList'
+import axios from "axios"
+import { withRouter } from 'react-router-dom';
+import OtherDisplayList from '../components/DisaplayListOther';
+const Profile = withRouter(({ history, currUser, setCurrUser }) => {
 
-
-const Profile = ({ currUser, setCurrUser }) => {
-  console.log("PROFILE CURRUSER", currUser);
   const theme = useTheme();
   const classes = {
-    root: theme.mixins.gutters({
+    list: {
+      margin: "5px",
+      backgroundColor: "#8693AB"
+    },
+    root: {
       maxWidth: 600,
       margin: 'auto',
-      padding: theme.spacing.unit * 3,
-      marginTop: theme.spacing.unit * 5
-    }),
-    title: {
-      margin: `${theme.spacing.unit * 3}px 0 ${theme.spacing.unit * 2}px`,
-      color: theme.palette.protectedTitle
     },
-    root1: theme.mixins.gutters({
-      maxWidth: 600,
-      margin: '12px 24px',
-      padding: theme.spacing.unit * 3,
-      backgroundColor: '#3f3f3f0d'
-    }),
+    title: {
+      margin: `12px 24px`,
+      // color: theme.palette.protectedTitle
+    },
+    root1: {
+      height: '90vh',
+      padding: "20px",
+      backgroundColor: "#8693AB",
+      // borderRadius: "20px",
+      border: "inset 1px white",
+      overflow: "auto"
+    },
     title1: {
-      margin: `${theme.spacing.unit * 2}px 0 12px ${theme.spacing.unit}px`,
-      color: theme.palette.openTitle
+      margin: `12px 24px`,
+      color: "white",
+      textAlign: "center"
+      // color: 
     }
   }
 
-  const [state, setState] = useState({
-    orders: []
-  });
+  const [reviewList, setReviewList] = useState([]);
 
   useEffect(() => {
-    // console.log(currUser);
-    let currOrders = currUser.orders;
-    // console.log(currOrders);
-    setState({ ...state, orders: currOrders })
-  }, [])
+    axios.get('../api/reviews')
+      .then(data => {
+        console.log(data);
+        if (data.length > 0) {
+          let newList = data.filter(obj => obj.reviwee === currUser.id);
+          handleName(newList);
+        }
+      })
+  }, [history.location])
+
+  const handleName = (currList) => {
+    let tempChatList = [];
+    currList.map(async (review, i) => {
+      await ran(currList, review, tempChatList);
+    })
+  }
+
+  function ran(currList, review, tempChatList) {
+    return new Promise(resolve => {
+      let tempChatObj = {
+        id: review._id,
+        rate: review.rate,
+        comment: review.comment,
+        time: review.createdAt,
+        reviewer: { id: review.reviewer},//add image here later
+        reviewee: { id: review.reviewee, name:currUser.name, image:currUser.image }
+      };
+      axios.get(`../api/users/${review.reviewer}`)
+        .then(data1 => {
+          console.log(data1.data);
+          tempChatObj.reviewer.name = data1.data.name;
+          tempChatObj.reviewer.image = data1.data.image; //add image here later
+          tempChatList.push(tempChatObj);
+          console.log(tempChatList);
+          if (tempChatList.length === currList.length) {
+            console.log(tempChatList);
+            setReviewList(tempChatList);
+          }
+        })
+    })
+  }
 
 
   return (
-    <Grid container item xs={12} spacing={3}>
-    <Paper >
-      <ProfileHeader currUser={currUser} setCurrUser={setCurrUser}></ProfileHeader>
-     
-
-      <Grid item xs={12} sm={12}>
-        <Paper style={classes.root1} elevation={4}>
-          <Typography type="title" style={classes.title1}>
-            Needs
-  
-        </Typography>
-          <Grid citem xs={12} sm={12}>
-            <NeedsList currUser={currUser} setCurrUser={setCurrUser} />
-          </Grid>
-
-        </Paper>
-        </Grid>
-        <Grid item xs={12} sm={12}>
-        <Paper style={classes.root1} elevation={4}>
-          <Typography type="title" style={classes.title1}>
-            Services
-        </Typography>
-          <Grid item xs={12} sm={12}>
-            <OffersList currUser={currUser} setCurrUser={setCurrUser}></OffersList>
-          </Grid>
-
-      </Paper>
-      </Grid>
-       
-    </Paper>
-<Navbar/>
+    <Grid style={classes.root1} container item xs={12} spacing={1}>
+      <ProfileHeader currUser={currUser} setCurrUser={setCurrUser} />
+      {history.location.pathname.includes("/profile") && (<DisplayList currUser={currUser} setCurrUser={setCurrUser} reviewList = {reviewList}/>)}
+      {history.location.pathname.includes("/other") && (<OtherDisplayList currUser={currUser} setCurrUser={setCurrUser} reviewList = {reviewList}/>)}
     </Grid>
   )
-}
+})
 
 export default Profile

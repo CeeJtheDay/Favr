@@ -7,25 +7,23 @@ const Profileimage = {
 }
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-  small: {
-    width: theme.spacing(3),
-    height: theme.spacing(3),
+    marginLeft:"auto",
+    marginRight: 'auto'
   },
   large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
+    marginLeft:"auto",
+    marginRight: 'auto',
+    marginTop:"auto",
+    marginBottom: 'auto',
+    width: theme.spacing(8),
+    height: theme.spacing(8),
   },
 }));
-export default function ImageAvatars() {
+export default function ImageAvatars({currUser}) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Avatar alt="Profile Pic" src={Profileimage} className={classes.large} />
+      <Avatar alt="Profile Pic" src={'/uploads/'+currUser.image} className={classes.large} />
     </div>
   );
 }

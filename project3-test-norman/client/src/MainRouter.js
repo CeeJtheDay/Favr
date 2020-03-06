@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Title from "./pages/Title";
-import Menu from "../src/components/Menu"
+import Title from "./pages/Title.js";
+import Menu from "../src/components/Menu";
+// import ProminentAppBar from "./components/Menu/index2";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
 import Profile from "./pages/scottProfile";
@@ -10,8 +11,7 @@ import Signin from "./pages/Signin";
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string'
 import axios from "axios"
-// import Navbar from "../src/components/Navbar/index"
-
+import Footer from "./components/Navbar";
 const MainRouter = withRouter(({ history }) => {
   const [currUser, setCurrUser] = useState({
     id: '',
@@ -28,11 +28,12 @@ const MainRouter = withRouter(({ history }) => {
     offers: [],
     createDate: '',
     rate: 0,
-    ratingQuantity: 0
+    ratingQuantity: 0,
+    image:'blank-template.jpg'
   });
 
   useEffect(() => {
-    if (history.location.pathname.includes("/user") || history.location.pathname.includes("/barter") || history.location.pathname.includes("/profile")) {
+    if (history.location.pathname.includes("/user") || history.location.pathname.includes("/barter") || history.location.pathname.includes("/profile")|| history.location.pathname.includes("/other")) {
       console.log(queryString.parse(history.location.search));
       const user_id = queryString.parse(history.location.search).id;
       axios.get(`../api/users/${user_id}`)
@@ -54,43 +55,33 @@ const MainRouter = withRouter(({ history }) => {
             needs: userInfo.data.needs,
             offers: userInfo.data.offers,
             rate: userInfo.data.rate,
-            ratingQuantity: userInfo.data.ratingQuantity
+            ratingQuantity: userInfo.data.ratingQuantity,
+            image:userInfo.data.image
           })
         })
     }
   }, [history.location])
 
 
-
   return (
-    <div>
+    // <div>
+    <React.Fragment>
       <Menu currUser={currUser} setCurrUser={setCurrUser} />
-      <div style={{ marginLeft: "15px", marginRight: "15px" }}>
+      {/* <ProminentAppBar /> */}
+      <div>
         <Switch>
           {/* <Route exact path="/" component={Home} /> */}
           <Route exact path="/" component={Title} />
           <Route path="/user" component={() => <Home currUser={currUser} setCurrUser={setCurrUser} />} />
           <Route path="/barter" component={() => <Chat currUser={currUser} setCurrUser={setCurrUser} />} />
           <Route path="/profile" component={() => <Profile currUser={currUser} setCurrUser={setCurrUser} />} />
+          <Route path="/other" component={() => <Profile currUser={currUser} setCurrUser={setCurrUser} />} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/signin" component={Signin} />
         </Switch>
       </div>
-    </div>
-
-    // <div>
-    //   <Navbar currUser={currUser} setCurrUser={setCurrUser} />
-    //   <div style={{ marginLeft: "15px", marginRight: "15px" }}>
-    //     <Switch>
-    //       {/* <Route exact path="/" component={Home} /> */}
-    //       <Route exact path="/" component={Title} />
-    //       <Route path="/user" component={() => <Home currUser={currUser} setCurrUser={setCurrUser} />} />
-    //       <Route path="/barter" component={() => <Chat currUser={currUser} setCurrUser={setCurrUser} />} />
-    //       <Route path="/profile" component={() => <Profile currUser={currUser} setCurrUser={setCurrUser} />} />
-    //       <Route exact path="/signup" component={Signup} />
-    //       <Route exact path="/signin" component={Signin} />
-    //     </Switch>
-    //   </div>
+      {history.location.pathname.includes("/user") || history.location.pathname.includes("/barter") || history.location.pathname.includes("/profile") ? (<Footer currUser={currUser} setCurrUser={setCurrUser}/>) : (null)}
+    </React.Fragment>
     // </div>
   )
 

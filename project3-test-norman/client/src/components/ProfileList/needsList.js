@@ -20,8 +20,14 @@ const NeedsList = ({ category, list, currUser, setCurrUser }) => {
             width: '100%',
             height: 400,
             maxWidth: 300,
-            backgroundColor: theme.palette.background.paper,
+            backgroundColor: "#8693AB",
+            margin: "5px"
         },
+        button: {
+            backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
+            border: "solid 1px #077699",
+            borderRadius: "15px"
+        }
     }));
     console.log(currUser);
 

@@ -10,7 +10,7 @@ export default {
     },
 
     remove: function(id) {
-        return axios.delete(`/api/baters/${id}`);
+        return axios.delete(`../api/barters/${id}`);
     },
 
 };

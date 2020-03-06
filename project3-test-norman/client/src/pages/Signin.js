@@ -14,27 +14,53 @@ const Signin = () => {
   const theme = useTheme();
   const classes = {
     card: {
-      maxWidth: 600,
+      // maxWidth: 600,
+      height: "auto",
       margin: 'auto',
       textAlign: 'center',
-      marginTop: theme.spacing.unit * 5,
-      paddingBottom: theme.spacing.unit * 2
+      marginTop: "80px",
+      marginBottom: "80px",
+      // paddingBottom: ""
+      paddingRight: "auto",
+      paddingLeft: "auto",
+      backgroundColor: "#8693AB",
+      borderRadius: "20px",
+      border: "inset 1px white",
+      marginRight:"auto",
+      marginLeft:"auto"
+      // display: "flex"
     },
     error: {
       verticalAlign: 'middle'
     },
     title: {
-      marginTop: theme.spacing.unit * 2,
-      color: theme.palette.openTitle
+      marginTop: "20px",
+      color: "white",
+      textShadow: "2px 2px 4px #000000",
+      fontWeight: "bold",
+      // backgroundColor: "#96CDFF",
+      // border: "solid 1px #077699",
+      // borderRadius: "15px",
+      width: "auto",
+      flexBox: "center",
+      // backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)"
+     
     },
     textField: {
       marginLeft: theme.spacing.unit,
       marginRight: theme.spacing.unit,
-      width: 300
+      width: 300,
+      color: "secondary",
+      border: "white",
     },
     submit: {
       margin: 'auto',
-      marginBottom: theme.spacing.unit * 2
+      marginBottom: theme.spacing.unit * 2,
+      // backgroundColor: "#96CDFF",
+      backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
+      border: "solid 1px #077699",
+      borderRadius: "15px",
+      color: "#07769"
     }
   };
 
@@ -75,9 +101,11 @@ const Signin = () => {
     return (<Redirect to={`/user/?id=${state.id}`} />)
   } else {
     console.log("here");
+
     return (
-      <Card style={classes.card}>
-        <CardContent>
+      <div style={classes.card}>
+      {/* // <Card style={classes.card}> */}
+        {/* // <CardContent> */}
           <Typography type="headline" component="h2" style={classes.title}>
             Sign In
             </Typography>
@@ -89,11 +117,12 @@ const Signin = () => {
               {state.error}
             </Typography>)
           }
-        </CardContent>
-        <CardActions>
+        {/* // </CardContent> */}
+        {/* // <CardActions> */}
           <Button color="primary" variant="raised" onClick={clickSubmit} style={classes.submit}>Submit</Button>
-        </CardActions>
-      </Card>
+        {/* // </CardActions> */}
+      {/* // </Card> */}
+      </div>
     )
   }
 }

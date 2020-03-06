@@ -5,22 +5,18 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 // import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import ReactStars from '../Modal/index'
+import ReactStars from "react-rating-stars-component";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    width: '100%',
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
+  container:{
+    padding:'10px',
+    paddingBottom: '10px !important'
   },
   pos: {
-    marginBottom: 12,
+    marginBottom:0,
   },
 });
 
@@ -28,34 +24,28 @@ const useStyles = makeStyles({
 
 export default function SimpleCard({ currUser }) {
   const classes = useStyles();
-  // console.log(currUser);
   return (
- 
-       
-   
     <Card className={classes.root}>
-      <CardContent>
-
+      <CardContent className={classes.container}>
         <Typography variant="h5" component="h2">
           {currUser.name}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          {currUser.city}
-
+          {currUser.city},{currUser.state}
+        </Typography>
+        <Typography>
+          <ReactStars
+            value={currUser.rate/currUser.rateQuantity}
+            size={20}
+            half={true}
+          />
         </Typography>
 
-        <ReactStars
-            value={3}
-            size={50}
-            half={true}
-
-          />
-       
       </CardContent>
       {/* <CardActions>
         <Button size="small">Learn More</Button>
       </CardActions> */}
     </Card>
-   
+
   );
 }

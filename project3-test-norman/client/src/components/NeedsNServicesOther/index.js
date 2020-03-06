@@ -29,42 +29,42 @@ const NSList = ({ category, list, currUser, setCurrUser }) => {
         }
     };
 
-    const [state, setState] = useState({
-        list: list,
-        newItem: ""
-    });
+    // const [state, setState] = useState({
+    //     list: list,
+    //     newItem: ""
+    // });
 
-    const handleChange = e => {
-        console.log(e.target.value);
-        setState({ ...state, newItem: e.target.value });
-    }
+    // const handleChange = e => {
+    //     console.log(e.target.value);
+    //     setState({ ...state, newItem: e.target.value });
+    // }
 
-    const handleDelete = (i) => {
-        console.log(i);
-        let currList = state.list;
-        currList.splice(i, 1);
-        let obj = {};
-        obj[category] = currList;
-        API.updateUsers(currUser.id, obj)
-            .then(() => {
-                console.log("delete!!!");
-                setState({ ...state, list: currList });
-            })
-    }
+    // const handleDelete = (i) => {
+    //     console.log(i);
+    //     let currList = state.list;
+    //     currList.splice(i, 1);
+    //     let obj = {};
+    //     obj[category] = currList;
+    //     API.updateUsers(currUser.id, obj)
+    //         .then(() => {
+    //             console.log("delete!!!");
+    //             setState({ ...state, list: currList });
+    //         })
+    // }
 
-    const handleSubmit = () => {
-        let currList = state.list;
-        currList.push(state.newItem);
-        let obj = {};
-        obj[category] = currList;
-        console.log(currUser);
-        API.updateUsers(currUser.id, obj)
-            .then(() => {
-                console.log("add!!!");
-                setState({ ...state, newItem: "", list: currList });
-            })
+    // const handleSubmit = () => {
+    //     let currList = state.list;
+    //     currList.push(state.newItem);
+    //     let obj = {};
+    //     obj[category] = currList;
+    //     console.log(currUser);
+    //     API.updateUsers(currUser.id, obj)
+    //         .then(() => {
+    //             console.log("add!!!");
+    //             setState({ ...state, newItem: "", list: currList });
+    //         })
 
-    }
+    // }
 
     return (
         <div style={classes.root}>
@@ -74,18 +74,18 @@ const NSList = ({ category, list, currUser, setCurrUser }) => {
                         <ListItemText
                             primary={item}
                         />
-                        <ListItemSecondaryAction>
+                        {/* <ListItemSecondaryAction>
                             <IconButton edge="end" aria-label="delete" onClick={(i) => handleDelete(i)}>
                                 <DeleteIcon />
                             </IconButton>
-                        </ListItemSecondaryAction>
+                        </ListItemSecondaryAction> */}
                     </ListItem>
                 ))}
             </List>
-            <form style={classes.root1} noValidate autoComplete="off">
+            {/* <form style={classes.root1} noValidate autoComplete="off">
                 <TextField id="standard-basic" label={category} value={state.newItem} onChange={handleChange} style={{ marginRight: "10px" }} />
                 <Button variant="contained" color="primary" onClick={handleSubmit} style={{ padding: "10px" }}>Add</Button>
-            </form>
+            </form> */}
         </div>
     )
 }

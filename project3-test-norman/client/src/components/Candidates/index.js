@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { createMuiTheme } from 'material-ui/styles'
+// import { useTheme } from '@material-ui/core/styles';
+// import { createMuiTheme } from 'material-ui/styles'
 // import { Link } from 'react-router-dom'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -21,26 +22,87 @@ import Select from '@material-ui/core/Select';
 // import $ from "jquery";
 
 const Candidates = withRouter(({ history, category, candidates, searched, currUser, setCurrUser }) => {
-    const theme = createMuiTheme();
+    // const theme = useTheme();
     const classes = {
         root: {
             flexGrow: 1,
-            width: "50%",
-            margin: 'auto'
+            // width: "50%",
+            // margin: 'auto',
+            border: "solid 1px white",
+            borderRadius: "20px",
+            width: "400px",
+            padding: "50px"
         },
         demo: {
-            backgroundColor: theme.palette.background.paper,
+            backgroundColor: "#8693AB"
         },
         title: {
-            margin: theme.spacing.unit,
+            margin: "40px",
+            color: "white",
+            fontWeight: "bold",
+            textShadow: "2px 2px 4px #000000"
         },
         formControl: {
-            margin: theme.spacing.unit,
-            minWidth: 120,
+            // margin: theme.spacing.unit * 1,
+            // minWidth: 120,
         },
         selectEmpty: {
-            marginTop: theme.spacing.unit,
+            marginTop: "40px",
+            color: "white"
         },
+        list:{
+            backgroundColor: " rgb(43,41,44, 0.3)",
+            border: "groove 1px rgb(43,41,44, 0.3)",
+            borderRadius: "20px",
+            padding: "10px"
+            
+        },
+        listItem: {
+            backgroundColor: "rgb(43,41,44, 0.3)",
+            margin: "8px auto", 
+            padding: "15px",  
+            borderRadius: "20px",
+            border: "groove 1px #96CDFF80",
+            // backgroundImage: "linear-gradient(to right, #96CDFF80 0%, #07769980 51%, #96CDFF80 100%)", 
+            // background: "transparent"   
+        },
+        liText1:{
+            color: "white",
+            textShadow: "2px 2px 4px #000000",
+            backgroundColor: "#96CDFF",
+            // backgroundImage: "linear-gradient(to right, #077699 0%, #96CDFF 51%, #077699 100%)",
+            borderRadius: "20px",
+            border: "hidden 1px #077699",
+            boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)",
+            padding: "5px"
+
+
+        },
+        // liText2:{
+        //     color:"grey",
+        //     margin: "auto",
+        //     textAlign: "left"
+        // },
+        // textWrap: {
+        //     border: "solid 1px white"
+        // },
+        messageBtn: {
+            margin: "5px",
+            color: "white",
+            textShadow: "2px 2px 4px #000000",
+            backgroundColor: "#96CDFF ",
+            border: "dotted 2px #077699",
+            boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)"
+
+        },
+        profileBtn: {
+            margin: "5px",
+            color: "white",
+            textShadow: "2px 2px 4px #000000",
+            backgroundColor: "#96CDFF ",
+            border: "dotted 2px #077699",
+            boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)"
+        }
     };
 
     const handleConnect = (user1Id, user2Id) => {
@@ -120,15 +182,22 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
 
 
     return (
-        <div style={classes.root}>
-            <Grid item xs={12} md={12}>
-                {searched ? (<Typography variant="h6" style={classes.title}>
+        <React.Fragment>
+        {/* // <div style={classes.root}>
+        //     <Grid item xs={12} md={12}> */}
+                {searched ? (<Typography variant="h6" style={classes.title}> 
                     Result for {category}
-                </Typography>) : (<Typography variant="h6" style={classes.title}>
-                    All Result for {category}
-                </Typography>)}
+                </Typography>) : (
+                <Typography variant="h6" style={classes.title}>
+                    Search Results
+                </Typography>
+                )}
                 <FormControl style={classes.formControl}>
-                    <Select value={state.filter} onChange={handleChange} displayEmpty style={classes.selectEmpty}>
+                    <Select 
+                    value={state.filter} 
+                    onChange={handleChange} 
+                    // displayEmpty 
+                    style={classes.selectEmpty}>
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
@@ -139,36 +208,69 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
                 </FormControl>
                 <div style={classes.demo}>
                     {state.finalCandidates.length > 0 ? (
-                        <List>
-                            {state.finalCandidates.map((user, i) => (
-                                <ListItem>
+                        
+                        <List 
+                        disablePadding="true"
+                        style={classes.list}>
+                            {state.finalCandidates.map((user, i) => ( 
+                                <ListItem key={i} style={classes.listItem}>
+                                {/* <div style={classes.textWrap}> */}
                                     <ListItemText
-                                        primary={user.name}
+                                        style={classes.liText1}
+                                        primary={`${user.name}`}     
                                     />
+                               
                                     <ListItemSecondaryAction>
-                                        <IconButton edge="end" aria-label="connect" onClick={() => handleConnect(user._id, currUser.id)}>
+                                        <IconButton
+                                        style={classes.messageBtn} 
+                                        edge="end" 
+                                        aria-label="connect" 
+                                        onClick={() => handleConnect(user._id, currUser.id)}
+                                        >
                                             <TelegramIcon />
                                         </IconButton>
-                                        <IconButton edge="end" aria-label="profile">
+                                        <IconButton 
+                                        style={classes.profileBtn}
+                                        edge="end" 
+                                        aria-label="profile"
+                                        >
                                             <AccountCircleIcon />
                                         </IconButton>
                                     </ListItemSecondaryAction>
                                 </ListItem>
                             ))}
-                        </List>
+                        </List> 
+                        
 
                     ) : (
-                            <List>
+                            <List 
+                            disablePadding="true"
+                            style={classes.list}>
                                 {candidates.map((user, i) => (
-                                    <ListItem>
+                                    <ListItem 
+                                    style={classes.listItem}
+                                    key ={i}
+                                    >
                                         <ListItemText
-                                            primary={user.name}
+                                            style={classes.liText1}
+                                            primary={`${user.name}`}
                                         />
+                                        
+                                        
                                         <ListItemSecondaryAction>
-                                            <IconButton edge="end" aria-label="connect" onClick={() => handleConnect(user._id, currUser.id)}>
+                                            <IconButton 
+                                            style={classes.messageBtn} 
+                                            edge="end" 
+                                            aria-label="connect" 
+                                            onClick={() => handleConnect(user._id, currUser.id)}
+                                            >
                                                 <TelegramIcon />
                                             </IconButton>
-                                            <IconButton edge="end" aria-label="profile">
+                                            <IconButton 
+                                            style={classes.profileBtn}
+                                            edge="end" 
+                                            aria-label="profile"
+                                            >
                                                 <AccountCircleIcon />
                                             </IconButton>
                                         </ListItemSecondaryAction>
@@ -178,8 +280,9 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
 
                         )}
                 </div>
-            </Grid>
-        </div >
+        {/* //     </Grid> */}
+        {/* // </div > */}
+    </React.Fragment>
     )
 })
 
