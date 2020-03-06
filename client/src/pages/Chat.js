@@ -4,22 +4,42 @@ import { withRouter } from 'react-router-dom';
 import API from "../utils/API-Barter";
 import axios from 'axios';
 import ChatWindow from "../components/ChatWindow";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import ListIcon from "@material-ui/icons/List";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from '@material-ui/icons/Delete';
 import RateReviewIcon from '@material-ui/icons/RateReview';
 import "./chat-style.css";
 import $ from "jquery";
 import Modal from "../components/Modal";
-import Title from './Title';
 
 const useStyles = makeStyles({
     list: {
+        marginTop:"80px",
         width: 350,
         marginRight:'auto',
-        marginLeft:'auto'
+        marginLeft:'auto',
+        backgroundColor: "#8693AB",
+        border: "groove 1px rgb(43,41,44, 0.3)",
     },
+    review: {
+        margin: "5px",
+        color: "white",
+        textShadow: "2px 2px 4px #000000",
+        backgroundColor: "#96CDFF ",
+        border: "dotted 2px #077699",
+        boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)",
+        height: "50px",
+        width: "50px"
+    },
+    delete: {
+        margin: "5px",
+        color: "white",
+        textShadow: "2px 2px 4px #000000",
+        backgroundColor: "#96CDFF ",
+        border: "dotted 2px #077699",
+        boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)",
+        height: "50px",
+        width: "50px"
+    }
 });
 
 const Chat = withRouter(({ history, currUser, setCurrUser }) => {
@@ -141,34 +161,51 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
     }
 
     const sideList = side => (
-        <div
-            className={classes.list}
-            role="presentation"
-            //onClick={toggleDrawer(side, false)}
-            //onKeyDown={toggleDrawer(side, false)}
-        >
             <div className="card contacts_card">
                 <div className="card-body contacts_body">
                     <ui className="contacts">
                         {state.chatList.map((tile) => (
-                            <li className="active" onClick={() => handleOpenChatWindow(tile)}>
-                                <div className="d-flex bd-highlight">
-                                    <div className="img_cont">
-                                        <img src={'/uploads/'+tile.other.image} className="rounded-circle user_img" />
+                            <li 
+                            className="active" 
+                            onClick={() => handleOpenChatWindow(tile)}
+                            >
+                                <div 
+                                className="d-flex bd-highlight"
+                                >
+                                    <div 
+                                    className="img_cont"
+                                    >
+                                        <img 
+                                        src={'/uploads/'+tile.other.image} className="rounded-circle user_img" 
+                                        />
+                                        <span className="user_info"
+                                        >
+                                        {tile.other.name}
+                                        </span>
                                     </div>
-                                    <div className="user_info">
-                                        <span>{tile.other.name}</span>
-                                    </div>
-                                    <div className="user_button">
-                                        <IconButton edge="end" aria-label="review" style={{ padding: "0px", marginRight: "8px" }} onClick={() => 
+                                    
+                                    
+                                    <div 
+                                    className="user_button"
+                                    >
+                                        <IconButton 
+                                        className={classes.review}
+                                        edge="end" aria-label="review" 
+                                        style={{ padding: "0px", marginRight: "8px" }} onClick={() => 
                                             handleOpen(tile.other.id)
-                                        }>
+                                        }
+                                        >
                                             <RateReviewIcon />
                                         </IconButton>
-                                        <IconButton edge="end" aria-label="delete" style={{ padding: "0px" }} onClick={(e)=>{
+                                        <IconButton 
+                                        className={classes.delete}
+                                        edge="end" aria-label="delete" 
+                                        style={{ padding: "0px" }} 
+                                        onClick={(e)=>{
                                             handleDeleteChat(tile.id)
                                             e.stopPropagation();
-                                        }}>
+                                        }}
+                                        >
                                             <DeleteIcon />
                                         </IconButton>
                                     </div>
@@ -178,30 +215,31 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
                     </ui>
                 </div>
             </div>
-        </div>
     );
     console.log(state.currChat);
     if (!$.isEmptyObject(state.currChat)) {
         return (
-            <ChatWindow chatRoom={state.currChat} currUser={currUser} toggleDrawer={toggleDrawer} state={state} sideList={sideList} modalState={modalState} handleClose={handleClose} modalStyle={modalStyle}/>
+            <ChatWindow 
+            chatRoom={state.currChat} 
+            currUser={currUser} 
+            toggleDrawer={toggleDrawer} 
+            state={state} 
+            sideList={sideList} 
+            modalState={modalState} 
+            handleClose={handleClose} 
+            modalStyle={modalStyle}/>
         );
     } else {
         return (
-            <div style={{ height: "85vh", paddingBottom:"10px", paddingTop:"10px", overflow:"auto" }}>
+            <div 
+            style={{ height: "85vh", paddingBottom:"10px", paddingTop:"10px", overflow:"auto" }}>
                 {sideList("left")}
-                {/* <div id="action_menu_btn1">
-                    <IconButton onClick={toggleDrawer("left", true)}>
-                        <ListIcon />
-                    </IconButton>
-                </div>
-                <SwipeableDrawer
-                    open={state.left}
-                    onClose={toggleDrawer("left", false)}
-                    onOpen={toggleDrawer("left", true)}
-                >
-                    {sideList("left")}
-                </SwipeableDrawer> */}
-                <Modal open={modalState.open} handleClose={handleClose} modalStyle={modalStyle} reviewer={currUser.id} reviewee={modalState.reviewee} />
+                <Modal 
+                open={modalState.open} 
+                handleClose={handleClose} modalStyle={modalStyle} 
+                reviewer={currUser.id} 
+                reviewee={modalState.reviewee} 
+                />
             </div>
         );
     }

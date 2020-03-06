@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Grid from 'material-ui/Grid';
 import ProfileHeader from '../components/ProfileHeader/index'
-import DisplayList from '../components/DisaplayList'
+import DisplayList from '../components/DisplayList'
 import axios from "axios"
 import { withRouter } from 'react-router-dom';
-import OtherDisplayList from '../components/DisaplayListOther';
+import OtherDisplayList from '../components/DisplayListOther';
 const Profile = withRouter(({ history, currUser, setCurrUser }) => {
 
   const classes = {
