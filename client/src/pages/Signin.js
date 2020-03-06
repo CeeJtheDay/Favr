@@ -5,13 +5,10 @@ import TextField from 'material-ui/TextField'
 import Typography from 'material-ui/Typography'
 import WarningIcon from '@material-ui/icons/Warning';
 import { Redirect } from 'react-router-dom'
-// import { createMuiTheme } from 'material-ui/styles';
-import { useTheme } from '@material-ui/core/styles';
 import API from "../utils/API-User";
 
 const Signin = () => {
 
-  const theme = useTheme();
   const classes = {
     card: {
       maxWidth: 600,
@@ -20,7 +17,6 @@ const Signin = () => {
       textAlign: 'center',
       marginTop: "80px",
       marginBottom: "80px",
-      // paddingBottom: ""
       paddingRight: "auto",
       paddingLeft: "auto",
       backgroundColor: "#8693AB",
@@ -28,40 +24,31 @@ const Signin = () => {
       border: "inset 1px white",
       marginRight:"auto",
       marginLeft:"auto"
-      // display: "flex"
     },
     error: {
       verticalAlign: 'middle'
     },
     title: {
-      // marginTop: "100px",
       color: "white",
       textShadow: "2px 2px 4px #000000",
       fontWeight: "bold",
-      // marginBottom: "-150px"
-      // backgroundColor: "#96CDFF",
-      // border: "solid 1px #077699",
-      // borderRadius: "15px",
       width: "auto",
       flexBox: "center",
-      // backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)"
-     
     },
     textField: {
-      marginLeft: theme.spacing.unit,
-      marginRight: theme.spacing.unit,
+      margin: "0 30px",
       width: 300,
-      color: "secondary",
-      border: "white",
+      backgroundColor: "#8693AB"
     },
     submit: {
       margin: 'auto',
-      marginBottom: theme.spacing.unit * 2,
-      // backgroundColor: "#96CDFF",
-      backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
-      border: "solid 1px #077699",
+      marginBottom: "20px",
+      backgroundImage: "linear-gradient( #96CDFF 0%, #077699 51%, #96CDFF 100%)",
+      border: "solid 1px #96CDFF",
       borderRadius: "15px",
-      color: "#07769"
+      color: "#07769",
+      textShadow: "2px 2px 4px #000000",
+      boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)"
     }
   };
 
@@ -107,20 +94,52 @@ const Signin = () => {
       
        <Card style={classes.card}>
         <CardContent>
-          <Typography type="headline" component="h2" style={classes.title}>
+          <Typography 
+          type="headline" 
+          component="h2" 
+          style={classes.title}
+          >
             Sign In
             </Typography>
-          <TextField id="email" type="email" label="Email" style={classes.textField} value={state.email} onChange={handleChange('email')} margin="normal" /><br />
-          <TextField id="password" type="password" label="Password" style={classes.textField} value={state.password} onChange={handleChange('password')} margin="normal" />
-          <br /> {
-            state.error && (<Typography component="p" color="error">
+          <TextField 
+          id="email" 
+          type="email" 
+          label="Email" 
+          style={classes.textField} 
+          value={state.email} 
+          onChange={handleChange('email')} 
+          margin="normal"
+          />
+          <br />
+          <TextField 
+          id="password" 
+          type="password" 
+          label="Password" 
+          style={classes.textField} 
+          value={state.password} 
+          onChange={handleChange('password')} margin="normal" 
+
+          />
+          <br /> 
+          {state.error && (
+            <Typography 
+            component="p" 
+            color="error">
               <WarningIcon />
               {state.error}
-            </Typography>)
+            </Typography>
+            )
           }
         </CardContent>
         <CardActions>
-          <Button color="primary" variant="raised" onClick={clickSubmit} style={classes.submit}>Submit</Button>
+          <Button 
+          color="primary" 
+          variant="raised" 
+          onClick={clickSubmit} 
+          style={classes.submit}
+          >
+          Submit
+          </Button>
          </CardActions>
        </Card>
     
