@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { createMuiTheme } from 'material-ui/styles'
-// import { Link } from 'react-router-dom'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
@@ -37,11 +36,13 @@ const NSList = ({ category, list, currUser, setCurrUser }) => {
             textShadow: "2px 2px 4px #000000"
         },
         button: {
-            backgroundImage: "linear-gradient(to right, #077699 0%, #96CDFF 51%, #077699 100%)",
+            backgroundImage: "linear-gradient( #96CDFF 0%, #077699 51%, #96CDFF 100%)",
             color: "white",
-            border: "solid 1px #077699",
+            border: "solid 1px #96CDFF",
             borderRadius: "20px",
-            padding: "10px"
+            padding: "10px",
+            textShadow: "2px 2px 4px #000000",
+            boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)"
         }
     };
 
@@ -107,7 +108,10 @@ const NSList = ({ category, list, currUser, setCurrUser }) => {
                 variant="contained" 
                 color="primary" 
                 onClick={handleSubmit} 
-                style={classes.button}>Add</Button>
+                style={classes.button}
+                >
+                Add
+                </Button>
             </form>
         </div>
     )
