@@ -34,26 +34,37 @@ const Title = () => {
         },
         handshake: {
           justifyContent: "space-around",
-          paddingTop: "110px"
+          paddingTop: "0px"
         },
         handshakePic: {
           width: "400px",
+        },
+        title: {
+          color: "white",
+          fontWeight: "Bold",
+          padding: "60px 40px 0px 40px",
+          textAlign: "center"
         }
       };
 
 
     return (
       <React.Fragment>
-       <Container style={classes.container}>
+        <Container style={classes.container}>
             <h3 style={classes.h3}>Welcome to</h3>
             <img src={Logo} alt="logo" style={classes.img} />
             <h3 style={classes.h3}>Login or Register to get started</h3>
-       </Container>
-       <Grid container justify="center">
-        <Grid item style={classes.handshake}>
-         <img alt="handshake" src={Handshake} style={classes.handshakePic}/>
+        </Container>
+        <Grid container justify="center">
+            <h3 style={classes.title}>
+              Making life a little <i>barter</i>, one trade at a time...
+            </h3>
         </Grid>
-       </Grid>
+        <Grid container justify="center">
+          <Grid item style={classes.handshake}>
+            <img alt="handshake" src={Handshake} style={classes.handshakePic}/>
+          </Grid>
+        </Grid>
       </React.Fragment>
     )
 };
