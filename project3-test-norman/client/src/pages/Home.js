@@ -11,10 +11,9 @@ const Home = withRouter(({ history, currUser, setCurrUser }) => {
     // const theme = useTheme();
     const classes = {
         container: {
-          // maxWidth: 600,
-          margin: 'auto',
+          maxWidth: '100%',
           textAlign: 'center',
-          height: "100vh",
+          height: "90vh",
           margin: "80px auto",
           // height: "100%",
           // bottom: 0,
