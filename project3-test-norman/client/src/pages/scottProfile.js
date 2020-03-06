@@ -16,7 +16,7 @@ import Popover from "../components/Popover/index"
 import Navbar from "../components/Navbar/index"
 // import NSList from "../components/NeedsNServices/index"
 import NeedsList from "../components/ProfileList/needsList"
-
+// import TabList from "../components/ProfileList/tabList"
 
 
 const Profile = ({ currUser, setCurrUser }) => {
@@ -86,9 +86,9 @@ const Profile = ({ currUser, setCurrUser }) => {
 
       </Paper>
       </Grid>
-      
+       
     </Paper>
-<Navbar></Navbar>
+<Navbar/>
     </Grid>
   )
 }
