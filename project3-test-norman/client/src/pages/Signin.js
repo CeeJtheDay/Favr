@@ -14,9 +14,9 @@ const Signin = () => {
   const theme = useTheme();
   const classes = {
     card: {
-      // maxWidth: 600,
+      maxWidth: 600,
       height: "auto",
-      margin: 'auto',
+      margin: '100px auto',
       textAlign: 'center',
       marginTop: "80px",
       marginBottom: "80px",
@@ -34,10 +34,11 @@ const Signin = () => {
       verticalAlign: 'middle'
     },
     title: {
-      marginTop: "20px",
+      // marginTop: "100px",
       color: "white",
       textShadow: "2px 2px 4px #000000",
       fontWeight: "bold",
+      // marginBottom: "-150px"
       // backgroundColor: "#96CDFF",
       // border: "solid 1px #077699",
       // borderRadius: "15px",
@@ -103,9 +104,9 @@ const Signin = () => {
     console.log("here");
 
     return (
-      <div style={classes.card}>
-      {/* // <Card style={classes.card}> */}
-        {/* // <CardContent> */}
+      
+       <Card style={classes.card}>
+        <CardContent>
           <Typography type="headline" component="h2" style={classes.title}>
             Sign In
             </Typography>
@@ -117,12 +118,12 @@ const Signin = () => {
               {state.error}
             </Typography>)
           }
-        {/* // </CardContent> */}
-        {/* // <CardActions> */}
+        </CardContent>
+        <CardActions>
           <Button color="primary" variant="raised" onClick={clickSubmit} style={classes.submit}>Submit</Button>
-        {/* // </CardActions> */}
-      {/* // </Card> */}
-      </div>
+         </CardActions>
+       </Card>
+    
     )
   }
 }

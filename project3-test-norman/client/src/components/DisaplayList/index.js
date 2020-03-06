@@ -57,15 +57,28 @@ const useStyles = makeStyles(theme => ({
     root: {
         marginBottom:"20px",
         flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: "#8693AB",
         height: '72%',
-        maxHeight: '72%'
+        maxHeight: '72%',
     },
     tabPage: {
         overflow: 'auto',
         height: "88%",
         paddingRight: "20px",
-        paddingLeft: "20px"
+        paddingLeft: "20px",
+        border: "groove 1px #077699",
+        borderRadius: "0 0 20px 20px",
+        backgroundColor: "rgb(43,41,44, 0.3)",
+        color: "white"
+    },
+    tabs: {
+        textShadow: "2px 2px 4px #000000",
+        backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
+        borderRadius: "20px 20px 0 0"
+    },
+    appBar: {
+        backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
+        borderRadius: "20px"
     }
 }));
 
@@ -79,16 +92,22 @@ export default function NavTabs({ currUser, setCurrUser,reviewList }) {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar 
+            className={classes.appBar}
+            position="static">
                 <Tabs
+                    className={classes.tabs}
                     variant="fullWidth"
                     value={value}
                     onChange={handleChange}
                     aria-label="nav tabs example"
                 >
-                    <LinkTab label="Needs" {...a11yProps(0)} />
-                    <LinkTab label="Offers" {...a11yProps(1)} />
-                    <LinkTab label="Reviews" {...a11yProps(2)} />
+                    <LinkTab 
+                    label="Needs" {...a11yProps(0)} />
+                    <LinkTab 
+                    label="Offers" {...a11yProps(1)} />
+                    <LinkTab 
+                    label="Reviews" {...a11yProps(2)} />
 
                 </Tabs>
             </AppBar>

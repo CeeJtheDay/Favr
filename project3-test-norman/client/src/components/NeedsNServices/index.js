@@ -26,6 +26,22 @@ const NSList = ({ category, list, currUser, setCurrUser }) => {
             display: "inline-block",
             textAlign: "center",
             marginTop:"15px"
+        },
+        delete: {
+            color: "white",
+            // backgroundColor: "#96CDFF ",
+            // border: "dotted 2px #077699",
+            boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)",
+        },
+        text: {
+            textShadow: "2px 2px 4px #000000"
+        },
+        button: {
+            backgroundImage: "linear-gradient(to right, #077699 0%, #96CDFF 51%, #077699 100%)",
+            color: "white",
+            border: "solid 1px #077699",
+            borderRadius: "20px",
+            padding: "10px"
         }
     };
 
@@ -72,10 +88,13 @@ const NSList = ({ category, list, currUser, setCurrUser }) => {
                 {list.map((item, i) => (
                     <ListItem>
                         <ListItemText
+                            style={classes.text}
                             primary={item}
                         />
                         <ListItemSecondaryAction>
-                            <IconButton edge="end" aria-label="delete" onClick={(i) => handleDelete(i)}>
+                            <IconButton 
+                            style={classes.delete}
+                            edge="end" aria-label="delete" onClick={(i) => handleDelete(i)}>
                                 <DeleteIcon />
                             </IconButton>
                         </ListItemSecondaryAction>
@@ -84,7 +103,11 @@ const NSList = ({ category, list, currUser, setCurrUser }) => {
             </List>
             <form style={classes.root1} noValidate autoComplete="off">
                 <TextField id="standard-basic" label={category} value={state.newItem} onChange={handleChange} style={{ marginRight: "10px" }} />
-                <Button variant="contained" color="primary" onClick={handleSubmit} style={{ padding: "10px" }}>Add</Button>
+                <Button 
+                variant="contained" 
+                color="primary" 
+                onClick={handleSubmit} 
+                style={classes.button}>Add</Button>
             </form>
         </div>
     )
