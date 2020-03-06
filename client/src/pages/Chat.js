@@ -160,8 +160,8 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
         })
     }
 
-    const sideList = side => (
-            <div className="card contacts_card">
+    const sideList1 = side => (
+            <div className="card contacts_card" style={{maxHeight:'80vh',marginTop:'70px',marginBottom:'0px',marginLeft:'15px',marginRight:'15px'}}>
                 <div className="card-body contacts_body">
                     <ui className="contacts">
                         {state.chatList.map((tile) => (
@@ -216,6 +216,63 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
                 </div>
             </div>
     );
+    const sideList = side => (
+        <div className="card contacts_card1">
+            <div className="card-body contacts_body">
+                <ui className="contacts">
+                    {state.chatList.map((tile) => (
+                        <li 
+                        className="active" 
+                        onClick={() => handleOpenChatWindow(tile)}
+                        >
+                            <div 
+                            className="d-flex bd-highlight"
+                            >
+                                <div 
+                                className="img_cont"
+                                >
+                                    <img 
+                                    src={'/uploads/'+tile.other.image} className="rounded-circle user_img" 
+                                    />
+                                    <span className="user_info"
+                                    >
+                                    {tile.other.name}
+                                    </span>
+                                </div>
+                                
+                                
+                                <div 
+                                className="user_button"
+                                >
+                                    <IconButton 
+                                    className={classes.review}
+                                    edge="end" aria-label="review" 
+                                    style={{ padding: "0px", marginRight: "8px" }} onClick={() => 
+                                        handleOpen(tile.other.id)
+                                    }
+                                    >
+                                        <RateReviewIcon />
+                                    </IconButton>
+                                    <IconButton 
+                                    className={classes.delete}
+                                    edge="end" aria-label="delete" 
+                                    style={{ padding: "0px" }} 
+                                    onClick={(e)=>{
+                                        handleDeleteChat(tile.id)
+                                        e.stopPropagation();
+                                    }}
+                                    >
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </div>
+                            </div>
+                        </li>
+                    ))}
+                </ui>
+            </div>
+        </div>
+);
+
     console.log(state.currChat);
     if (!$.isEmptyObject(state.currChat)) {
         return (
@@ -232,8 +289,8 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
     } else {
         return (
             <div 
-            style={{ height: "85vh", paddingBottom:"10px", paddingTop:"10px", overflow:"auto" }}>
-                {sideList("left")}
+            style={{ height: "85vh", paddingBottom:"10px", paddingTop:"10px" }}>
+                {sideList1("left")}
                 <Modal 
                 open={modalState.open} 
                 handleClose={handleClose} modalStyle={modalStyle} 

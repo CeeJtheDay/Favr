@@ -58,6 +58,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: "#8693AB",
         height: '72%',
         maxHeight: '72%',
+        minHeight:"450px"
     },
     tabPage: {
         overflow: "auto",

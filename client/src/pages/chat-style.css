@@ -9,6 +9,12 @@ body,html{
     border: groove 1px rgb(43,41,44, 0.3);
     border-radius: 20px;
 }
+.contacts_card1 {
+    background-color: #8693AB;
+    min-height: 100vh;
+    max-height: 100vh;
+    width: 350px;
+}
 
 .contacts_body{
     padding:  3.75rem 0 !important;
@@ -57,8 +63,8 @@ color: white;
 .user_button{
     margin-top: auto;
     margin-bottom: auto;
-    position: absolute;
-    right:10%
+    position: relative;
+    left:50%
 }
 /* .user_info span{
     font-size: 20px;
@@ -233,8 +239,8 @@ padding-right: 10px;
 cursor: pointer;
 background-color: rgba(0,0,0,0.2);
 }
-@media(max-width: 576px){
+/* @media(max-width: 576px){
 .contacts_card{
 margin-bottom: 15px !important;
 }
-}
+} */

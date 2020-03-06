@@ -49,7 +49,7 @@ const Title = () => {
 
 
     return (
-      <React.Fragment>
+      <div>
         <Container style={classes.container}>
             <h3 style={classes.h3}>Welcome to</h3>
             <img src={Logo} alt="logo" style={classes.img} />
@@ -65,7 +65,7 @@ const Title = () => {
             <img alt="handshake" src={Handshake} style={classes.handshakePic}/>
           </Grid>
         </Grid>
-      </React.Fragment>
+      </div>
     )
 };
 

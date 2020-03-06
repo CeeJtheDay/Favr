@@ -13,17 +13,13 @@ const Signin = () => {
     card: {
       maxWidth: 600,
       height: "auto",
-      margin: '100px auto',
       textAlign: 'center',
-      marginTop: "80px",
-      marginBottom: "80px",
       paddingRight: "auto",
       paddingLeft: "auto",
       backgroundColor: "#8693AB",
       borderRadius: "20px",
       border: "inset 1px white",
-      marginRight:"auto",
-      marginLeft:"auto"
+      margin:"80px 20px"
     },
     error: {
       verticalAlign: 'middle'
@@ -36,7 +32,7 @@ const Signin = () => {
       flexBox: "center",
     },
     textField: {
-      margin: "0 30px",
+      margin: "10px 30px",
       width: 300,
       backgroundColor: "#8693AB"
     },
@@ -81,7 +77,7 @@ const Signin = () => {
   }
 
   const handleChange = name => event => {
-    setState({ ...state, [name]: event.target.value })
+    setState({ ...state, error:'', [name]: event.target.value })
   }
 
   if (state.redirectToReferrer) {

@@ -13,10 +13,10 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
 
     const classes = {
         container: {
-            height: "85vh", 
+            height: "84vh", 
             paddingBottom:"10px", 
             paddingTop:"10px",
-            margin: "80px 0 0 0"
+            margin: "70px 0 0 0"
         },
         card: {
             minHeight: "100%",

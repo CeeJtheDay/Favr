@@ -7,8 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import List from "../NeedsNServicesOther"
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import Review from '../Reviews';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -56,19 +55,31 @@ const useStyles = makeStyles(theme => ({
     root: {
         marginBottom:"20px",
         flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: "#8693AB",
         height: '72%',
-        maxHeight: '72%'
+        maxHeight: '72%',
+        minHeight:"450px"
     },
     tabPage: {
-        overflow: 'auto',
-        height: "88%",
-        paddingRight: "20px",
-        paddingLeft: "20px"
+        overflow: "auto",
+        border: "groove 1px #077699",
+        borderRadius: "0 0 20px 20px",
+        backgroundColor: "rgb(43,41,44, 0.3)",
+        color: "white",
+        marginBottom: "-20px"
+    },
+    tabs: {
+        textShadow: "2px 2px 4px #000000",
+        backgroundImage: "linear-gradient(#96CDFF 0%, #077699 51%, #96CDFF  100%)",
+        border: "solid 1px #96CDFF"
+    },
+    appBar: {
+        backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
+        borderRadius: "20px"
     }
 }));
 
-export default function NavTabs({ currUser, setCurrUser }) {
+export default function NavTabs({ currUser, setCurrUser,reviewList }) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -78,16 +89,22 @@ export default function NavTabs({ currUser, setCurrUser }) {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar 
+            className={classes.appBar}
+            position="static">
                 <Tabs
+                    className={classes.tabs}
                     variant="fullWidth"
                     value={value}
                     onChange={handleChange}
                     aria-label="nav tabs example"
                 >
-                    <LinkTab label="Needs" {...a11yProps(0)} />
-                    <LinkTab label="Offers" {...a11yProps(1)} />
-                    <LinkTab label="Reviews" {...a11yProps(2)} />
+                    <LinkTab 
+                    label="Needs" {...a11yProps(0)} />
+                    <LinkTab 
+                    label="Offers" {...a11yProps(1)} />
+                    <LinkTab 
+                    label="Reviews" {...a11yProps(2)} />
 
                 </Tabs>
             </AppBar>
@@ -98,7 +115,7 @@ export default function NavTabs({ currUser, setCurrUser }) {
                 <List category="offers" list={currUser.offers} currUser={currUser} setCurrUser={setCurrUser} />
             </TabPanel>
             <TabPanel value={value} index={2} className={classes.tabPage}>
-                Coming soon!!!
+                <Review currUser={currUser} setCurrUser={setCurrUser} reviewList={reviewList}/>
             </TabPanel>
         </div>
     );

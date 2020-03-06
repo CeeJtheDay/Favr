@@ -9,11 +9,16 @@ const Profile = withRouter(({ history, currUser, setCurrUser }) => {
 
   const classes = {
     grid: {
-      margin: "80px auto",
-      maxWidth: 600,
       borderRadius: "20px",
       border: "groove 1px rgb(43,41,44, 0.3)",
-      backgroundColor: "#8693AB"
+      backgroundColor: "#8693AB",
+      width:"90%",
+      marginRight:'auto',
+      marginLeft:'auto',
+      marginTop:'70px',
+      overflow:'auto',
+      maxHeight:"80vh",
+      minHeight:"80vh"
     }
   }
 

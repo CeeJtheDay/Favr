@@ -11,6 +11,7 @@ import { withRouter } from 'react-router-dom';
 import queryString from 'query-string'
 import axios from "axios"
 import Footer from "./components/Navbar";
+import Back from "./components/GoBack";
 const MainRouter = withRouter(({ history }) => {
   const [currUser, setCurrUser] = useState({
     id: '',
@@ -80,6 +81,7 @@ const MainRouter = withRouter(({ history }) => {
         </Switch>
       
       {history.location.pathname.includes("/user") || history.location.pathname.includes("/barter") || history.location.pathname.includes("/profile") ? (<Footer currUser={currUser} setCurrUser={setCurrUser}/>) : (null)}
+      {history.location.pathname.includes("/other") && (<Back/>)}
     </React.Fragment>
     // </div>
   )
