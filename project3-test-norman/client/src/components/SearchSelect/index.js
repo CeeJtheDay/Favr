@@ -7,13 +7,16 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 // import option from '@material-ui/core/option';
 // import NativeSelect from '@material-ui/core/NativeSelect';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
-    margin: theme.spacing(1),
+    margin: 0,
     minWidth: 120,
+    marginRight:'5px',
+    marginBottom:"2px",
+    backgroundColor:"white"
     
-
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -22,36 +25,23 @@ const useStyles = makeStyles(theme => ({
 
 export default function NativeSelects(props) {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    wants: true
-  });
 
-  const inputLabel = React.useRef(null);
-  // const [labelWidth, setLabelWidth] = React.useState(0);
-  // React.useEffect(() => {
-  //   setLabelWidth(inputLabel.current.offsetWidth);
-  // }, []);
+ const setCategory = props.setState;
+ const category = props.category;
 
- const setCategory = (props.setState)
  return (
   <span>
-    <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel ref={inputLabel} htmlFor="outlined-age-native-simple" >
-        Filter
-        </InputLabel>
-          <Select
-            // displayEmpty="true"
-            // defaultValue="Services"
-            onChange={setCategory}
-            labelWidth="auto"
-            inputProps={{
-              name: 'Select',
-              id: 'outlined-age-native-simple',
-            }}
-          >
-            <option value={'needs'}>Wants</option>
-            <option value={'services'} selected>Services</option>
-          </Select>
+    <FormControl variant="filled" className={classes.formControl}>
+        <InputLabel id="demo-simple-select-label">option</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={category}
+          onChange={setCategory}
+        >
+          <MenuItem value={"needs"}>Needs</MenuItem>
+          <MenuItem value={"offers"}>Services</MenuItem>
+        </Select>
       </FormControl>
     </span>
   );
