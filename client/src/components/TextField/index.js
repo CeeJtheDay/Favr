@@ -16,7 +16,7 @@ export default function BasicTextFields() {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="standard-basic" label="Standard" />
+      <TextField id="standard-basic" label="Enter" />
       
     </form>
   );
