@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import BasicTextFields from '../TextField/index';
+import TextField from "../TextField/index"
+// import BasicTextFields from '../TextField/index';
 
 const useStyles = makeStyles(theme => ({
   typography: {
@@ -29,7 +30,7 @@ export default function SimplePopover() {
   return (
     <div>
       <Button aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-        Open Popover
+        Add
       </Button>
       <Popover
         id={id}
@@ -45,7 +46,9 @@ export default function SimplePopover() {
           horizontal: 'center',
         }}
       >
-        <Typography className={classes.typography}>The content of the Popover.</Typography>
+        <Typography className={classes.typography}>
+        <TextField></TextField>
+        </Typography>
       </Popover>
     </div>
   );
