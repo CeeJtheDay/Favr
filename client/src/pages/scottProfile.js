@@ -14,10 +14,6 @@ const Profile = withRouter(({ history, currUser, setCurrUser }) => {
       borderRadius: "20px",
       border: "groove 1px rgb(43,41,44, 0.3)",
       backgroundColor: "#8693AB"
-      
-
-
-
     }
   }
 
