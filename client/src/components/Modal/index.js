@@ -34,7 +34,7 @@ const ModalPop = ({ open, handleClose, modalStyle, reviewer, reviewee }) => {
     });
 
     const handleChange = e =>{
-            setReview({...review, comment: e.target.value.trim()});
+            setReview({...review, comment: e.target.value});
     }
 
     const handleSubmit = e => {
