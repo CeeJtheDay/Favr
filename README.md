@@ -1,50 +1,65 @@
-# Online-Marketplace
+# FAVR
 
 ## Description
 
-In this project, I am going to create an online market template using the third side API. Especially in this project, I create it especially for Best Buy. So the user can view bestbuy products, add to the cart and place order. For this project, I am going to build such a **React CRUD** application with **MERN Stack** Technique.
+This application is an online platform that allows users to source and trade services with other users.  Upon joining the application, users will create a profile.  In the profile, the user will add “wants” and “services” to their profile, and be entered into the database.  Once a user profile has been created, a user can search through a sorted list of other users whose services match their needs, or vice versa.   Once a user finds a match whose needs and services are aligned, they can select to chat with this user and strike up a deal, or view their profile. 
+
+This application uses the MERN stack of technologies, and is designed to be a mobile only application.
 
 Here is how the application made of:
-* UI: **React**
-* Database: **MONGO** & **MONGOOSE SCHEMA**
-* Backend: **Node**, **Express** 
-* API: **BestBuy API**
+* Frontend:
+    * React.js
+    * Material UI
+    * Bootstrap CDN
+    * Photoshop
+* Backend
+    * Database: MONGO & MONGOOSE SCHEMA
+    * Node.js
+    * Fuse.js (search algorithm helper)
+    * Google Place Autocomplete
+    * Express.js
+    * Socket.io (chat feature)
+    * Google Geolocation (for search sorting)
+
 
 
 ### Deployment
 
-Heroku Depolyment: [Go Deploy!](https://onlinemarketnorman.herokuapp.com/)
+***Please deploy it in phone size screen***
+Heroku Depolyment: https://bart3r-app.herokuapp.com/
+
 
 
 ### Demo
 
 
-![demo-gif](demo.gif)
+![demo-image](demo.img)
 
 
 ## Development
 
-In the process of building application, I have learned:
-* Utilized Github repository, familiarize git commands to save all my works onto github
+During the development process, we learned:
+* The value of keeping an organized Github repo with controlled commites and branches
+* How to efficiently build and style react components
+* Integrating new technologies such as Fuse.js
 
-* Familiarized React building UI components more effiently
-
-* First time to build React CRUD application using MERN Stack Pattern
 
 
 ## Credits 
 
-I am here to acknowlage to the Coding Bootcamp of University of Washington along with below faculties:
-* Jason Rosen (Instructor)
-* Daniel Mont-Eton (TA)
-* Elisabeth Mansfield (TA)
-* Best Buy API
+Role Breakdown:
+
+* Norman Lei: backend code, data structures, API calls
+* CJ Conrad: Initial Design and wireframe, front end components, styling with css
+* Scott Taylor: Front end component building with React and Material UI
+* Brennan Smallwood: Backend technologies such as fuse.js, front end component building
+
 
 
 ## License
 MIT License
 
-Copyright (c) [2020] [Norman Lei]
+Copyright (c) [2020]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
