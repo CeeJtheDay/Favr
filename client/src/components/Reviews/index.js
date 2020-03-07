@@ -22,6 +22,7 @@ const useStyles = makeStyles(() =>
     createStyles({
         root: {
             maxWidth: 345,
+            marginBottom: "5px"
         },
         avatar: {
             backgroundColor: red[500],
@@ -42,17 +43,17 @@ export default function RecipeReviewCard({ currUser, setCurrUser, reviewList }) 
                                 <Avatar aria-label="recipe" src={'/uploads/' + review.reviewer.image} className={classes.avatar} />
                             }
                             title={review.reviewer.name}
-                            subheader={review.time}
+                            style={{paddingBottom:"5px"}}
                         />
-                        <CardContent>
-                            <Typography>
+                        <CardContent style={{paddingTop:"5px"}}>
+                            <Typography >
                                 <ReactStars
                                     value={review.rate}
-                                    size={30}
+                                    size={20}
                                     half={true}
                                 />
                             </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
+                            <Typography variant="body2" color="primary" component="h5">
                                 {review.comment}
                             </Typography>
                         </CardContent>

@@ -28,8 +28,9 @@ const Profile = withRouter(({ history, currUser, setCurrUser }) => {
     axios.get('../api/reviews')
       .then(data => {
         console.log(data);
-        if (data.length > 0) {
-          let newList = data.filter(obj => obj.reviwee === currUser.id);
+        if (data.data.length > 0) {
+          let newList = data.data.filter(obj => obj.reviewee === currUser.id);
+          console.log(newList);
           handleName(newList);
         }
       })

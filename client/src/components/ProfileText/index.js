@@ -28,6 +28,8 @@ const useStyles = makeStyles({
 
 export default function SimpleCard({ currUser }) {
   const classes = useStyles();
+  const rate = currUser.ratingQuantity>0 ? currUser.rate/currUser.ratingQuantity : 0;
+  console.log(rate);
   return (
     <Card 
     className={classes.root}
@@ -48,7 +50,7 @@ export default function SimpleCard({ currUser }) {
         </Typography>
         <Typography>
           <ReactStars
-            value={currUser.rate/currUser.rateQuantity}
+            value={rate}
             size={20}
             half={true}
           />
