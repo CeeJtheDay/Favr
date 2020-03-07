@@ -41,8 +41,8 @@ const Signup = () => {
       flexBox: "center",
     },
     textField: {
-      margin: "0 30px",
-      width: 300,
+      //margin: "0 30px",
+      width: '90%',
     },
     submit: {
       margin: '10px auto',

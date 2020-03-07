@@ -28,7 +28,7 @@ export default function NativeSelects(props) {
 
  const setCategory = props.setState;
  const category = props.category;
-
+console.log(category);
  return (
   <span>
     <FormControl variant="filled" className={classes.formControl}>
@@ -39,8 +39,8 @@ export default function NativeSelects(props) {
           value={category}
           onChange={setCategory}
         >
-          <MenuItem value={"needs"}>Needs</MenuItem>
-          <MenuItem value={"offers"}>Services</MenuItem>
+          <MenuItem value={"need"}>Needs</MenuItem>
+          <MenuItem value={"offer"}>Services</MenuItem>
         </Select>
       </FormControl>
     </span>

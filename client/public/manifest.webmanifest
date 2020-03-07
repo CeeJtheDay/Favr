@@ -1,5 +1,5 @@
 {
- "name": "App",
+ "name": "FavR - A Barter Community",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
@@ -37,5 +37,9 @@
    "type": "image\/png",
    "density": "4.0"
   }
- ]
+ ],
+ "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "start_url": "/",
+  "display": "standalone"
 }

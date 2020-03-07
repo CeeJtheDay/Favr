@@ -77,9 +77,9 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
             border: "dotted 2px #077699",
             boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)"
         },
-        formControl:{
-            minWidth:"200px",
-            marginBottom:"10px"
+        formControl: {
+            minWidth: "200px",
+            marginBottom: "10px"
         }
     };
 
@@ -114,6 +114,16 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
     async function handleChange(e) {
         if (e.target.value === "rating") {
             console.log("doing rating sort");
+            let tempCandidate = candidates;
+            console.log(tempCandidate);
+            tempCandidate.sort(function (user1, user2) {
+                let rate1 = user1.ratingQuantity>0? user1.rate/user1.ratingQuantity:0;
+                let rate2 = user2.ratingQuantity>0? user2.rate/user2.ratingQuantity:0;
+                return rate2-rate1;
+
+            });
+            console.log(tempCandidate);
+            setState({ finalCandidates: tempCandidate });
         }
         else if (e.target.value === "distance") {
             console.log("doing distance sort");
