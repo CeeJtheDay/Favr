@@ -32,8 +32,8 @@ const Signin = () => {
       flexBox: "center",
     },
     textField: {
-      margin: "10px 30px",
-      width: 300,
+      //margin: "10px 30px",
+      width: '90%',
       backgroundColor: "#8693AB"
     },
     submit: {
