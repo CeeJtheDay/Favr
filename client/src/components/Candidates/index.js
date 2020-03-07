@@ -117,9 +117,9 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
             let tempCandidate = candidates;
             console.log(tempCandidate);
             tempCandidate.sort(function (user1, user2) {
-                let rate1 = user1.ratingQuantity>0? user1.rate/user1.ratingQuantity:0;
-                let rate2 = user2.ratingQuantity>0? user2.rate/user2.ratingQuantity:0;
-                return rate2-rate1;
+                let rate1 = user1.ratingQuantity > 0 ? user1.rate / user1.ratingQuantity : 0;
+                let rate2 = user2.ratingQuantity > 0 ? user2.rate / user2.ratingQuantity : 0;
+                return rate2 - rate1;
 
             });
             console.log(tempCandidate);
@@ -165,13 +165,14 @@ const Candidates = withRouter(({ history, category, candidates, searched, currUs
 
     return (
         <React.Fragment>
-            {searched ? (<Typography variant="h6" style={classes.title}>
+            {searched && (<Typography variant="h6" style={classes.title}>
                 Result for {category}
-            </Typography>) : (
-                    <Typography variant="h6" style={classes.title}>
-                        Search Results
+            </Typography>)}
+            {searched===false && (
+                <Typography variant="h6" style={classes.title}>
+                    No Result was Founded! Here are all the users!
                 </Typography>
-                )}
+            )}
             <FormControl style={classes.formControl}>
                 <InputLabel id="demo-simple-select-helper-label">Sort Result By</InputLabel>
                 <Select

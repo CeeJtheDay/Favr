@@ -51,17 +51,18 @@ const Search = ({ category, currUser, setCurrUser }) => {
             background: "transparent",
             border: "black"
         }
- 
+
     };
 
     const [state, setState] = useState({
         category: category,
         search: '',
         results: [],
-        searched: false,
+        searched: "",
     });
 
     const handleChange = name => event => {
+        console.log(name);
         setState({
             ...state,
             [name]: event.target.value,
@@ -70,13 +71,15 @@ const Search = ({ category, currUser, setCurrUser }) => {
 
     const search = () => {
         console.log(currUser);
+        console.log(state);
         let currResult = [];
         API.findAllUsers()
             .then(data => {
                 console.log(data.data);
                 if (!state.search || state.search.trim().length === 0) {
                     currResult = data.data.filter(user => user._id !== currUser.id);
-                    setState({ ...state, results: currResult });
+                    console.log(currResult);
+                    setState({ ...state, results: currResult, searched:false });
                 } else {
                     console.log(state.category)
                     if (state.category === "need") {
@@ -84,10 +87,10 @@ const Search = ({ category, currUser, setCurrUser }) => {
                         let fuse = new Fuse(data.data, serviceOptions);
                         currResult = fuse.search(state.search);
                         currResult = currResult.filter(user => user._id !== currUser.id);
- 
+
                         if (currResult.length === 0) {
                             currResult = data.data.filter(user => user._id !== currUser.id);
-                            setState({ ...state, results: currResult });
+                            setState({ ...state, results: currResult, searched:false });
                         } else {
                             setState({ ...state, results: currResult, searched: true });
                         }
@@ -97,10 +100,10 @@ const Search = ({ category, currUser, setCurrUser }) => {
                         let fuse = new Fuse(data.data, needOptions);
                         currResult = fuse.search(state.search);
                         currResult = currResult.filter(user => user._id !== currUser.id);
-        
+
                         if (currResult.length === 0) {
                             currResult = data.data.filter(user => user._id !== currUser.id);
-                            setState({ ...state, results: currResult });
+                            setState({ ...state, results: currResult, searched:false });
                         } else {
                             setState({ ...state, results: currResult, searched: true });
                         }
@@ -120,19 +123,18 @@ const Search = ({ category, currUser, setCurrUser }) => {
 
     return (
         <React.Fragment>
-    
+
             <Select
                 setState={handleChange('category')} category={state.category}
             />
 
             <FormControl style={classes.searchField}>
-                <InputLabel 
-                onKeyDown={enterKey} 
-                onChange={handleChange('search')} style={classes.searchField}
-                >
-                Search
+                <InputLabel style={classes.searchField}>
+                    Search
                 </InputLabel>
                 <Input
+                    onChange={handleChange('search')}
+                    onKeyDown={enterKey} 
                     endAdornment={
                         <InputAdornment position="end"
                         >
@@ -144,12 +146,12 @@ const Search = ({ category, currUser, setCurrUser }) => {
                     }
                 />
             </FormControl>
-            <Candidates 
-            category={state.category} 
-            candidates={state.results} 
-            searched={state.searched} 
-            currUser={currUser} 
-            setCurrUser={setCurrUser} 
+            <Candidates
+                category={state.category}
+                candidates={state.results}
+                searched={state.searched}
+                currUser={currUser}
+                setCurrUser={setCurrUser}
             />
 
         </React.Fragment>

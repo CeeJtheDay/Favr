@@ -8,8 +8,9 @@ import Modal from "../Modal";
 import Popover from '@material-ui/core/Popover';
 import Alert from '../Alert';
 import "./chat-style.css";
+import { withRouter } from 'react-router-dom';
 
-const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalState, modalStyle, handleClose }) => {
+const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state, sideList, modalState, modalStyle, handleClose }) => {
 
     const classes = {
         container: {
@@ -239,6 +240,10 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
         setImageData({ success: "", error: "" });
     };
 
+    const handlePage = id => {
+        history.push(`/other/?id=${id}`);
+    } 
+
 
 
     return (
@@ -246,16 +251,16 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
             <div className="card" style={classes.card}>
                 <div className="card-header msg_head">
                     <div className="d-flex bd-highlight">
-                        <div className="img_cont">
+                        <div className="img_cont" onClick={()=>handlePage(chatRoom.other.id)}>
                             <img src={'/uploads/'+chatRoom.other.image} className="rounded-circle user_img" />
                             <span className="online_icon"></span>
                         </div>
                         <div 
-                        className="user_info">
+                        className="user_info" style={{width:'300px',paddingRight:"0px",marginTop:'20px'}}>
                             <span
                             style={classes.text}
                             >
-                            Chat with {chatRoom.other.name}</span>
+                            Chat w/ {chatRoom.other.name}</span>
                         </div>
                     </div>
                     <span id="action_menu_btn">
@@ -318,7 +323,7 @@ const ChatWindow = ({ chatRoom, currUser, toggleDrawer, state, sideList, modalSt
         </div>
 
     )
-}
+})
 
 
 export default ChatWindow;

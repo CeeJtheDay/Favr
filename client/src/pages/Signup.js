@@ -26,8 +26,8 @@ const Signup = () => {
       border: "inset 1px white",
       margin:"80px 20px",
       maxHeight: "85vh",
-      overflow:"auto",
-      marginBottom:"0px"
+      marginBottom:"0px",
+      overflow:'auto'
     },
     error: {
       verticalAlign: 'middle'
