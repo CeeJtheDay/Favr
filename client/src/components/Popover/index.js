@@ -1,19 +1,15 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from "../TextField/index"
-// import BasicTextFields from '../TextField/index';
-
-const useStyles = makeStyles(theme => ({
-  typography: {
-    padding: theme.spacing(2),
-  },
-}));
 
 export default function SimplePopover() {
-  const classes = useStyles();
+  const classes = {
+    typography: {
+      padding: "40px",
+    },
+  }
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -29,7 +25,12 @@ export default function SimplePopover() {
 
   return (
     <div>
-      <Button aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+      <Button 
+      aria-describedby={id} 
+      variant="contained" 
+      color="primary" 
+      onClick={handleClick}
+      >
         Add
       </Button>
       <Popover
@@ -46,7 +47,7 @@ export default function SimplePopover() {
           horizontal: 'center',
         }}
       >
-        <Typography className={classes.typography}>
+        <Typography style={classes.typography}>
         <TextField></TextField>
         </Typography>
       </Popover>

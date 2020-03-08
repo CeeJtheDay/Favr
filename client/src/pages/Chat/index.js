@@ -1,60 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
-import API from "../utils/API-Barter";
+import API from "../../utils/API-Barter";
 import axios from 'axios';
-import ChatWindow from "../components/ChatWindow";
+import ChatWindow from "../../components/ChatWindow";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from '@material-ui/icons/Delete';
 import RateReviewIcon from '@material-ui/icons/RateReview';
-import "./chat-style.css";
+// import "./style.css";
 import $ from "jquery";
-import Modal from "../components/Modal";
+import Modal from "../../components/Modal";
 
-const useStyles = makeStyles({
-    list: {
-        marginTop:"80px",
-        width: 350,
-        marginRight:'auto',
-        marginLeft:'auto',
-        backgroundColor: "#8693AB",
-        border: "groove 1px rgb(43,41,44, 0.3)",
-    },
-    review: {
-        margin: "5px",
-        color: "white",
-        textShadow: "2px 2px 4px #000000",
-        backgroundColor: "#96CDFF ",
-        border: "dotted 2px #077699",
-        boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)",
-        height: "50px",
-        width: "50px"
-    },
-    delete: {
-        margin: "5px",
-        color: "white",
-        textShadow: "2px 2px 4px #000000",
-        backgroundColor: "#96CDFF ",
-        border: "dotted 2px #077699",
-        boxShadow: "2px 4px 2px rgb(43,41,44, 0.3)",
-        height: "50px",
-        width: "50px"
-    }
-});
+
 
 const Chat = withRouter(({ history, currUser, setCurrUser }) => {
-    const classes = useStyles();
-    const [modalStyle] = useState(getModalStyle);
-    function getModalStyle() {
-        const top = 50;
-        const left = 50;
-
-        return {
-            top: `${top}%`,
-            left: `${left}%`,
-            transform: `translate(-${top}%, -${left}%)`,
-        };
-    }
+    
+    // const classes = {
+    // modal:{
+    //     top: "50px",
+    //     left: `50px`,
+    //     transform: `translate(50%, 50%)`
+    //     }
+    // }
 
     const [state, setState] = useState({
         chatList: [],
@@ -152,7 +118,7 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
     const handleDeleteChat = id => {
         console.log(id);
         console.log(state.chatList);
-        let newChatList = state.chatList.filter(chat=>chat.id!=id);
+        let newChatList = state.chatList.filter(chat=>chat.id !== id);
         console.log(newChatList);
         API.remove(id)
         .then(()=>{
@@ -175,7 +141,8 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
                                     <div 
                                     className="img_cont"
                                     >
-                                        <img 
+                                        <img
+                                        alt="titleOther" 
                                         src={'/uploads/'+tile.other.image} className="rounded-circle user_img" 
                                         />
                                         <span className="user_info"
@@ -189,7 +156,7 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
                                     className="user_button"
                                     >
                                         <IconButton 
-                                        className={classes.review}
+                                        className="review_button"
                                         edge="end" aria-label="review" 
                                         style={{ padding: "0px", marginRight: "8px" }} onClick={() => 
                                             handleOpen(tile.other.id)
@@ -198,7 +165,7 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
                                             <RateReviewIcon />
                                         </IconButton>
                                         <IconButton 
-                                        className={classes.delete}
+                                        className="delete_button"
                                         edge="end" aria-label="delete" 
                                         style={{ padding: "0px" }} 
                                         onClick={(e)=>{
@@ -232,6 +199,7 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
                                 className="img_cont"
                                 >
                                     <img 
+                                    alt="titleImage"
                                     src={'/uploads/'+tile.other.image} className="rounded-circle user_img" 
                                     />
                                     <span className="user_info"
@@ -245,7 +213,7 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
                                 className="user_button"
                                 >
                                     <IconButton 
-                                    className={classes.review}
+                                    className="review_button"
                                     edge="end" aria-label="review" 
                                     style={{ padding: "0px", marginRight: "8px" }} onClick={() => 
                                         handleOpen(tile.other.id)
@@ -254,7 +222,7 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
                                         <RateReviewIcon />
                                     </IconButton>
                                     <IconButton 
-                                    className={classes.delete}
+                                    className="delete_button"
                                     edge="end" aria-label="delete" 
                                     style={{ padding: "0px" }} 
                                     onClick={(e)=>{
@@ -284,7 +252,9 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
             sideList={sideList} 
             modalState={modalState} 
             handleClose={handleClose} 
-            modalStyle={modalStyle}/>
+            // modalStyle={modalStyle}
+
+            />
         );
     } else {
         return (
@@ -293,7 +263,8 @@ const Chat = withRouter(({ history, currUser, setCurrUser }) => {
                 {sideList1("left")}
                 <Modal 
                 open={modalState.open} 
-                handleClose={handleClose} modalStyle={modalStyle} 
+                handleClose={handleClose} 
+                // modalStyle={modalStyle} 
                 reviewer={currUser.id} 
                 reviewee={modalState.reviewee} 
                 />

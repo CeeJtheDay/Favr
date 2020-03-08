@@ -7,8 +7,8 @@ import IconButton from "@material-ui/core/IconButton";
 import Modal from "../Modal";
 import Popover from '@material-ui/core/Popover';
 import Alert from '../Alert';
-import "./chat-style.css";
 import { withRouter } from 'react-router-dom';
+// import "./style.css";
 
 const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state, sideList, modalState, modalStyle, handleClose }) => {
 
@@ -22,13 +22,54 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
         card: {
             minHeight: "100%",
             backgroundColor: "#8693AB",
-            backgroundColor: "#8693AB",
             borderRadius: "20px",
             border: "groove 1px rgb(43,41,44, 0.3)"
         },
         text: {
             color: "white",
             textShadow: "2px 2px 4px #000000"
+        },
+        imgCont: {
+            position: "relative",
+            height: "50px",
+            width: "50px"
+        },
+        userInfo: {
+            // marginTop: "0px",
+            marginBottom: "15px",
+            marginLeft: "15px",
+            width:'300px',
+            paddingRight:"0px",
+            marginTop:'20px'
+        },
+        actionMenuButton: {
+            position: "absolute",
+            right: "5px",
+            top: "10px",
+            color: "white",
+            cursor: "pointer",
+            fontSize: "40px"
+        },
+        msgCardBody: {
+            overflowY: "auto"
+        },
+        cardFooter: {
+            borderRadius: "0 0 15px 15px !important",
+            borderTop: "0 !important"
+        },
+        attachBtn: {
+            borderRadius: "15px 0 0 15px !important",
+            backgroundColor: "rgba(0,0,0,0.3 !important",
+            border: "0 !important",
+            color: "white !important",
+            cursor: "pointer"
+        },
+        sendBtn: {
+            borderRadius: "0 15px 15px 0 !important",
+            backgroundColor: "rgba(0,0,0,0.3)!important",
+            border: "0 !important",
+            color: "white !important",
+            cursor: "pointer",
         }
     }
     const socket = socketIOClient();
@@ -40,9 +81,9 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
 
     const [anchorEl, setAnchorEl] = useState(null);
 
-    const handleClick = event => {
-        setAnchorEl(event.currentTarget);
-    };
+    // const handleClick = event => {
+    //     setAnchorEl(event.currentTarget);
+    // };
 
     const handleClosePop = () => {
         setAnchorEl(null);
@@ -248,53 +289,86 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
 
     return (
         <div style={classes.container}>
-            <div className="card" style={classes.card}>
-                <div className="card-header msg_head">
-                    <div className="d-flex bd-highlight">
-                        <div className="img_cont" onClick={()=>handlePage(chatRoom.other.id)}>
-                            <img src={'/uploads/'+chatRoom.other.image} className="rounded-circle user_img" />
+            <div style={classes.card}>
+                <div 
+                className="card-header msg_head"
+                >
+                    <div 
+                    className="d-flex bd-highlight"
+                    >
+                        <div 
+                        style={classes.imgCont} onClick={()=>handlePage(chatRoom.other.id)}
+                        >
+                            <img 
+                            src={'/uploads/'+chatRoom.other.image} 
+                            alt="chatroom"
+                            className="rounded-circle user_img" />
                             <span className="online_icon"></span>
                         </div>
                         <div 
-                        className="user_info" style={{width:'300px',paddingRight:"0px",marginTop:'20px'}}>
+                        style={classes.userInfo} >
                             <span
                             style={classes.text}
                             >
                             Chat w/ {chatRoom.other.name}</span>
                         </div>
                     </div>
-                    <span id="action_menu_btn">
+                    <span 
+                    id="action_menu_btn"
+                    style={classes.actionMenuButton}>
                         <IconButton onClick={toggleDrawer("left", true)}>
                             <ListIcon />
                         </IconButton>
                     </span>
                 </div>
-                <div className="card-body msg_card_body" id="msglog">
+                <div 
+                className="card-body msg_card_body"
+                style={classes.msgCardBody}
+                id="msglog"
+                >
                 </div>
-                <div className="card-footer">
+                <div 
+                className="card-footer"
+                style={classes.cardFooter}
+                >
                     <div className="input-group">
                         <div className="input-group-append">
-                            <span className="input-group-text attach_btn" aria-describedby={id} onClick={"handleClick"}><i className="fas fa-paperclip"></i></span>
+                            <span className="input-group-text attach_btn" 
+                            style={classes.attachBtn}
+                            aria-describedby={id} onClick={"handleClick"}>
+                                <i 
+                                className="fas fa-paperclip"
+                                >
+
+                                </i>
+                            </span>
                             <Popover
-                                id={id}
-                                open={open}
-                                anchorEl={anchorEl}
-                                onClose={handleClosePop}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'center',
-                                }}
-                                transformOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'center',
-                                }}
+                            id={id}
+                            open={open}
+                            anchorEl={anchorEl}
+                            onClose={handleClosePop}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                            }}
+                            transformOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center',
+                            }}
                             >
-                                <form id="imageSubmit" action="/upload" method="POST" encType="multipart/form-data" onSubmit={handleSubmitImage}>
-                                    <div className="form-group">
-                                        <label htmlFor="pic">Upload Profile Image:</label>
+                                <form id="imageSubmit" action="/upload" method="POST" encType="multipart/form-data" 
+                                onSubmit={handleSubmitImage}
+                                >
+                                    <div className="form-group"
+                                    >
+                                        <label htmlFor="pic">
+                                        Upload Profile Image:
+                                        </label>
                                         <input type="file" className="form-control-file" name="userImage" id="upload" onChange={clearAlert}></input>
                                     </div>
-                                    <button className="btn btn-success" type="submit">Upload(Upload Before Submit)</button>
+                                    <button className="btn btn-success" type="submit">
+                                    Upload(Upload Before Submit)
+                                    </button>
                                     <Alert type="danger" style={{ display: imagedata.error ? 'block' : 'none', marginBottom: 10 }}>
                                         {imagedata.error}
                                     </Alert>
@@ -304,9 +378,20 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
                                 </form>
                             </Popover>
                         </div>
-                        <textarea name="" className="form-control type_msg" placeholder="Type your message..." id={chatRoom.id + currUser.id} onKeyDown={handSendEnter}></textarea>
-                        <div className="input-group-append" onClick={handSend}>
-                            <span className="input-group-text send_btn"><i className="fas fa-location-arrow"></i></span>
+                        <textarea 
+                        name="" 
+                        className="form-control type_msg" 
+                        placeholder="Type your message..." 
+                        id={chatRoom.id + currUser.id} 
+                        onKeyDown={handSendEnter}>
+                        </textarea>
+                        <div className="input-group-append" 
+                        onClick={handSend}>
+                            <span className="input-group-text send_btn"
+                            style={classes.sendBtn}
+                            >
+                                <i className="fas fa-location-arrow"></i>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -319,7 +404,12 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
             >
                 {sideList("left")}
             </SwipeableDrawer>
-            <Modal open={modalState.open} handleClose={handleClose} modalStyle={modalStyle} reviewer={currUser.id} reviewee={modalState.reviewee} />
+            <Modal 
+            open={modalState.open} 
+            handleClose={handleClose} 
+            // modalStyle={modalStyle} 
+            reviewer={currUser.id} 
+            reviewee={modalState.reviewee} />
         </div>
 
     )
