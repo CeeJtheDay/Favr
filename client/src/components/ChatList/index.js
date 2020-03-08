@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -9,43 +8,32 @@ import RateReviewIcon from '@material-ui/icons/RateReview';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Modal from "../Modal";
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        width: '100%',
-        maxWidth: 360,
-        backgroundColor: "#8693AB",
-        margin: "80px auto 50px auto"
-    },
-    paper: {
-        position: 'absolute',
-        width: 400,
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-    }
-}));
+// function getModalStyle() {
+//     const top = 50 ;
+//     const left = 50;
 
-
-
-function getModalStyle() {
-    const top = 50 ;
-    const left = 50;
-
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-    };
-}
+//     return {
+//         top: `${top}%`,
+//         left: `${left}%`,
+//         transform: `translate(-${top}%, -${left}%)`,
+//     };
+// }
 
 const ChatList = ({ chatList, state, setState, currUser, setCurrUser }) => {
-    const classes = useStyles();
-    const [modalStyle] = useState(getModalStyle);
-    const [modalState, setModalState] = useState({
-        open:false,
-        reviewee:""
-    });
+
+    const classes = {
+        root: {
+            width: '100%',
+            maxWidth: 360,
+            backgroundColor: "#8693AB",
+            margin: "80px auto 50px auto"
+        }
+    }
+    // const [modalStyle] = useState(getModalStyle);
+    // const [modalState, setModalState] = useState({
+    //     open:false,
+    //     reviewee:""
+    // });
     const handleOpen = (reviewee) => {
         setModalState({
             open: true,
@@ -61,7 +49,7 @@ const ChatList = ({ chatList, state, setState, currUser, setCurrUser }) => {
     };
 
     return (
-        <div className={classes.root}>
+        <div style={classes.root}>
             <List 
             component="nav" 
             aria-label="chatlist"
@@ -76,11 +64,15 @@ const ChatList = ({ chatList, state, setState, currUser, setCurrUser }) => {
                         />
                         <ListItemSecondaryAction>
                             <IconButton 
-                            edge="end" aria-label="review" onClick={()=>handleOpen(tile.other.id)}>
+                            edge="end" 
+                            aria-label="review" 
+                            onClick={()=>handleOpen(tile.other.id)}
+                            >
                                 <RateReviewIcon />
                             </IconButton>
                             <IconButton 
-                            edge="end" aria-label="delete"
+                            edge="end" 
+                            aria-label="delete"
                             >
                                 <DeleteIcon />
                             </IconButton>
@@ -91,7 +83,7 @@ const ChatList = ({ chatList, state, setState, currUser, setCurrUser }) => {
             <Modal 
             open={modalState.open} 
             handleClose={handleClose} 
-            modalStyle={modalStyle} 
+            // modalStyle={modalStyle} 
             reviewer={currUser.id} 
             reviewee={modalState.reviewee}/> 
         </div>

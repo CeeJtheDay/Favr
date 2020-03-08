@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { createMuiTheme } from 'material-ui/styles'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
@@ -11,7 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 const NSList = ({ category, list, currUser, setCurrUser }) => {
-    const theme = createMuiTheme();
+
     const classes = {
         root: {
             flexGrow: 1,
@@ -83,7 +82,9 @@ const NSList = ({ category, list, currUser, setCurrUser }) => {
         <div style={classes.root}>
             <List>
                 {list.map((item, i) => (
-                    <ListItem>
+                    <ListItem 
+                    key={i}
+                    >
                         <ListItemText
                             style={classes.text}
                             primary={item}
@@ -91,15 +92,28 @@ const NSList = ({ category, list, currUser, setCurrUser }) => {
                         <ListItemSecondaryAction>
                             <IconButton 
                             style={classes.delete}
-                            edge="end" aria-label="delete" onClick={(i) => handleDelete(i)}>
+                            edge="end" 
+                            aria-label="delete" 
+                            onClick={(i) => handleDelete(i)}
+                            >
                                 <DeleteIcon />
                             </IconButton>
                         </ListItemSecondaryAction>
                     </ListItem>
                 ))}
             </List>
-            <form style={classes.root1} noValidate autoComplete="off">
-                <TextField id="standard-basic" label={category} value={state.newItem} onChange={handleChange} style={{ marginRight: "10px" }} />
+            <form 
+            style={classes.root1} 
+            noValidate 
+            autoComplete="off"
+            >
+                <TextField 
+                id="standard-basic" 
+                label={category} 
+                value={state.newItem} 
+                onChange={handleChange} 
+                style={{ marginRight: "10px" }} 
+                />
                 <Button 
                 variant="contained" 
                 color="primary" 

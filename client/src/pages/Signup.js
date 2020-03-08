@@ -263,13 +263,16 @@ const Signup = () => {
                     >
                     Upload Profile Image (Optional):</label>
                     <input 
-                    type="file" className="form-control-file" name="userImage" 
+                    type="file" 
+                    className="form-control-file" 
+                    name="userImage" 
                     id="upload" 
                     onChange={clearAlert}
                     ></input>
                 </div>
                 <button 
-                className="btn btn-success" type="submit"
+                className="btn btn-success" 
+                type="submit"
                 style={classes.submit}
                 >
                 Upload(Upload Before Submit)
@@ -335,7 +338,7 @@ const Signup = () => {
         </DialogActions>
       </Dialog>
     </React.Fragment>
-   
+
   )
 }
 

@@ -1,33 +1,32 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import ReactStars from "react-rating-stars-component";
-// import API from '../../utils/API-Review';
 import APIU from "../../utils/API-User";
 import axios from "axios";
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        width: '100%',
-        maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
-    },
-    paper: {
-        position: 'absolute',
-        width: 400,
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-    }
-}));
-
-
-
-
-
 const ModalPop = ({ open, handleClose, modalStyle, reviewer, reviewee }) => {
-    const classes = useStyles();
+
+    const classes = {
+        root: {
+            width: '100%',
+            maxWidth: 360,
+            // backgroundColor: theme.palette.background.paper,
+        },
+        paper: {
+            position: 'absolute',
+            width: 400,
+            // backgroundColor: theme.palette.background.paper,
+            border: '2px solid #000',
+            // boxShadow: theme.shadows[5],
+            // padding: theme.spacing(2, 4, 3),
+        },
+        modal:{
+            top: "50px",
+            left: `50px`,
+            transform: `translate(50%, 50%)`
+        }
+    }
+
     const [review,setReview] = useState ({
         rate:0,
         comment:""
@@ -68,7 +67,9 @@ const ModalPop = ({ open, handleClose, modalStyle, reviewer, reviewee }) => {
                     open={open}
                     onClose={handleClose}
                 >
-                    <div style={modalStyle} className={classes.paper}>
+                    <div
+                    style={classes.paper}
+                    >
                         <ReactStars
                             value={review.rate}
                             size={50}
@@ -78,7 +79,13 @@ const ModalPop = ({ open, handleClose, modalStyle, reviewer, reviewee }) => {
                             }}
                         />
                         <h3>Comment</h3>
-                        <textarea rows="5" cols="40" value={review.comment} onChange={handleChange}></textarea>
+                        <textarea 
+                        rows="5" 
+                        cols="40" 
+                        value={review.comment} 
+                        onChange={handleChange}
+                        >
+                        </textarea>
 
                         <button onClick={handleSubmit}>Submit</button>
                     </div>

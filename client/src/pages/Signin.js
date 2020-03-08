@@ -88,7 +88,7 @@ const Signin = () => {
 
     return (
       
-       <Card style={classes.card}>
+      <Card style={classes.card}>
         <CardContent>
           <Typography 
           type="headline" 
@@ -136,8 +136,8 @@ const Signin = () => {
           >
           Submit
           </Button>
-         </CardActions>
-       </Card>
+        </CardActions>
+      </Card>
     
     )
   }

@@ -10,7 +10,6 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import API from "../../utils/API-Barter";
 import { withRouter } from 'react-router-dom';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';

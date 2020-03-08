@@ -1,32 +1,16 @@
 // import React from 'react';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import React from 'react'
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-
-import React, { useState, useEffect } from 'react'
 import Paper from 'material-ui/Paper'
-// import List, { ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText } from 'material-ui/List'
-// import Avatar from 'material-ui/Avatar'
-// import Typography from 'material-ui/Typography'
-// import Person from 'material-ui-icons/Person'
-// import Divider from 'material-ui/Divider'
-// import { createMuiTheme } from 'material-ui/styles'
-// import { useTheme } from '@material-ui/core/styles';
-// import NSList from '../components/NeedsNServices/index'
 import Grid from 'material-ui/Grid'
 import VirtualizedList from '../ProfileList/scottList'
-import ProfileHeader from '../ProfileHeader/index'
 import Popover from "../Popover/index"
-// import { StylesProvider } from '@material-ui/core/styles';
-// import Navbar from "../components/Navbar/index"
-// import listTabs from '../components/profileListsTest/index.js'
-
-
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -58,16 +42,15 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles(theme => ({
+const classes = {
   root: {
-    backgroundColor: theme.palette.background.paper,
+    // backgroundColor: theme.palette.background.paper,
     width: 500,
   },
-}));
+}
 
 export default function FullWidthTabs() {
-  const classes = useStyles();
-  const theme = useTheme();
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -79,7 +62,7 @@ export default function FullWidthTabs() {
   };
 
   return (
-    <div className={classes.root}>
+    <div style={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
           value={value}

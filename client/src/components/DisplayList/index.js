@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -51,36 +50,34 @@ function LinkTab(props) {
     );
 }
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        marginBottom:"20px",
-        flexGrow: 1,
-        backgroundColor: "#8693AB",
-        height: '72%',
-        maxHeight: '72%',
-        minHeight:"450px"
-    },
-    tabPage: {
-        overflow: "auto",
-        border: "groove 1px #077699",
-        borderRadius: "0 0 20px 20px",
-        backgroundColor: "rgb(43,41,44, 0.3)",
-        color: "white",
-        marginBottom: "-20px"
-    },
-    tabs: {
-        textShadow: "2px 2px 4px #000000",
-        backgroundImage: "linear-gradient(#96CDFF 0%, #077699 51%, #96CDFF  100%)",
-        border: "solid 1px #96CDFF"
-    },
-    appBar: {
-        backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
-        borderRadius: "20px"
-    }
-}));
-
 export default function NavTabs({ currUser, setCurrUser,reviewList }) {
-    const classes = useStyles();
+    const classes = {
+        root: {
+            marginBottom:"20px",
+            flexGrow: 1,
+            backgroundColor: "#8693AB",
+            height: '72%',
+            maxHeight: '72%',
+            minHeight:"450px"
+        },
+        tabPage: {
+            overflow: "auto",
+            border: "groove 1px #077699",
+            borderRadius: "0 0 20px 20px",
+            backgroundColor: "rgb(43,41,44, 0.3)",
+            color: "white",
+            marginBottom: "-20px"
+        },
+        tabs: {
+            textShadow: "2px 2px 4px #000000",
+            backgroundImage: "linear-gradient(#96CDFF 0%, #077699 51%, #96CDFF  100%)",
+            border: "solid 1px #96CDFF"
+        },
+        appBar: {
+            backgroundImage: "linear-gradient(to right, #96CDFF 0%, #077699 51%, #96CDFF 100%)",
+            borderRadius: "20px"
+        }
+    }
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
@@ -88,12 +85,12 @@ export default function NavTabs({ currUser, setCurrUser,reviewList }) {
     };
 
     return (
-        <div className={classes.root}>
+        <div style={classes.root}>
             <AppBar 
-            className={classes.appBar}
+            style={classes.appBar}
             position="static">
                 <Tabs
-                    className={classes.tabs}
+                    style={classes.tabs}
                     variant="fullWidth"
                     value={value}
                     onChange={handleChange}
@@ -108,13 +105,13 @@ export default function NavTabs({ currUser, setCurrUser,reviewList }) {
 
                 </Tabs>
             </AppBar>
-            <TabPanel value={value} index={0} className={classes.tabPage}>
+            <TabPanel value={value} index={0} style={classes.tabPage}>
                 <List category="needs" list={currUser.needs} currUser={currUser} setCurrUser={setCurrUser} />
             </TabPanel>
-            <TabPanel value={value} index={1} className={classes.tabPage}>
+            <TabPanel value={value} index={1} style={classes.tabPage}>
                 <List category="offers" list={currUser.offers} currUser={currUser} setCurrUser={setCurrUser} />
             </TabPanel>
-            <TabPanel value={value} index={2} className={classes.tabPage}>
+            <TabPanel value={value} index={2} style={classes.tabPage}>
                 <Review currUser={currUser} setCurrUser={setCurrUser} reviewList={reviewList}/>
             </TabPanel>
         </div>

@@ -128,15 +128,20 @@ const Search = ({ category, currUser, setCurrUser }) => {
                 setState={handleChange('category')} category={state.category}
             />
 
-            <FormControl style={classes.searchField}>
-                <InputLabel style={classes.searchField}>
+            <FormControl 
+            style={classes.searchField}
+            >
+                <InputLabel 
+                style={classes.searchField}
+                >
                     Search
                 </InputLabel>
                 <Input
                     onChange={handleChange('search')}
                     onKeyDown={enterKey} 
                     endAdornment={
-                        <InputAdornment position="end"
+                        <InputAdornment 
+                        position="end"
                         >
                             <SearchIcon
                                 onClick={search}
