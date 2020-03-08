@@ -8,7 +8,6 @@ import Modal from "../Modal";
 import Popover from '@material-ui/core/Popover';
 import Alert from '../Alert';
 import { withRouter } from 'react-router-dom';
-// import "./style.css";
 
 const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state, sideList, modalState, modalStyle, handleClose }) => {
 
@@ -19,28 +18,10 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
             paddingTop:"10px",
             margin: "70px 0 0 0"
         },
-        card: {
-            minHeight: "100%",
-            backgroundColor: "#8693AB",
-            borderRadius: "20px",
-            border: "groove 1px rgb(43,41,44, 0.3)"
-        },
-        text: {
-            color: "white",
-            textShadow: "2px 2px 4px #000000"
-        },
         imgCont: {
             position: "relative",
             height: "50px",
             width: "50px"
-        },
-        userInfo: {
-            // marginTop: "0px",
-            marginBottom: "15px",
-            marginLeft: "15px",
-            width:'300px',
-            paddingRight:"0px",
-            marginTop:'20px'
         },
         actionMenuButton: {
             position: "absolute",
@@ -49,9 +30,6 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
             color: "white",
             cursor: "pointer",
             fontSize: "40px"
-        },
-        msgCardBody: {
-            overflowY: "auto"
         },
         cardFooter: {
             borderRadius: "0 0 15px 15px !important",
@@ -110,21 +88,24 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
                 message = `
                 <div class="d-flex justify-content-end mb-4">
                     <div class="msg_cotainer_send">
+                        <div class="msg_text_send">
                         ${history[i].message}
+                        </div>
                         <span class="msg_time_send">${history[i].time}</span>
-                    </div>
-                    <div class="img_cont_msg">
-                        <img src='/uploads/${chatRoom.self.image}' class="rounded-circle user_img_msg" />
+                        <span>
+                        <img src='/uploads/${chatRoom.self.image}' class="rounded-circle sent_img_msg" /></span>
                     </div>
                 </div>`
             } else {
                 message = `
                 <div class="d-flex justify-content-start mb-4">
-                    <div class="img_cont_msg">
-                        <img src='/uploads/${chatRoom.other.image}' class="rounded-circle user_img_msg" />
+                <div class="msg_cotainer">
+                    <div class="img_msg_cont">
+                        <img src='/uploads/${chatRoom.other.image}' class="user_img_msg" />
                     </div>
-                    <div class="msg_cotainer">
+                    <div class="msg_text">
                         ${history[i].message}
+                    </div>
                         <span class="msg_time">${history[i].time}</span>
                     </div>
                 </div>
@@ -137,7 +118,7 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
 
     // listen
     socket.once('sys', function (sysMsg) {
-        var message = '<div class="sysMsg mb-4" style="text-align:center;background:lightgray">' + sysMsg + '</div>';
+        var message = '<div className="sysMsg" >' + sysMsg + '</div>';
         $('#msglog').append(message);
 
     });
@@ -289,12 +270,12 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
 
     return (
         <div style={classes.container}>
-            <div style={classes.card}>
+            <div className="chat_card">
                 <div 
                 className="card-header msg_head"
                 >
                     <div 
-                    className="d-flex bd-highlight"
+                    className="chatWindowHeader"
                     >
                         <div 
                         style={classes.imgCont} onClick={()=>handlePage(chatRoom.other.id)}
@@ -302,16 +283,15 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
                             <img 
                             src={'/uploads/'+chatRoom.other.image} 
                             alt="chatroom"
-                            className="rounded-circle user_img" />
+                            className="chat_user_img" />
                             <span className="online_icon"></span>
                         </div>
-                        <div 
-                        style={classes.userInfo} >
+
                             <span
-                            style={classes.text}
+                            className="chat_user_info"
                             >
                             Chat w/ {chatRoom.other.name}</span>
-                        </div>
+                        
                     </div>
                     <span 
                     id="action_menu_btn"
@@ -322,8 +302,6 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
                     </span>
                 </div>
                 <div 
-                className="card-body msg_card_body"
-                style={classes.msgCardBody}
                 id="msglog"
                 >
                 </div>
@@ -333,7 +311,7 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
                 >
                     <div className="input-group">
                         <div className="input-group-append">
-                            <span className="input-group-text attach_btn" 
+                            <div className="input-group-text attach_btn" 
                             style={classes.attachBtn}
                             aria-describedby={id} onClick={"handleClick"}>
                                 <i 
@@ -341,7 +319,7 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
                                 >
 
                                 </i>
-                            </span>
+                            </div>
                             <Popover
                             id={id}
                             open={open}
@@ -387,11 +365,11 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
                         </textarea>
                         <div className="input-group-append" 
                         onClick={handSend}>
-                            <span className="input-group-text send_btn"
+                            <div className="input-group-text send_btn"
                             style={classes.sendBtn}
                             >
                                 <i className="fas fa-location-arrow"></i>
-                            </span>
+                            </div>
                         </div>
                     </div>
                 </div>
