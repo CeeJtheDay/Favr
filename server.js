@@ -123,7 +123,9 @@ app.use(function(err, req, res, next) {
 });
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/barter");
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/barter");
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://<dbuser>:<dbpassword>@ds143511.mlab.com:43511/heroku_jmrkstdn");
 
 // Start the API server
 server.listen(PORT, function() {
