@@ -33,6 +33,19 @@ body,html{
   border-radius: 20px;
 }
 
+.chat_container , .chat_container_send {
+  position: relative;
+}
+
+
+.MuiDrawer-paperAnchorLeft {
+  left: 0;
+  right: auto;
+  background-color: #8693AB;
+  border: groove 2px #00000030;
+  border-radius: 0px 25px 25px 0px;
+}
+
 .d-flex.db-highlight {
   width: 100px;
   color: white;
@@ -53,9 +66,10 @@ body,html{
   
 }
 
-.contacts_body{
+/* .contacts_body{
   height: 74vh;
-}
+  bac
+} */
 
 .contacts li{
   margin-bottom: 5px;
@@ -91,21 +105,26 @@ li.active {
   
 }
 
+#logContainer {
+  border: groove 1px #00000030;
+  height: 50vh;
+  overflow: auto;
+  padding: 2px;
+}
 .card-footer{
-border-radius: 0 0 15px 15px !important;
-  border-top: 0 !important;
+  border-radius: 0 0px 22px 22px;
+  height: 90px;
 }
 
 .type_msg{
   background-color: rgb(43,41,44, 0.3);
   border: 0;
   color: white;
-  height: 74px;
+  height: 82px;
   width: 253px;
   border: groove 2px #00000030;
-  position: relative;
-  top: 187px;
-  left: 40px;
+  position: absolute;
+  left: 57px;
 }
 
 .type_msg::placeholder{
@@ -115,16 +134,15 @@ border-radius: 0 0 15px 15px !important;
 .attach_btn{
   background-color: rgba(0,0,0,0.3);
   color: white !important;
-  cursor: pointer;
-  position: relative;
-  top: 270px;
+  /* cursor: pointer; */
+  position: absolute;
   width: 40px;
-  height: 52px;
+  height: 60px;
   border-radius: 0px 0px 0px 21px;
   text-align: center;
   padding-top: 30px;
   border: outset 1px #00000030;
-  left: -1px;
+  left: 15px;
 }
 .send_btn{
   border-radius: 0px 0px 19px 0px;
@@ -134,11 +152,10 @@ border-radius: 0 0 15px 15px !important;
   cursor: pointer;
   padding-top: 30px;
   text-align: center;
-  width: 44px;
-  height: 51px;
-  position: relative;
-  right: -299px;
-  top: 103px;
+  width: 39px;
+  height: 58px;
+  position: absolute;
+  right: 16px;
 }
 .search_btn{
   border-radius: 0 15px 15px 0 !important;
@@ -188,25 +205,25 @@ border: solid 2px #96CDFF;
 .msg_time{
 width: 200px;
 position: relative;
-left: -28px;
-top: -17px;
+left: -26px;
+top: 26px;
 color:white;
 font-size: 10px;
 }
 
 .msg_text {
-  position: relative;
-    width: 300px;
-    text-align: left;
-    height: 42px;
+  position: absolute;
+  width: 228px;
+  text-align: left;
+  height: 42px;
+  right: 22px;
 }
 
 .msg_time_send{
-  text-align: end;
   width: 200px;
-  position: relative;
-  right: 0px;
-  top: -15px;
+  position: absolute;
+  left: 85px;
+  top: 34px;
   color: white;
   font-size: 10px;
 }
@@ -216,7 +233,8 @@ font-size: 10px;
   height: 40px;
   width: 255px;
   text-align: right;
-  position: relative;
+  position: absolute;
+  right: 68px;
 }
 .msg_head{
 position: relative;
@@ -300,23 +318,23 @@ background-color: rgba(0,0,0,0.2);
   position: relative;
 } */
 .user_img_msg{
-  height: 42px;
-  border:1.5px solid #f5f6fa;
+  height: 44px;
+  /* border: 1.5px solid #f5f6fa; */
   border-radius: 50px 0px 0px 50px;
   float: left;
-  position: relative;
+  position: absolute;
   top: -2px;
-  right: 2px;
-  border: dotted 2px #077699;
+  left: -1px;
+  border: dotted 2px #96CDFF;
 }
 
 .sent_img_msg {
-  height: 42px;;
+  height: 44px;
   border-radius: 0px 50px 50px 0px;
   float: right;
-  position: relative;
-  top: -45px;
-  right: -3px;
+  position: absolute;
+  top: -2px;
+  right: -2px;
   border: dotted 2px #077699;
 }
 
@@ -350,10 +368,11 @@ margin-bottom: 15px !important;
   border-radius: 20px 20px 0 0;
   border: groove 1px #96CDFF80;
   border-bottom: solid 3px #96CDFF;
+  height: 80px;
 }
 
 .chat_user_img {
-  height: 42px;
+  height: 62px;
   margin: 5px;
   color: white;
   text-shadow: 2px 2px 4px #000000;
@@ -363,8 +382,8 @@ margin-bottom: 15px !important;
   z-index: 100 !important;
   position: relative;
   border-radius: 100%;
-  right: -5px;
-  top: 8px;
+  right: 3px;
+  top: -2px;
 }
 
 .chat_user_info {
@@ -378,10 +397,11 @@ margin-bottom: 15px !important;
   padding: 5px 40px 5px 40px;
   z-index: 0;
   position: relative;
-  top: -25px;
-  right: -50px;
-  width: 300px;
+  top: -58px;
+  right: -59px;
+  width: 195px;
 }
+
 
 /* .sysMsg {
   text-align:center;

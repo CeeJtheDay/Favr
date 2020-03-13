@@ -23,14 +23,7 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
             height: "50px",
             width: "50px"
         },
-        actionMenuButton: {
-            position: "absolute",
-            right: "5px",
-            top: "10px",
-            color: "white",
-            cursor: "pointer",
-            fontSize: "40px"
-        },
+     
         cardFooter: {
             borderRadius: "0 0 15px 15px !important",
             borderTop: "0 !important"
@@ -86,7 +79,7 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
             let message;
             if (history[i].id === currUser.id) {
                 message = `
-                <div class="d-flex justify-content-end mb-4">
+                <div class="chat_container_sent">
                     <div class="msg_cotainer_send">
                         <div class="msg_text_send">
                         ${history[i].message}
@@ -98,7 +91,7 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
                 </div>`
             } else {
                 message = `
-                <div class="d-flex justify-content-start mb-4">
+                <div class="chat_container">
                 <div class="msg_cotainer">
                     <div class="img_msg_cont">
                         <img src='/uploads/${chatRoom.other.image}' class="user_img_msg" />
@@ -277,42 +270,39 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
                     <div 
                     className="chatWindowHeader"
                     >
-                        <div 
-                        style={classes.imgCont} onClick={()=>handlePage(chatRoom.other.id)}
-                        >
+                        
                             <img 
                             src={'/uploads/'+chatRoom.other.image} 
                             alt="chatroom"
                             className="chat_user_img" />
-                            <span className="online_icon"></span>
-                        </div>
 
-                            <span
+                            <div
                             className="chat_user_info"
                             >
-                            Chat w/ {chatRoom.other.name}</span>
+                            Chat w/ {chatRoom.other.name}</div>
                         
                     </div>
-                    <span 
-                    id="action_menu_btn"
-                    style={classes.actionMenuButton}>
+                    <span
+                    id="action_menu_btn">
                         <IconButton onClick={toggleDrawer("left", true)}>
                             <ListIcon />
                         </IconButton>
                     </span>
                 </div>
                 <div 
+                id="logContainer"
+                >
+                <div 
                 id="msglog"
                 >
+                </div>
                 </div>
                 <div 
                 className="card-footer"
                 style={classes.cardFooter}
                 >
                     <div className="input-group">
-                        <div className="input-group-append">
-                            <div className="input-group-text attach_btn" 
-                            style={classes.attachBtn}
+                            <div className="attach_btn" 
                             aria-describedby={id} onClick={"handleClick"}>
                                 <i 
                                 className="fas fa-paperclip"
@@ -355,7 +345,6 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
                                     </Alert>
                                 </form>
                             </Popover>
-                        </div>
                         <textarea 
                         name="" 
                         className="form-control type_msg" 
@@ -363,14 +352,10 @@ const ChatWindow = withRouter(({history, chatRoom, currUser, toggleDrawer, state
                         id={chatRoom.id + currUser.id} 
                         onKeyDown={handSendEnter}>
                         </textarea>
-                        <div className="input-group-append" 
-                        onClick={handSend}>
-                            <div className="input-group-text send_btn"
-                            style={classes.sendBtn}
+                            <div className="send_btn"
                             >
                                 <i className="fas fa-location-arrow"></i>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
